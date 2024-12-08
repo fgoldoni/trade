@@ -5,6 +5,7 @@ import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
+import RegisterLayout from "@/Layouts/RegisterLayout.vue";
 
 const form = useForm({
     name: '',
@@ -23,13 +24,13 @@ const submit = () => {
 </script>
 
 <template>
-    <GuestLayout>
+    <RegisterLayout>
         <Head title="Register" />
 
         <form @submit.prevent="submit">
 
             <div class="mt-4">
-                <InputLabel for="phone" value="Phone" />
+                <InputLabel for="phone" value="Votre numéro de téléphone" />
 
                 <TextInput
                     id="phone"
@@ -37,14 +38,16 @@ const submit = () => {
                     class="mt-1 block w-full"
                     v-model="form.phone"
                     required
-                    autocomplete="username"
+                    autofocus
+                    placeholder="Veuillez entrer le numéro de téléphone"
+                    autocomplete="phone"
                 />
 
                 <InputError class="mt-2" :message="form.errors.phone" />
             </div>
 
             <div class="mt-4">
-                <InputLabel for="password" value="Password" />
+                <InputLabel for="password" value="Mot de passe" />
 
                 <TextInput
                     id="password"
@@ -52,7 +55,8 @@ const submit = () => {
                     class="mt-1 block w-full"
                     v-model="form.password"
                     required
-                    autocomplete="new-password"
+                    placeholder="Mot de passe"
+                    autocomplete="current-password"
                 />
 
                 <InputError class="mt-2" :message="form.errors.password" />
@@ -61,7 +65,7 @@ const submit = () => {
             <div class="mt-4">
                 <InputLabel
                     for="password_confirmation"
-                    value="Confirm Password"
+                    value="Confirmer le mot de passe"
                 />
 
                 <TextInput
@@ -70,6 +74,7 @@ const submit = () => {
                     class="mt-1 block w-full"
                     v-model="form.password_confirmation"
                     required
+                    placeholder="Confirmer le mot de passe"
                     autocomplete="new-password"
                 />
 
@@ -84,7 +89,7 @@ const submit = () => {
                     :href="route('login')"
                     class="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:text-gray-400 dark:hover:text-gray-100 dark:focus:ring-offset-gray-800"
                 >
-                    Already registered?
+                    Déjà inscrit ?
                 </Link>
 
                 <PrimaryButton
@@ -92,9 +97,9 @@ const submit = () => {
                     :class="{ 'opacity-25': form.processing }"
                     :disabled="form.processing"
                 >
-                    Register
+                    S'inscrire
                 </PrimaryButton>
             </div>
         </form>
-    </GuestLayout>
+    </RegisterLayout>
 </template>

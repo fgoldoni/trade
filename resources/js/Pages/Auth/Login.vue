@@ -35,7 +35,7 @@ const submit = () => {
             {{ status }}
         </div>
 
-        <form @submit.prevent="submit" class="mt-16">
+        <form @submit.prevent="submit" class="mt-8">
             <div>
                 <InputLabel for="phone" value="Votre numéro de téléphone" />
 
@@ -54,7 +54,7 @@ const submit = () => {
             </div>
 
             <div class="mt-4">
-                <InputLabel for="password" value="Password" />
+                <InputLabel for="password" value="Mot de passe" />
 
                 <TextInput
                     id="password"
@@ -62,6 +62,7 @@ const submit = () => {
                     class="mt-1 block w-full"
                     v-model="form.password"
                     required
+                    placeholder="Mot de passe"
                     autocomplete="current-password"
                 />
 

@@ -11,10 +11,17 @@
     "require": {
         "php": "^8.2",
         "artesaos/seotools": "^1.3",
+        "fgoldoni/laravel-cart": "dev-master",
+        "goldoni/core-process": "dev-main",
+        "goldoni/core-repositories": "dev-main",
         "inertiajs/inertia-laravel": "^1.0",
+        "juststeveking/http-status-code": "^3.0",
         "laravel/framework": "^11.31",
+        "laravel/nova": "^4.0",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
+        "mattiasgeniar/php-percentages": "^1.3",
+        "nwidart/laravel-modules": "^11.1",
         "spatie/laravel-analytics": "^5.4",
         "tightenco/ziggy": "^2.0"
     },
@@ -33,7 +40,9 @@
         "psr-4": {
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
-            "Database\\Seeders\\": "database/seeders/"
+            "Database\\Seeders\\": "database/seeders/",
+            "Modules\\": "Modules/",
+            "Core\\": "core/"
         }
     },
     "autoload-dev": {
@@ -73,9 +82,28 @@
         "sort-packages": true,
         "allow-plugins": {
             "pestphp/pest-plugin": true,
-            "php-http/discovery": true
+            "php-http/discovery": true,
+            "wikimedia/composer-merge-plugin": true
         }
     },
     "minimum-stability": "stable",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://nova.laravel.com"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/fgoldoni/core-repositories.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/fgoldoni/laravel-cart.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/fgoldoni/core-process.git"
+        }
+    ]
 }

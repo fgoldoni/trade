@@ -19,9 +19,16 @@ return new class extends Migration
             $table->timestamp('phone_verified_at')->nullable();
             $table->string('email')->unique()->nullable();
             $table->timestamp('email_verified_at')->nullable();
+
+            $table->string('referral_code')->index()->unique();
+            $table->unsignedBigInteger('referred_by')->nullable();
+            $table->integer('referral_count')->default(0);
+
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+
+            $table->foreign('referred_by')->references('id')->on('users')->onUpdate('cascade')->onDelete('set null');
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
