@@ -13,7 +13,7 @@ defineProps<{
 }>();
 
 const form = useForm({
-    email: '',
+    phone: '',
     password: '',
     remember: false,
 });
@@ -35,21 +35,22 @@ const submit = () => {
             {{ status }}
         </div>
 
-        <form @submit.prevent="submit">
+        <form @submit.prevent="submit" class="mt-16">
             <div>
-                <InputLabel for="email" value="Email" />
+                <InputLabel for="phone" value="Votre numéro de téléphone" />
 
                 <TextInput
-                    id="email"
-                    type="email"
+                    id="phone"
+                    type="tel"
                     class="mt-1 block w-full"
-                    v-model="form.email"
+                    v-model="form.phone"
                     required
                     autofocus
-                    autocomplete="username"
+                    placeholder="Veuillez entrer le numéro de téléphone"
+                    autocomplete="phone"
                 />
 
-                <InputError class="mt-2" :message="form.errors.email" />
+                <InputError class="mt-2" :message="form.errors.phone" />
             </div>
 
             <div class="mt-4">
@@ -71,7 +72,7 @@ const submit = () => {
                 <label class="flex items-center">
                     <Checkbox name="remember" v-model:checked="form.remember" />
                     <span class="ms-2 text-sm text-gray-600 dark:text-gray-400"
-                        >Remember me</span
+                        >Se souvenir de moi</span
                     >
                 </label>
             </div>
@@ -82,7 +83,7 @@ const submit = () => {
                     :href="route('password.request')"
                     class="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:text-gray-400 dark:hover:text-gray-100 dark:focus:ring-offset-gray-800"
                 >
-                    Forgot your password?
+                    Mot de passe oublié ?
                 </Link>
 
                 <PrimaryButton
@@ -90,7 +91,7 @@ const submit = () => {
                     :class="{ 'opacity-25': form.processing }"
                     :disabled="form.processing"
                 >
-                    Log in
+                    Se connecter
                 </PrimaryButton>
             </div>
         </form>
