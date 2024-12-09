@@ -44,7 +44,7 @@
                 >
                     <div class="flex items-center">
                         <div class="flex-shrink-0">
-                            <Link :href="route('home')">
+                            <Link :href="route('dashboard')">
                                 <img
                                     class="h-8 w-auto transform origin-left transition duration-700"
                                     :class="{
@@ -85,7 +85,7 @@
                         />
                         <a
                             v-if="false"
-                            :href="route('home')"
+                            :href="route('dashboard')"
                             :class="[
                                 scrolledFromTop ? 'py-1' : 'py-1.5',
                                 'uppercase rounded-md bg-primary-700 px-3 text-xs font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600',

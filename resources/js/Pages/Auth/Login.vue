@@ -15,7 +15,7 @@ defineProps<{
 const form = useForm({
     phone: '',
     password: '',
-    remember: false,
+    remember: true,
 });
 
 const submit = () => {
@@ -76,14 +76,15 @@ const submit = () => {
                                 </svg>
                             </a>
                             <div class="flex flex-col mb-6 lg:items-start">
-                            <span
-                                :class="`font-medium text-primary-500`"
-                            >{{ __("Login") }}</span
-                            >
-                                <h3 class="text-sm font-bold text-left">
+                                <h1 class="text-3xl sm:text-4xl"><span class="bg-gradient-to-r font-black text-transparent bg-clip-text from-pink-600 pb-2 via-blue-400 to-blue-700 block">
+                                   Bienvenue à nouveau
+                                </span>
+                                </h1>
+
+                                <h3 class="text-xl font-bold sm:text-left">
                                     {{
                                         __(
-                                            "After your registration you will receive a link which you must confirm. No password is required.",
+                                            "Gagnez 30 % de bonus de parrainage ainsi qu'une prime d'inscription de 1000 FCFA.",
                                         )
                                     }}
                                 </h3>
@@ -117,7 +118,7 @@ const submit = () => {
                                     class="relative z-0 w-full mb-5 mt-8 group text-left"
                                 >
                                     <input
-                                        type="text"
+                                        type="password"
                                         name="password"
                                         v-model="form.password"
                                         id="password"
@@ -137,21 +138,22 @@ const submit = () => {
                                 </div>
 
                                 <div class="mt-4 block">
-                                    <label class="flex items-center">
-                                        <Checkbox name="remember" v-model:checked="form.remember" />
-                                        <span class="ms-2 text-sm text-gray-600 dark:text-gray-400"
-                                        >Se souvenir de moi</span
-                                        >
-                                    </label>
+                                    <Link
+                                        v-if="canResetPassword"
+                                        :href="route('password.request')"
+                                        class="flex rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:text-gray-400 dark:hover:text-gray-100 dark:focus:ring-offset-gray-800"
+                                    >
+                                        Mot de passe oublié ?
+                                    </Link>
                                 </div>
 
                                 <div class="mt-4 flex items-center justify-end">
                                     <Link
                                         v-if="canResetPassword"
-                                        :href="route('password.request')"
+                                        :href="route('register')"
                                         class="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:text-gray-400 dark:hover:text-gray-100 dark:focus:ring-offset-gray-800"
                                     >
-                                        Mot de passe oublié ?
+                                        Inscrivez-vous ici
                                     </Link>
 
                                     <PrimaryButton
