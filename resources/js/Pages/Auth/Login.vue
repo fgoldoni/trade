@@ -35,66 +35,145 @@ const submit = () => {
             {{ status }}
         </div>
 
-        <form @submit.prevent="submit" class="mt-8">
-            <div>
-                <InputLabel for="phone" value="Votre numéro de téléphone" />
-
-                <TextInput
-                    id="phone"
-                    type="tel"
-                    class="mt-1 block w-full"
-                    v-model="form.phone"
-                    required
-                    autofocus
-                    placeholder="Veuillez entrer le numéro de téléphone"
-                    autocomplete="phone"
-                />
-
-                <InputError class="mt-2" :message="form.errors.phone" />
-            </div>
-
-            <div class="mt-4">
-                <InputLabel for="password" value="Mot de passe" />
-
-                <TextInput
-                    id="password"
-                    type="password"
-                    class="mt-1 block w-full"
-                    v-model="form.password"
-                    required
-                    placeholder="Mot de passe"
-                    autocomplete="current-password"
-                />
-
-                <InputError class="mt-2" :message="form.errors.password" />
-            </div>
-
-            <div class="mt-4 block">
-                <label class="flex items-center">
-                    <Checkbox name="remember" v-model:checked="form.remember" />
-                    <span class="ms-2 text-sm text-gray-600 dark:text-gray-400"
-                        >Se souvenir de moi</span
-                    >
-                </label>
-            </div>
-
-            <div class="mt-4 flex items-center justify-end">
-                <Link
-                    v-if="canResetPassword"
-                    :href="route('password.request')"
-                    class="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:text-gray-400 dark:hover:text-gray-100 dark:focus:ring-offset-gray-800"
+        <section class="relative w-full">
+            <div class="relative px-8 mx-auto max-w-7xl">
+                <div
+                    class="absolute inset-0 flex justify-end w-full h-full bg-slate-100 opacity-10"
                 >
-                    Mot de passe oublié ?
-                </Link>
+                    <div
+                        class="absolute inset-0 w-full h-full bg-repeat opacity-40"
+                        style="
+                        background-image: url(&quot;https://cdn.devdojo.com/images/august2021/circuit.png&quot;);
+                    "
+                    ></div>
+                    <div
+                        class="absolute w-full h-full bg-gradient-to-r from-white to-transparent"
+                    ></div>
+                </div>
+                <div class="relative flex flex-wrap items-center">
+                    <div class="relative w-full px-4 mb-12 lg:w-5/12 lg:mb-0">
+                        <div class="relative py-20 text-center md:py-32 xl:py-40">
+                            <a
+                                class="flex justify-center w-full mb-6 text-3xl font-bold lg:justify-start font-heading"
+                                href="#"
+                            >
+                                <svg
+                                    class="h-10"
+                                    viewBox="0 0 50 39"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        d="M16.5 2h21.08L22.083 24.973H1L16.5 2z"
+                                        class="ccompli1"
+                                        fill="#007AFF"
+                                    ></path>
+                                    <path
+                                        d="M17.422 27.102L11.42 36h22.082L49 13.027H32.702l-9.496 14.075h-5.784z"
+                                        class="ccustom"
+                                        fill="#312ECB"
+                                    ></path>
+                                </svg>
+                            </a>
+                            <div class="flex flex-col mb-6 lg:items-start">
+                            <span
+                                :class="`font-medium text-primary-500`"
+                            >{{ __("Login") }}</span
+                            >
+                                <h3 class="text-sm font-bold text-left">
+                                    {{
+                                        __(
+                                            "After your registration you will receive a link which you must confirm. No password is required.",
+                                        )
+                                    }}
+                                </h3>
+                            </div>
+                            <form @submit.prevent="submit" class="mt-8">
 
-                <PrimaryButton
-                    class="ms-4"
-                    :class="{ 'opacity-25': form.processing }"
-                    :disabled="form.processing"
-                >
-                    Se connecter
-                </PrimaryButton>
+                                <div
+                                    class="relative z-0 w-full mb-5 mt-8 group text-left"
+                                >
+                                    <input
+                                        type="text"
+                                        name="phone"
+                                        v-model="form.phone"
+                                        id="phone"
+                                        :class="`block py-2.5 px-0 w-full text-sm text-slate-900 bg-transparent border-0 border-b-2 border-slate-300 appearance-none dark:text-white dark:border-slate-600 dark:focus:border-primary-500 focus:outline-none focus:ring-0 focus:border-primary-600 peer`"
+                                        placeholder=" "
+                                        required
+                                    />
+                                    <label
+                                        for="phone"
+                                        :class="`peer-focus:font-medium absolute text-sm text-slate-500 dark:text-slate-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-primary-600 peer-focus:dark:text-primary-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6`"
+                                    >
+                                        {{ __("Votre numéro de téléphone") }}
+                                    </label>
+                                    <InputError
+                                        :message="form.errors.phone"
+                                    />
+                                </div>
+
+                                <div
+                                    class="relative z-0 w-full mb-5 mt-8 group text-left"
+                                >
+                                    <input
+                                        type="text"
+                                        name="password"
+                                        v-model="form.password"
+                                        id="password"
+                                        :class="`block py-2.5 px-0 w-full text-sm text-slate-900 bg-transparent border-0 border-b-2 border-slate-300 appearance-none dark:text-white dark:border-slate-600 dark:focus:border-primary-500 focus:outline-none focus:ring-0 focus:border-primary-600 peer`"
+                                        placeholder=" "
+                                        required
+                                    />
+                                    <label
+                                        for="password"
+                                        :class="`peer-focus:font-medium absolute text-sm text-slate-500 dark:text-slate-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-primary-600 peer-focus:dark:text-primary-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6`"
+                                    >
+                                        {{ __("Mot de passe") }}
+                                    </label>
+                                    <InputError
+                                        :message="form.errors.password"
+                                    />
+                                </div>
+
+                                <div class="mt-4 block">
+                                    <label class="flex items-center">
+                                        <Checkbox name="remember" v-model:checked="form.remember" />
+                                        <span class="ms-2 text-sm text-gray-600 dark:text-gray-400"
+                                        >Se souvenir de moi</span
+                                        >
+                                    </label>
+                                </div>
+
+                                <div class="mt-4 flex items-center justify-end">
+                                    <Link
+                                        v-if="canResetPassword"
+                                        :href="route('password.request')"
+                                        class="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:text-gray-400 dark:hover:text-gray-100 dark:focus:ring-offset-gray-800"
+                                    >
+                                        Mot de passe oublié ?
+                                    </Link>
+
+                                    <PrimaryButton
+                                        class="ms-4"
+                                        :class="{ 'opacity-25': form.processing }"
+                                        :disabled="form.processing"
+                                    >
+                                        Se connecter
+                                    </PrimaryButton>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </form>
+            <div
+                class="top-0 bottom-0 right-0 hidden bg-cover lg:block lg:absolute lg:w-3/6"
+                style="background-image: url(&quot;https://nova-s3-bucket-forge.s3.eu-central-1.amazonaws.com/avatars/d9zCZGxHltUaQ62XfTLrA1oY0VHxBsMeRMYBLtbl.jpg&quot;);"
+            ></div>
+        </section>
+
+
+
     </GuestLayout>
 </template>
