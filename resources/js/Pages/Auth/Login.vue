@@ -52,7 +52,7 @@ const submit = () => {
                 </div>
                 <div class="relative flex flex-wrap items-center">
                     <div class="relative w-full px-4 mb-12 lg:w-5/12 lg:mb-0">
-                        <div class="relative py-20 text-center md:py-32 xl:py-40">
+                        <div class="relative py-4 text-center md:py-32 xl:py-40">
                             <a
                                 class="flex justify-center w-full mb-6 text-3xl font-bold lg:justify-start font-heading"
                                 href="#"
@@ -76,15 +76,15 @@ const submit = () => {
                                 </svg>
                             </a>
                             <div class="flex flex-col mb-6 lg:items-start">
-                                <h1 class="text-3xl sm:text-4xl"><span class="bg-gradient-to-r font-black text-transparent bg-clip-text from-pink-600 pb-2 via-blue-400 to-blue-700 block">
+                                <h1 class="text-xl sm:text-2xl"><span class="bg-gradient-to-r font-black text-transparent bg-clip-text from-pink-600 pb-2 via-blue-400 to-blue-700 block">
                                    Bienvenue à nouveau
                                 </span>
                                 </h1>
 
-                                <h3 class="text-xl font-bold sm:text-left">
+                                <h3 class="text-lg font-bold sm:text-left">
                                     {{
                                         __(
-                                            "Gagnez 30 % de bonus de parrainage ainsi qu'une prime d'inscription de 1000 FCFA.",
+                                            "Gagnez 30 % de bonus de parrainage !",
                                         )
                                     }}
                                 </h3>

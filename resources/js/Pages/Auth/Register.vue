@@ -61,7 +61,7 @@ const submit = () => {
                 </div>
                 <div class="relative flex flex-wrap items-center">
                     <div class="relative w-full px-4 mb-12 lg:w-5/12 lg:mb-0">
-                        <div class="relative py-20 text-center md:py-32 xl:py-40">
+                        <div class="relative py-4 text-center md:py-32 xl:py-40">
                             <a
                                 class="flex justify-center w-full mb-6 text-3xl font-bold lg:justify-start font-heading"
                                 href="#"
@@ -85,89 +85,104 @@ const submit = () => {
                                 </svg>
                             </a>
                             <div class="flex flex-col mb-6 lg:items-start">
-                                <h1 class="text-3xl sm:text-4xl"><span class="bg-gradient-to-r font-black text-transparent bg-clip-text from-pink-600 pb-2 via-blue-400 to-blue-700 block">
-                                   Votre bonus vous attend.
+                                <h1 class="text-xl sm:text-2xl"><span class="bg-gradient-to-r font-black text-transparent bg-clip-text from-pink-600 pb-2 via-blue-400 to-blue-700 block">
+                                   Acceptez l'invitation et recevez 1000 FCFA de bonus !
                                 </span>
                                 </h1>
-
-                                <h3 class="text-xl font-bold sm:text-left">
-                                    {{
-                                        __(
-                                            "Acceptez l'invitation et profitez d'un généreux bonus de bienvenue de 1000 FCFA !",
-                                        )
-                                    }}
-                                </h3>
                             </div>
                             <form @submit.prevent="submit">
-                                <div class="mt-4">
-                                    <InputLabel for="phone" value="Votre numéro de téléphone" />
-
-                                    <TextInput
-                                        id="phone"
-                                        type="tel"
-                                        class="mt-1 block w-full"
+                                <div
+                                    class="relative z-0 w-full mb-5 mt-8 group text-left"
+                                >
+                                    <input
+                                        type="text"
+                                        name="phone"
                                         v-model="form.phone"
+                                        id="phone"
+                                        :class="`block py-2.5 px-0 w-full text-sm text-slate-900 bg-transparent border-0 border-b-2 border-slate-300 appearance-none dark:text-white dark:border-slate-600 dark:focus:border-primary-500 focus:outline-none focus:ring-0 focus:border-primary-600 peer`"
+                                        placeholder=" "
                                         required
-                                        autofocus
-                                        placeholder="Veuillez entrer le numéro de téléphone"
-                                        autocomplete="phone"
                                     />
-
-                                    <InputError class="mt-2" :message="form.errors.phone" />
-                                </div>
-
-                                <div class="mt-4">
-                                    <InputLabel for="password" value="Mot de passe" />
-
-                                    <TextInput
-                                        id="password"
-                                        type="password"
-                                        class="mt-1 block w-full"
-                                        v-model="form.password"
-                                        required
-                                        placeholder="Mot de passe"
-                                        autocomplete="current-password"
-                                    />
-
-                                    <InputError class="mt-2" :message="form.errors.password" />
-                                </div>
-
-                                <div class="mt-4">
-                                    <InputLabel
-                                        for="password_confirmation"
-                                        value="Confirmer le mot de passe"
-                                    />
-
-                                    <TextInput
-                                        id="password_confirmation"
-                                        type="password"
-                                        class="mt-1 block w-full"
-                                        v-model="form.password_confirmation"
-                                        required
-                                        placeholder="Confirmer le mot de passe"
-                                        autocomplete="new-password"
-                                    />
-
+                                    <label
+                                        for="phone"
+                                        :class="`peer-focus:font-medium absolute text-sm text-slate-500 dark:text-slate-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-primary-600 peer-focus:dark:text-primary-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6`"
+                                    >
+                                        {{ __("Votre numéro de téléphone") }}
+                                    </label>
                                     <InputError
-                                        class="mt-2"
+                                        :message="form.errors.phone"
+                                    />
+                                </div>
+
+                                <div
+                                    class="relative z-0 w-full mb-5 mt-8 group text-left"
+                                >
+                                    <input
+                                        type="password"
+                                        name="password"
+                                        v-model="form.password"
+                                        id="password"
+                                        :class="`block py-2.5 px-0 w-full text-sm text-slate-900 bg-transparent border-0 border-b-2 border-slate-300 appearance-none dark:text-white dark:border-slate-600 dark:focus:border-primary-500 focus:outline-none focus:ring-0 focus:border-primary-600 peer`"
+                                        placeholder=" "
+                                        required
+                                    />
+                                    <label
+                                        for="password"
+                                        :class="`peer-focus:font-medium absolute text-sm text-slate-500 dark:text-slate-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-primary-600 peer-focus:dark:text-primary-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6`"
+                                    >
+                                        {{ __("Mot de passe") }}
+                                    </label>
+                                    <InputError
+                                        :message="form.errors.password"
+                                    />
+                                </div>
+
+                                <div
+                                    class="relative z-0 w-full mb-5 mt-8 group text-left"
+                                >
+                                    <input
+                                        type="password"
+                                        name="password_confirmation"
+                                        v-model="form.password_confirmation"
+                                        id="password_confirmation"
+                                        :class="`block py-2.5 px-0 w-full text-sm text-slate-900 bg-transparent border-0 border-b-2 border-slate-300 appearance-none dark:text-white dark:border-slate-600 dark:focus:border-primary-500 focus:outline-none focus:ring-0 focus:border-primary-600 peer`"
+                                        placeholder=" "
+                                        required
+                                    />
+                                    <label
+                                        for="password_confirmation"
+                                        :class="`peer-focus:font-medium absolute text-sm text-slate-500 dark:text-slate-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-primary-600 peer-focus:dark:text-primary-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6`"
+                                    >
+                                        {{ __("Confirmer le mot de passe") }}
+                                    </label>
+                                    <InputError
                                         :message="form.errors.password_confirmation"
                                     />
                                 </div>
 
-                                <div class="mt-4">
-                                    <InputLabel for="referral_code" value="Code de parrainage" />
-
-                                    <TextInput
-                                        id="referral_code"
+                                <div
+                                    class="relative z-0 w-full mb-5 mt-8 group text-left"
+                                >
+                                    <input
                                         type="text"
-                                        class="mt-1 block w-full"
+                                        name="referral_code"
                                         v-model="form.referral_code"
-                                        placeholder="Code de parrainage"
-                                        autocomplete="via"
+                                        id="referral_code"
+                                        :class="`block py-2.5 px-0 w-full text-sm text-slate-900 bg-transparent border-0 border-b-2 border-slate-300 appearance-none dark:text-white dark:border-slate-600 dark:focus:border-primary-500 focus:outline-none focus:ring-0 focus:border-primary-600 peer`"
+                                        placeholder=" "
+                                        required
                                     />
-
-                                    <InputError class="mt-2" :message="form.errors.referral_code" />
+                                    <label
+                                        for="referral_code"
+                                        :class="`peer-focus:font-medium absolute text-sm text-slate-500 dark:text-slate-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-primary-600 peer-focus:dark:text-primary-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6`"
+                                    >
+                                        {{ __("Code de parrainage") }}
+                                    </label>
+                                    <InputError
+                                        :message="form.errors.referral_code"
+                                    />
                                 </div>
+
 
                                 <div class="mt-4 flex items-center justify-end">
                                     <Link

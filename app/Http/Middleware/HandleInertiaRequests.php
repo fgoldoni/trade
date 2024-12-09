@@ -34,6 +34,12 @@ class HandleInertiaRequests extends Middleware
             'auth' => [
                 'user' => $request->user(),
             ],
+            'app' => [
+                'name' => env('APP_NAME', 'Laravel'),
+                'description' => "Investissez aujourd'hui et recevez votre premier paiement en moins d'une heure",
+                'image' => "https://nova-s3-bucket-forge.s3.eu-central-1.amazonaws.com/avatars/d9zCZGxHltUaQ62XfTLrA1oY0VHxBsMeRMYBLtbl.jpg",
+            ],
+            'notchPayUrl' => config('system.notch_pay_url'),
         ];
     }
 }
