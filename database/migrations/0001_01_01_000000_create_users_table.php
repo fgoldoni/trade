@@ -24,6 +24,9 @@ return new class extends Migration
             $table->unsignedBigInteger('referred_by')->nullable();
             $table->integer('referral_count')->default(0);
 
+            $table->timestamp('banned_at')->nullable();
+
+
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

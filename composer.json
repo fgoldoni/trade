@@ -11,6 +11,7 @@
     "require": {
         "php": "^8.2",
         "artesaos/seotools": "^1.3",
+        "cybercog/laravel-nova-ban": "^2.0",
         "fgoldoni/laravel-cart": "dev-master",
         "goldoni/core-process": "dev-main",
         "goldoni/core-repositories": "dev-main",

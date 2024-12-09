@@ -1,17 +1,32 @@
 <script setup lang="ts">
-import GuestLayout from '@/Layouts/GuestLayout.vue';
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
 import RegisterLayout from "@/Layouts/RegisterLayout.vue";
+import {onMounted, ref} from "vue";
+import Cookies from 'js-cookie'
+
 
 const form = useForm({
     name: '',
-    phone: '',
-    password: '',
-    password_confirmation: '',
+    phone: '666666666',
+    password: '00000000',
+    password_confirmation: '00000000',
+    referral_code: new URL(location.href).searchParams.get('via') || Cookies.get('trade.referral') || null,
+});
+
+onMounted(async () => {
+    const referral = new URL(location.href).searchParams.get('via')
+    if (referral) {
+        Cookies.set('trade.referral', referral, {
+            expires: 30,
+            // domain: '.sitesauce.app',
+            // secure: true,
+            // sameSite: 'lax',
+        })
+    }
 });
 
 const submit = () => {
@@ -82,6 +97,21 @@ const submit = () => {
                     class="mt-2"
                     :message="form.errors.password_confirmation"
                 />
+            </div>
+
+            <div class="mt-4">
+                <InputLabel for="referral_code" value="Code de parrainage" />
+
+                <TextInput
+                    id="referral_code"
+                    type="text"
+                    class="mt-1 block w-full"
+                    v-model="form.referral_code"
+                    placeholder="Code de parrainage"
+                    autocomplete="via"
+                />
+
+                <InputError class="mt-2" :message="form.errors.referral_code" />
             </div>
 
             <div class="mt-4 flex items-center justify-end">

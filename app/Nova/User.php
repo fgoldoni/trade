@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
+use Laravel\Nova\Fields\Badge;
 use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Password;
@@ -62,6 +63,11 @@ class User extends Resource
                 ->onlyOnForms()
                 ->creationRules('required', Rules\Password::defaults())
                 ->updateRules('nullable', Rules\Password::defaults()),
+
+            Badge::make('banned')->map([
+                'banned' => 'danger',
+                'active' => 'success',
+            ])->withIcons(),
         ];
     }
 
@@ -106,6 +112,9 @@ class User extends Resource
      */
     public function actions(NovaRequest $request)
     {
-        return [];
+        return [
+            new \Cog\Laravel\Nova\Ban\Actions\Ban(),
+            new \Cog\Laravel\Nova\Ban\Actions\Unban(),
+        ];
     }
 }
