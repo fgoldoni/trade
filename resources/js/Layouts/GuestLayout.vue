@@ -83,8 +83,9 @@
                         <ThemeSwitcherTheme
                             :scrolled-from-top="scrolledFromTop"
                         />
+
                         <a
-                            v-if="false"
+                            v-if="!$page.props.auth.user"
                             :href="route('dashboard')"
                             :class="[
                                 scrolledFromTop ? 'py-1' : 'py-1.5',
@@ -92,10 +93,13 @@
                             ]"
                         >{{ __("Login") }}</a>
 
-                        <a
+
+
+                        <Link
                             v-else
-                            @click="logout"
-                            href="javascript:;"
+                            :href="route('logout')"
+                            method="post"
+                            as="button"
                             class="group btn-title uppercase -mx-2 flex rounded-md p-2 text-sm font-semibold leading-6 text-rose-700 hover:bg-rose-50 dark:hover:bg-slate-900 hover:text-rose-600"
                         >
                             <svg
@@ -124,7 +128,7 @@
                                 class="h-6 w-6 shrink-0 text-rose-400 group-hover:text-rose-600"
                                 aria-hidden="true"
                             />
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -134,6 +138,51 @@
             <main class="mx-auto max-w-7xl sm:px-6 lg:px-8">
                 <slot></slot>
             </main>
+
+            <div v-if="!route().current('login') && !route().current('register') && $page.props.auth.user"  :class="`fixed bottom-0 left-0 z-50 w-full h-16 bg-slate-900 opacity-90 border-t border-slate-200 dark:bg-slate-700 dark:border-slate-600`">
+                <div class="grid h-full max-w-lg grid-cols-4 mx-auto font-medium">
+                    <Link :href="route('home')"  :class="[
+                                        route().current('home') ? `bg-primary-900` : '',
+                                        `btn-title inline-flex flex-col items-center justify-center px-5 hover:bg-primary-900 dark:hover:bg-primary-800 group`,
+                                    ]">
+                        <svg :class="`w-6 h-6 mb-2 text-slate-300 dark:text-slate-400 group-hover:text-white`" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 10V6a3 3 0 0 1 3-3v0a3 3 0 0 1 3 3v4m3-2 .917 11.923A1 1 0 0 1 17.92 21H6.08a1 1 0 0 1-.997-1.077L6 8h12Z"/>
+                        </svg>
+
+
+                        <span :class="`text-sm text-slate-300 dark:text-slate-400 group-hover:text-white`">{{ __("Accueil") }}</span>
+                    </Link>
+                    <Link :href="route('home')"  :class="[
+                                        route().current('home') ? `bg-primary-900` : '',
+                                        `btn-title inline-flex flex-col items-center justify-center px-5 hover:bg-primary-900 dark:hover:bg-primary-800 group`,
+                                    ]">
+                        <svg :class="`w-6 h-6 mb-2 text-slate-300 dark:text-slate-400 group-hover:text-white`" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.5 12A2.5 2.5 0 0 1 21 9.5V7a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v2.5a2.5 2.5 0 0 1 0 5V17a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-2.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
+                        </svg>
+
+                        <span :class="`text-sm text-slate-300 dark:text-slate-400 group-hover:text-white`">{{ __("Produits") }}</span>
+                    </Link>
+                    <Link :href="route('home')"  :class="[
+                                        route().current('home') ? `bg-primary-900` : '',
+                                        `btn-title inline-flex flex-col items-center justify-center px-5 hover:bg-primary-900 dark:hover:bg-primary-800 group`,
+                                    ]">
+                        <svg :class="`w-6 h-6 mb-2 text-slate-300 dark:text-slate-400 group-hover:text-white`" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 12.25V1m0 11.25a2.25 2.25 0 0 0 0 4.5m0-4.5a2.25 2.25 0 0 1 0 4.5M4 19v-2.25m6-13.5V1m0 2.25a2.25 2.25 0 0 0 0 4.5m0-4.5a2.25 2.25 0 0 1 0 4.5M10 19V7.75m6 4.5V1m0 11.25a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5ZM16 19v-2"/>
+                        </svg>
+                        <span :class="`text-sm text-slate-300 dark:text-slate-400 group-hover:text-white`">{{ __("Équipe") }}</span>
+                    </Link>
+                    <Link :href="route('home')"  :class="[
+                                        route().current('home') ? `bg-primary-900` : '',
+                                        `btn-title inline-flex flex-col items-center justify-center px-5 hover:bg-primary-900 dark:hover:bg-primary-800 group`,
+                                    ]">
+                        <svg :class="`w-6 h-6 mb-2 text-slate-300 dark:text-slate-400 group-hover:text-white`" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 12.25V1m0 11.25a2.25 2.25 0 0 0 0 4.5m0-4.5a2.25 2.25 0 0 1 0 4.5M4 19v-2.25m6-13.5V1m0 2.25a2.25 2.25 0 0 0 0 4.5m0-4.5a2.25 2.25 0 0 1 0 4.5M10 19V7.75m6 4.5V1m0 11.25a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5ZM16 19v-2"/>
+                        </svg>
+                        <span :class="`text-sm text-slate-300 dark:text-slate-400 group-hover:text-white`">{{ __("Compte") }}</span>
+                    </Link>
+                </div>
+            </div>
+
         </div>
     </div>
 </template>
@@ -146,13 +195,14 @@ import ThemeSwitcherTheme from "@/Layouts/ThemeSwitcherTheme.vue";
 import LanguageSwitcherComponent from "@/Layouts/LanguageSwitcherComponent.vue";
 import { XMarkIcon } from '@heroicons/vue/20/solid'
 import ApiError from "@/models/ApiError";
+import DropdownLink from "@/Components/DropdownLink.vue";
 
 
 const scrolledFromTop = ref(false);
 const openMenuSidebar = ref(false);
 
 const navigation = [
-    { name: "Tickets", href: "tickets.index", current: true },
+    { name: "Tickets", href: "home", current: true },
     { name: "FAQ", href: "faqs.index", current: false },
     { name: "Kontakt", href: "contacts.index", current: false },
 ];

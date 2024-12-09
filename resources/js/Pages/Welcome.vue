@@ -2,6 +2,7 @@
 import { Head, Link } from '@inertiajs/vue3';
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import Main from "@/Layouts/Main.vue";
+import GuestLayout from "@/Layouts/GuestLayout.vue";
 
 defineProps<{
     canLogin?: boolean;
@@ -20,7 +21,7 @@ function handleImageError() {
 
 <template>
     <Head title="Welcome" />
-    <AuthenticatedLayout>
+    <GuestLayout>
         <Main>
             <div class="py-12">
                 <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
@@ -34,5 +35,5 @@ function handleImageError() {
                 </div>
             </div>
         </Main>
-    </AuthenticatedLayout>
+    </GuestLayout>
 </template>
