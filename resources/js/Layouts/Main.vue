@@ -18,7 +18,7 @@
                 <h2
                     class="text-2xl font-bold text-slate-800 dark:text-white"
                 >
-                    <span class="uppercase">{{ $page.props.app.name }}</span><br />
+                    <span class="">Solde: 10 000{{ $page.props.app.currency }}</span><br />
                     <TypingEffect
                         :items="[
                             '20% de revenus journaliers',
@@ -32,7 +32,7 @@
 
                 <a
                     :href="`https://wa.me/${$page.props.app.phone}`"
-                    :class="`btn-title mt-4 inline-block w-full px-8 text-center text-lg font-bold text-slate-500 hover:underline dark:text-slate-400 sm:text-xl`"
+                    :class="`btn-title mt-4 inline-block w-full px-8 text-center text-lg font-bold text-slate-500 underline dark:text-slate-400 sm:text-xl`"
                 >
                     <span>
                         <svg
