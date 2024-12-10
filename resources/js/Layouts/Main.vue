@@ -16,9 +16,9 @@
         >
             <div class="mx-auto max-w-2xl text-center lg:max-w-4xl">
                 <h2
-                    class="text-2xl font-bold uppercase text-slate-800 dark:text-white"
+                    class="text-2xl font-bold text-slate-800 dark:text-white"
                 >
-                    {{ $page.props.app.name }} vous promet<br />
+                    <span class="uppercase">{{ $page.props.app.name }}</span><br />
                     <TypingEffect
                         :items="[
                             '20% de revenus journaliers',
@@ -29,9 +29,6 @@
                     ></TypingEffect
                     >&nbsp;
                 </h2>
-                <p class="mt-4 text-gray-500">
-                    {{ $page.props.app.content }}
-                </p>
 
                 <a
                     :href="`https://wa.me/${$page.props.app.phone}`"
