@@ -2,8 +2,8 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "build": "vite build",
         "dev": "vite",
+        "build": "vite build",
         "lint": "eslint resources/js --ext .js,.ts,.vue --ignore-path .gitignore --fix"
     },
     "devDependencies": {
