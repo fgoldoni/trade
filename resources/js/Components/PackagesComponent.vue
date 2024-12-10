@@ -1,12 +1,9 @@
 <script setup lang="ts">
-
-import PackageComponent from "@/Components/PackageComponent.vue";
+import PackageComponent from '@/Components/PackageComponent.vue';
 </script>
 
 <template>
-    <div
-        :class="`isolate overflow-hidden bg-primary-900 dark:bg-slate-900`"
-    >
+    <div :class="`isolate overflow-hidden bg-primary-900 dark:bg-slate-900`">
         <div
             class="mx-auto max-w-7xl px-6 pb-96 pt-24 text-center sm:pt-32 lg:px-8"
         >
@@ -15,7 +12,7 @@ import PackageComponent from "@/Components/PackageComponent.vue";
                     Nous garantissons votre investissement pendant 90 jours
                 </h2>
                 <p
-                    class="mt-2 text-2xl font-bold tracking-tight text-white sm:text-4xl uppercase"
+                    class="mt-2 text-2xl font-bold uppercase tracking-tight text-white sm:text-4xl"
                 >
                     {{ $page.props.app.name }}
                 </p>
@@ -46,7 +43,7 @@ import PackageComponent from "@/Components/PackageComponent.vue";
                 </svg>
             </div>
         </div>
-        <div :class="`flow-root bg-slate-50 bg-slate-50 dark:bg-slate-800 pb-14 sm:pb-24`">
+        <div :class="`flow-root bg-slate-50 pb-14 dark:bg-slate-800 sm:pb-24`">
             <div class="-mt-80">
                 <div class="mx-auto max-w-7xl px-6 lg:px-8">
                     <div
@@ -66,6 +63,4 @@ import PackageComponent from "@/Components/PackageComponent.vue";
     </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

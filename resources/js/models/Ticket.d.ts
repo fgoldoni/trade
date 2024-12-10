@@ -1,4 +1,4 @@
-import { Collection } from "@/types";
+import { Collection } from '@/types';
 
 export interface Ticket {
     id: string;

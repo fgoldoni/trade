@@ -1,26 +1,28 @@
 <template>
-  <span :class="`text-transparent bg-clip-text bg-gradient-to-r from-primary-700 to-primary-500 font-semibold`">
-    {{ text }}
-  </span>
+    <span
+        :class="`bg-gradient-to-r from-primary-700 to-primary-500 bg-clip-text font-semibold text-transparent`"
+    >
+        {{ text }}
+    </span>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { onMounted, ref } from 'vue';
 
 const props = defineProps({
     items: Array,
-})
+});
 
-const text =  ref('')
-const textArray =  ref(props.items)
-const textIndex =  ref(0)
-const charIndex =  ref(0)
-const pauseEnd =  ref(100)
-const pauseStart =  ref(20)
-const typeSpeed =  ref(75)
-const direction =  ref('forward')
+const text = ref('');
+const textArray = ref(props.items);
+const textIndex = ref(0);
+const charIndex = ref(0);
+const pauseEnd = ref(100);
+const pauseStart = ref(20);
+const typeSpeed = ref(75);
+const direction = ref('forward');
 
-const startTyping =  () => {
+const startTyping = () => {
     let current = textArray.value[textIndex.value];
 
     if (charIndex.value > current.length) {
@@ -33,16 +35,15 @@ const startTyping =  () => {
 
     text.value = current.substring(0, charIndex.value);
 
-    if(direction.value == 'forward'){
+    if (direction.value == 'forward') {
         charIndex.value += 1;
     } else {
-        if(charIndex.value == 1){
+        if (charIndex.value == 1) {
             direction.value = 'forward';
             clearInterval(typingInterval);
-            setTimeout(function(){
-
+            setTimeout(function () {
                 textIndex.value += 1;
-                if(textIndex.value >= textArray.value.length){
+                if (textIndex.value >= textArray.value.length) {
                     textIndex.value = 0;
                 }
 
@@ -51,16 +52,12 @@ const startTyping =  () => {
         }
         charIndex.value -= 1;
     }
-
-
-}
+};
 let typingInterval = setInterval(startTyping, typeSpeed.value);
 
 onMounted(() => {
-    startTyping()
-})
+    startTyping();
+});
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

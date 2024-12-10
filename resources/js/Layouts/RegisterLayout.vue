@@ -1,27 +1,36 @@
 <template>
     <div
-        class="min-h-full bg-white dark:bg-slate-900 text-slate-600 text-slate-500 dark:text-slate-400"
+        class="min-h-full bg-white text-slate-500 text-slate-600 dark:bg-slate-900 dark:text-slate-400"
     >
         <Disclosure
             as="nav"
             :class="[
                 scrolledFromTop ? 'fixed bg-opacity-75' : 'relative',
-                'w-full bg-primary-600 dark:bg-slate-900 z-40 transition-all ease-in duration-700 border-b border-slate-200 dark:border-slate-700',
+                'z-40 w-full border-b border-slate-200 bg-primary-600 transition-all duration-700 ease-in dark:border-slate-700 dark:bg-slate-900',
             ]"
             v-slot="{ open }"
         >
             <div :class="`bg-primary-900`">
-                <div class="mx-auto flex h-10 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+                <div
+                    class="mx-auto flex h-10 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8"
+                >
                     <form>
                         <div>
-                            <label for="desktop-currency" class="sr-only">Currency</label>
+                            <label for="desktop-currency" class="sr-only"
+                                >Currency</label
+                            >
 
-                            <div :class="[
-                scrolledFromTop ? 'scale-75' : 'scale-100',
-                'group relative -ml-2 rounded-md border-transparent bg-primary-900 focus-within:ring-2 focus-within:ring-primary-700',
-            ]">
-                                <select id="desktop-currency" name="currency"
-                                        :class="`flex items-center rounded-md border-transparent bg-primary-800 bg-none py-0.5 pl-2 pr-5 text-sm font-medium text-white focus:border-transparent focus:outline-none focus:ring-0 group-hover:text-slate-100`">
+                            <div
+                                :class="[
+                                    scrolledFromTop ? 'scale-75' : 'scale-100',
+                                    'group relative -ml-2 rounded-md border-transparent bg-primary-900 focus-within:ring-2 focus-within:ring-primary-700',
+                                ]"
+                            >
+                                <select
+                                    id="desktop-currency"
+                                    name="currency"
+                                    :class="`flex items-center rounded-md border-transparent bg-primary-800 bg-none py-0.5 pl-2 pr-5 text-sm font-medium text-white focus:border-transparent focus:outline-none focus:ring-0 group-hover:text-slate-100`"
+                                >
                                     <option>EUR</option>
                                 </select>
                             </div>
@@ -46,7 +55,7 @@
                         <div class="flex-shrink-0">
                             <Link :href="route('dashboard')">
                                 <img
-                                    class="h-8 w-auto transform origin-left transition duration-700"
+                                    class="h-8 w-auto origin-left transform transition duration-700"
                                     :class="{
                                         'scale-100': !scrolledFromTop,
                                         'scale-75': scrolledFromTop,
@@ -65,21 +74,21 @@
                                     :class="[
                                         scrolledFromTop ? 'py-1' : 'py-1.5',
                                         route().current(item.href)
-                                            ? 'uppercase bg-primary-700 text-white'
+                                            ? 'bg-primary-700 uppercase text-white'
                                             : 'text-white hover:bg-primary-500 hover:bg-opacity-75',
-                                        'uppercase rounded-md px-3 text-xs font-medium',
+                                        'rounded-md px-3 text-xs font-medium uppercase',
                                     ]"
                                     :aria-current="
                                         route().current(item.href)
                                             ? 'page'
                                             : undefined
                                     "
-                                >{{ item.name }}
+                                    >{{ item.name }}
                                 </Link>
                             </div>
                         </div>
                     </div>
-                    <div class="ml-6 flex space-x-4 items-center">
+                    <div class="ml-6 flex items-center space-x-4">
                         <ThemeSwitcherTheme
                             :scrolled-from-top="scrolledFromTop"
                         />
@@ -88,19 +97,20 @@
                             :href="route('dashboard')"
                             :class="[
                                 scrolledFromTop ? 'py-1' : 'py-1.5',
-                                'uppercase rounded-md bg-primary-700 px-3 text-xs font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600',
+                                'rounded-md bg-primary-700 px-3 text-xs font-semibold uppercase text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600',
                             ]"
-                        >{{ __("Login") }}</a>
+                            >{{ __('Login') }}</a
+                        >
 
                         <a
                             v-else
                             @click="logout"
                             href="javascript:;"
-                            class="group btn-title uppercase -mx-2 flex rounded-md p-2 text-sm font-semibold leading-6 text-rose-700 hover:bg-rose-50 dark:hover:bg-slate-900 hover:text-rose-600"
+                            class="btn-title group -mx-2 flex rounded-md p-2 text-sm font-semibold uppercase leading-6 text-rose-700 hover:bg-rose-50 hover:text-rose-600 dark:hover:bg-slate-900"
                         >
                             <svg
                                 v-if="processing"
-                                class="animate-spin h-5 w-5 inline-flex text-white"
+                                class="inline-flex h-5 w-5 animate-spin text-white"
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
                                 viewBox="0 0 24 24"
@@ -139,23 +149,21 @@
 </template>
 
 <script setup lang="ts">
-import {Disclosure} from "@headlessui/vue";
-import { ArrowRightOnRectangleIcon } from "@heroicons/vue/24/outline";
-import { onMounted, onUnmounted, ref } from "vue";
-import ThemeSwitcherTheme from "@/Layouts/ThemeSwitcherTheme.vue";
-import LanguageSwitcherComponent from "@/Layouts/LanguageSwitcherComponent.vue";
-import ApiError from "@/models/ApiError";
-
+import LanguageSwitcherComponent from '@/Layouts/LanguageSwitcherComponent.vue';
+import ThemeSwitcherTheme from '@/Layouts/ThemeSwitcherTheme.vue';
+import ApiError from '@/models/ApiError';
+import { Disclosure } from '@headlessui/vue';
+import { ArrowRightOnRectangleIcon } from '@heroicons/vue/24/outline';
+import { onMounted, onUnmounted, ref } from 'vue';
 
 const scrolledFromTop = ref(false);
 const openMenuSidebar = ref(false);
 
 const navigation = [
-    { name: "Tickets", href: "tickets.index", current: true },
-    { name: "FAQ", href: "faqs.index", current: false },
-    { name: "Kontakt", href: "contacts.index", current: false },
+    { name: 'Tickets', href: 'tickets.index', current: true },
+    { name: 'FAQ', href: 'faqs.index', current: false },
+    { name: 'Kontakt', href: 'contacts.index', current: false },
 ];
-
 
 const processing = ref(false);
 
@@ -168,20 +176,20 @@ const onScroll = () => {
 const logout = async () => {
     try {
         processing.value = true;
-        debugger
+        debugger;
     } catch (error) {
         throw new ApiError(error);
     }
 };
 
 onMounted(async () => {
-    window.addEventListener("scroll", onScroll);
+    window.addEventListener('scroll', onScroll);
     window.pageYOffset >= 50
         ? (scrolledFromTop.value = true)
         : (scrolledFromTop.value = false);
 });
 
 onUnmounted(() => {
-    window.removeEventListener("scroll", onScroll);
+    window.removeEventListener('scroll', onScroll);
 });
 </script>
