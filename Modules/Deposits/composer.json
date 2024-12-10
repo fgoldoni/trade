@@ -1,0 +1,30 @@
+{
+    "name": "nwidart/deposits",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Deposits\\": "app/",
+            "Modules\\Deposits\\Database\\Factories\\": "database/factories/",
+            "Modules\\Deposits\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\Deposits\\Tests\\": "tests/"
+        }
+    }
+}

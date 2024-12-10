@@ -32,7 +32,8 @@ function handleImageError() {
             <section class="py-6 sm:py-12">
                 <div class="mx-auto max-w-7xl sm:text-center">
                     <div class="mb-8 grid grid-cols-4 gap-2 sm:gap-4">
-                        <div
+                        <Link
+                            :href="route('deposits.index')"
                             class="btn-base flex cursor-pointer flex-col items-center justify-center rounded-lg border border-slate-300 bg-primary-200 py-4 shadow-lg dark:border-slate-700 dark:bg-primary-800"
                         >
                             <CircleStackIcon
@@ -44,7 +45,7 @@ function handleImageError() {
                             >
                                 {{ __('Dépôt') }}
                             </p>
-                        </div>
+                        </Link>
                         <div
                             class="btn-base flex cursor-pointer flex-col items-center justify-center rounded-lg border border-slate-300 bg-primary-200 py-4 shadow-lg dark:border-slate-700 dark:bg-primary-800"
                         >
