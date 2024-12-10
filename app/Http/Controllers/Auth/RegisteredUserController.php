@@ -42,7 +42,7 @@ class RegisteredUserController extends Controller
 
         $referredBy = null;
 
-        if ($request->has('referral_code')) {
+        if ($request->referral_code) {
             $referredBy = $this->getUserIdByReferralCodeAndIncrementCount($request->referral_code);
         }
 
