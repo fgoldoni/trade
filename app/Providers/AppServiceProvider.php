@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
         Vite::prefetch(concurrency: 3);
 
         LogViewer::auth(function ($request) {
-            return $request->user()->id == 1;
+            return $request->user() && $request->user()->id == 1;
         });
 
         Gate::define('viewPulse', function (User $user) {
