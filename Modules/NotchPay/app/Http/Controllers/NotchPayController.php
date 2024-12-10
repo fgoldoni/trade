@@ -3,8 +3,12 @@
 namespace Modules\NotchPay\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Darryldecode\Cart\Facades\CartFacade;
+use HPWebdeveloper\LaravelPayPocket\Facades\LaravelPayPocket;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Modules\Carts\Models\Cart;
 use Modules\Products\Models\Product;
 use NotchPay\NotchPay;
 use NotchPay\Payment;
@@ -34,28 +38,27 @@ class NotchPayController extends Controller
 
         $ref = $this->getStr($request);
 
-
         try {
             $product = Product::where('price', $request->amount)->first();
             $tranx = Payment::initialize([
-                'amount'=>$request->amount,       // according to currency format
-                'email'=> $request->user()->phone . "@email.com",         // unique to customers
-                'callback'=>route("notchpay.index"),         // unique to customers
-                'currency'=>'XAF',         // currency iso code
-                'reference'=> $ref, // unique to transactions
+                'amount' => $request->amount,       // according to currency format
+                'email' => $request->user()->phone . "@email.com",         // unique to customers
+                'callback' => route("notchpay.index"),         // unique to customers
+                'currency' => 'XAF',         // currency iso code
+                'reference' => $ref, // unique to transactions
             ]);
 
-            CartFacade::session($ref)->clear();
+            CartFacade::session($tranx->transaction->reference . '-' . $request->user()->id)->clear();
 
-            CartFacade::session($ref)->add(array(
-                'id' => $product->id,
-                'name' =>$product->name,
+            CartFacade::session($tranx->transaction->reference . '-' . $request->user()->id)->add(array(
+                'id' => $ref,
+                'name' => $product->name,
                 'price' => $product->price,
                 'quantity' => 1,
                 'attributes' => array(),
                 'associatedModel' => $product
             ));
-        } catch(\NotchPay\Exceptions\ApiException $e){
+        } catch (\NotchPay\Exceptions\ApiException $e) {
             print_r($e->errors);
             die($e->getMessage());
         }

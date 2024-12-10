@@ -7,7 +7,7 @@ Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote')->hourly();
 
-Schedule::command('app:check-cart')->everyFiveMinutes();
+Schedule::command('app:check-cart')->everyMinute();
 
 Schedule::command('telescope:prune --hours=48')->daily();
 
