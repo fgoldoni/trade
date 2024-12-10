@@ -19,6 +19,8 @@ return Application::configure(basePath: dirname(__DIR__))
         ])->alias([
             'forbid-banned-user' => \Cog\Laravel\Ban\Http\Middleware\ForbidBannedUser::class,
             'logs-out-banned-user' => \Cog\Laravel\Ban\Http\Middleware\LogsOutBannedUser::class,
+        ])->validateCsrfTokens(except: [
+            'webhook-endpoint' // <-- exclude this route
         ]);
 
         //
