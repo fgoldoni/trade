@@ -37,7 +37,11 @@ class HandleInertiaRequests extends Middleware
             'app' => [
                 'name' => env('APP_NAME', 'Laravel'),
                 'description' => "Investissez aujourd'hui et recevez votre premier paiement en moins d'une heure",
+                'content' => "Trade Republic est une plateforme financière européenne qui permet aux utilisateurs d'investir facilement et à moindre coût dans des actions, des ETF, des cryptomonnaies et d'autres produits financiers. C’est ce qu’on appelle un néo-courtier, connu pour ses faibles frais et son application conviviale.",
                 'image' => "https://nova-s3-bucket-forge.s3.eu-central-1.amazonaws.com/avatars/d9zCZGxHltUaQ62XfTLrA1oY0VHxBsMeRMYBLtbl.jpg",
+                'days' => 90,
+                'phone' => "+4917647159315",
+                'currency' => "XAF",
             ],
             'notchPayUrl' => config('system.notch_pay_url'),
         ];
