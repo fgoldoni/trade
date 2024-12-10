@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\User;
 use Illuminate\Support\Facades\Vite;
 use Illuminate\Support\ServiceProvider;
 use Opcodes\LogViewer\Facades\LogViewer;
@@ -25,8 +26,8 @@ class AppServiceProvider extends ServiceProvider
     {
         Vite::prefetch(concurrency: 3);
 
-        LogViewer::auth(function ($request) {
-            return $request->user() && $request->user()->id == 1;
+        Gate::define('viewLogViewer', function (?User $user) {
+            return $user?->id == 1;
         });
 
         Gate::define('viewPulse', function (User $user) {
