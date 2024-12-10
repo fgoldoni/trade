@@ -32,7 +32,7 @@
 
                 <a
                     :href="`https://wa.me/${$page.props.app.phone}`"
-                    :class="`btn-title mt-8 inline-block w-full px-8 py-4 text-center text-lg font-bold text-slate-500 hover:underline dark:text-slate-400 sm:text-xl`"
+                    :class="`btn-title mt-4 inline-block w-full px-8 text-center text-lg font-bold text-slate-500 hover:underline dark:text-slate-400 sm:text-xl`"
                 >
                     <span>
                         <svg

@@ -29,7 +29,7 @@ function handleImageError() {
     <Head title="Welcome" />
     <GuestLayout>
         <Main>
-            <section class="py-12 sm:py-16">
+            <section class="py-6 sm:py-12">
                 <div class="mx-auto max-w-7xl sm:text-center">
                     <div class="mb-8 grid grid-cols-4 gap-2 sm:gap-4">
                         <div
