@@ -34,7 +34,9 @@ class NotchPayController extends Controller
 
         $ref = $this->getStr($request);
 
+
         try {
+            $product = Product::where('price', $request->amount)->first();
             $tranx = Payment::initialize([
                 'amount'=>$request->amount,       // according to currency format
                 'email'=> $request->user()->phone . "@email.com",         // unique to customers
@@ -43,15 +45,15 @@ class NotchPayController extends Controller
                 'reference'=> $ref, // unique to transactions
             ]);
 
-            CartFacade::session($request->user()->id)->clear();
+            CartFacade::session($ref)->clear();
 
-            CartFacade::session($request->user()->id)->add(array(
-                'id' => $ref,
-                'name' =>$request->amount,
-                'price' => $request->amount,
+            CartFacade::session($ref)->add(array(
+                'id' => $product->id,
+                'name' =>$product->name,
+                'price' => $product->price,
                 'quantity' => 1,
                 'attributes' => array(),
-                'associatedModel' => Product::where('price', $request->amount)->first()
+                'associatedModel' => $product
             ));
         } catch(\NotchPay\Exceptions\ApiException $e){
             print_r($e->errors);
