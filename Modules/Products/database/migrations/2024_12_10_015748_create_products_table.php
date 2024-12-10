@@ -16,7 +16,7 @@ return new class extends Migration
             $table->text('name');
             $table->text('slug');
             $table->text('description')->nullable();
-            $table->double('price')->default(0);
+            $table->double('price')->unique()->nullable();
             $table->integer('quantity')->default(10000);
             $table->integer('sold')->default(0);
             $table->integer('days')->default(90);

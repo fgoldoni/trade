@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\Deposits\Http\Controllers\DepositsController;
+use Modules\NotchPay\Http\Controllers\NotchPayController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,5 +15,5 @@ use Modules\Deposits\Http\Controllers\DepositsController;
 */
 
 Route::group([], function () {
-    Route::resource('deposits', DepositsController::class)->middleware(['auth', 'verified'])->names('deposits');
+    Route::resource('notchpay', NotchPayController::class)->middleware(['auth', 'verified', \Illuminate\Foundation\Http\Middleware\HandlePrecognitiveRequests::class])->names('notchpay');
 });

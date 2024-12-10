@@ -1,6 +1,6 @@
 <template>
     <span
-        :class="`bg-gradient-to-r text-sm from-slate-500 to-slate-400 bg-clip-text font-medium text-transparent`"
+        :class="`bg-gradient-to-r from-slate-500 to-slate-400 bg-clip-text text-sm font-medium text-transparent`"
     >
         {{ text }}
     </span>

@@ -174,7 +174,6 @@ const submit = () => {
                                         id="referral_code"
                                         :class="`peer block w-full appearance-none border-0 border-b-2 border-slate-300 bg-transparent px-0 py-2.5 text-sm text-slate-900 focus:border-primary-600 focus:outline-none focus:ring-0 dark:border-slate-600 dark:text-white dark:focus:border-primary-500`"
                                         placeholder=" "
-                                        required
                                     />
                                     <label
                                         for="referral_code"

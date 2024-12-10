@@ -37,6 +37,11 @@
         "@vueuse/core": "^12.0.0",
         "@vueuse/motion": "^2.2.6",
         "daisyui": "^4.12.20",
-        "js-cookie": "^3.0.5"
+        "js-cookie": "^3.0.5",
+        "laravel-precognition-vue": "^0.5.13",
+        "laravel-precognition-vue-inertia": "^0.5.13",
+        "notchpay.js": "^1.0.1",
+        "pinia": "^2.3.0",
+        "pinia-plugin-persistedstate": "^4.1.3"
     }
 }

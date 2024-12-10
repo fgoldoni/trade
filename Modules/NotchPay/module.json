@@ -1,0 +1,11 @@
+{
+    "name": "NotchPay",
+    "alias": "notchpay",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\NotchPay\\Providers\\NotchPayServiceProvider"
+    ],
+    "files": []
+}

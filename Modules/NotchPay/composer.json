@@ -1,0 +1,30 @@
+{
+    "name": "nwidart/notchpay",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\NotchPay\\": "app/",
+            "Modules\\NotchPay\\Database\\Factories\\": "database/factories/",
+            "Modules\\NotchPay\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\NotchPay\\Tests\\": "tests/"
+        }
+    }
+}

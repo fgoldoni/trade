@@ -1,5 +1,6 @@
 {
     "Products": true,
     "Carts": true,
-    "Deposits": true
+    "Deposits": true,
+    "NotchPay": true
 }

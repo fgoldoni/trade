@@ -16,9 +16,12 @@
         >
             <div class="mx-auto max-w-2xl text-center lg:max-w-4xl">
                 <h2
-                    class="border border-primary-300 py-4 bg-primary-200 bg-transparent  rounded shadow-xl text-2xl font-bold text-slate-800 dark:text-white"
+                    class="rounded border border-primary-300 bg-primary-200 bg-transparent py-4 text-2xl font-bold text-slate-800 shadow-xl dark:text-white"
                 >
-                    <span class="">Solde: {{ $page.props.auth.user.balance }} {{ $page.props.app.currency }}</span><br />
+                    <span class=""
+                        >Solde: {{ $page.props.auth.user.balance }}
+                        {{ $page.props.app.currency }}</span
+                    ><br />
                     <TypingEffect
                         :items="[
                             '20% de revenus journaliers',
