@@ -12,7 +12,7 @@ import PackageComponent from "@/Components/PackageComponent.vue";
         >
             <div class="mx-auto max-w-4xl">
                 <h2 class="text-base font-semibold leading-7 text-indigo-400">
-                    {{ $page.props.app.name }}
+                    Nous garantissons votre investissement pendant 90 jours
                 </h2>
                 <p
                     class="mt-2 text-2xl font-bold tracking-tight text-white sm:text-4xl uppercase"
@@ -22,7 +22,7 @@ import PackageComponent from "@/Components/PackageComponent.vue";
             </div>
             <div class="relative mt-6">
                 <p class="mx-auto max-w-2xl text-lg leading-8 text-white/60">
-                    {{ $page.props.app.name }}
+                    Liste des produits
                 </p>
                 <svg
                     viewBox="0 0 1208 1024"

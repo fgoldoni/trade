@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { useMotion } from "@vueuse/motion";
 import { ref } from "vue";
+import { CheckIcon } from '@heroicons/vue/20/solid'
+
 
 interface Props {
     item: number;
@@ -40,8 +42,8 @@ useMotion(itemRef, {
         <div>
             <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
                 <div  class="col-span-3 flex items-center justify-end">
-                    <button class="animate-pulse uppercase text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-full text-sm px-2.5 py-1 text-center me-2">
-                        {{ $page.props.app.days }} Jours
+                    <button class="animate-pulse uppercase text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-full text-sm px-2.5 py-1 text-center me-2">
+                        Disponible
                     </button>
                 </div>
                 <h3
@@ -51,8 +53,8 @@ useMotion(itemRef, {
                 >
                     VIP
                 </h3>
-                <p v-if="true" class="col-span-1 text-center uppercase animate-pulse rounded-full  ring-1 ring-inset ring-rose-600 px-2.5 py-1 text-xs font-semibold leading-5 text-rose-600">
-                    {{ $page.props.app.name }}
+                <p v-if="true" class="col-span-1 text-center uppercase rounded-full  ring-1 ring-inset ring-rose-600 px-2.5 py-1 text-xs font-semibold leading-5 text-rose-600">
+                    {{ $page.props.app.days }} Jours
                 </p>
             </div>
 
@@ -63,7 +65,7 @@ useMotion(itemRef, {
                     5000  {{ $page.props.app.currency }}
                 </span>
                 <span
-                    v-if="true"
+                    v-if="false"
                     class="text-xl sm:text-2xl line-through font-bold tracking-tight text-rose-400 dark:text-rose-300"
                 >
                     {{ $page.props.app.name }}
@@ -71,32 +73,8 @@ useMotion(itemRef, {
             </div>
             <p
                 class="mt-6 text-base leading-7 text-slate-500 dark:text-slate-400"
-                v-html="$page.props.app.name"
+                v-html="'Revenu quotidien: 2000 XAF'"
             />
-            <ul
-                role="list"
-                class="mt-10 space-y-4 text-sm leading-6 text-gray-600"
-            >
-                <li
-                    v-for="tag in 4"
-                    :key="tag"
-                    class="flex gap-x-3 justify-between  uppercase"
-                >
-                    <svg
-                        :class="`h-6 w-5 flex-none text-primary-600`"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                        aria-hidden="true"
-                    >
-                        <path
-                            fill-rule="evenodd"
-                            d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
-                            clip-rule="evenodd"
-                        />
-                    </svg>
-                    <span class="truncate">{{ tag }}</span>
-                </li>
-            </ul>
         </div>
         <button
             aria-describedby="tier-hobby"
@@ -105,7 +83,7 @@ useMotion(itemRef, {
             ]"
         >
             <svg
-                v-if="true"
+                v-if="false"
                 class="animate-spin h-5 w-5 inline-flex text-white"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -126,36 +104,16 @@ useMotion(itemRef, {
                 ></path>
             </svg>
             <span>
-                {{ __("labels.action.book") }}
+                {{ __("ACHETER") }}
             </span>
         </button>
-        <div :class="`btn-title flex items-center justify-between rounded-md mt-2 p-2 text-center dark:bg-slate-900 border border-primary-300 dark:border-slate-600 text-xs`">
+        <div :class="`btn-title flex items-center justify-center rounded-md mt-2 p-2 text-center dark:bg-slate-900 border border-primary-300 dark:border-slate-600 text-xs`">
             <div>
                 <dl>
                     <dt class="font-extrabold text-black dark:text-white">
-                        {{ $page.props.app.name }}
+                        Total des revenus
                     </dt>
-                    <dd>{{ __("labels.package.places") }}</dd>
-                </dl>
-            </div>
-            <div>
-                <dl>
-                    <dt class="font-extrabold text-black dark:text-white">
-                        {{ $page.props.app.name }}
-                    </dt>
-                    <dd class="text-center">
-                        {{ __("labels.package.total") }}
-                    </dd>
-                </dl>
-            </div>
-            <div>
-                <dl>
-                    <dt
-                        class="font-extrabold text-black dark:text-white"
-                    >
-                        {{ $page.props.app.name }}
-                    </dt>
-                    <dd>{{ __("labels.package.per_place") }}</dd>
+                    <dd>50 0000</dd>
                 </dl>
             </div>
         </div>
