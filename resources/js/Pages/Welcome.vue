@@ -40,7 +40,7 @@ function handleImageError() {
                                 aria-hidden="true"
                             />
                             <p
-                                class="mt-4 text-sm font-bold text-slate-800 hover:underline dark:text-white sm:text-xl"
+                                class="mt-4 text-xs font-bold text-slate-600 hover:underline dark:text-white sm:text-xl"
                             >
                                 {{ __('Recharger') }}
                             </p>
@@ -53,7 +53,7 @@ function handleImageError() {
                                 aria-hidden="true"
                             />
                             <p
-                                class="mt-4 text-sm font-bold text-slate-800 hover:underline dark:text-white sm:text-xl"
+                                class="mt-4 text-xs font-bold text-slate-600 hover:underline dark:text-white sm:text-xl"
                             >
                                 {{ __('Retrait') }}
                             </p>
@@ -66,7 +66,7 @@ function handleImageError() {
                                 aria-hidden="true"
                             />
                             <p
-                                class="mt-4 text-sm font-bold text-slate-800 hover:underline dark:text-white sm:text-xl"
+                                class="mt-4 text-xs font-bold text-slate-600 hover:underline dark:text-white sm:text-xl"
                             >
                                 {{ __('Transactions') }}
                             </p>
@@ -79,7 +79,7 @@ function handleImageError() {
                                 aria-hidden="true"
                             />
                             <p
-                                class="mt-4 text-sm font-bold text-slate-800 hover:underline dark:text-white sm:text-xl"
+                                class="mt-4 text-xs font-bold text-slate-600 hover:underline dark:text-white sm:text-xl"
                             >
                                 {{ __('FAQ') }}
                             </p>
