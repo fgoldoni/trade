@@ -31,7 +31,7 @@ function handleImageError() {
         <Main>
             <section class="py-12 sm:py-16">
                 <div class="mx-auto max-w-7xl sm:text-center">
-                    <div class="mb-8 grid grid-cols-4 gap-4">
+                    <div class="mb-8 grid grid-cols-4 gap-2 sm:gap-4">
                         <div
                             class="btn-base flex cursor-pointer flex-col items-center justify-center rounded-lg border border-slate-300 bg-primary-200 py-4 shadow-lg dark:border-slate-700 dark:bg-primary-800"
                         >
