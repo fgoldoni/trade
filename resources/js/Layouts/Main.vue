@@ -32,11 +32,11 @@
 
                 <a
                     :href="`https://wa.me/${$page.props.app.phone}`"
-                    :class="`btn-title mt-4 inline-block w-full px-8 text-center text-lg font-bold text-slate-500 underline dark:text-slate-400 sm:text-xl`"
+                    :class="`btn-title mt-4 inline-block w-full px-8 text-center text-base font-bold text-slate-500 underline dark:text-slate-400 sm:text-lg`"
                 >
                     <span>
                         <svg
-                            class="mb-2 inline-flex h-5 w-5 text-green-500 group-hover:text-green-600"
+                            class="mb-2 inline-flex h-4 w-4 text-green-500 group-hover:text-green-600"
                             fill="currentColor"
                             viewBox="0 0 448 512"
                             xmlns="http://www.w3.org/2000/svg"
