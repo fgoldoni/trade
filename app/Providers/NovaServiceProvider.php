@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Nova\Product;
 use Illuminate\Support\Facades\Gate;
+use Laravel\Nova\Menu\MenuItem;
 use Laravel\Nova\Nova;
 use Laravel\Nova\NovaApplicationServiceProvider;
 
@@ -16,6 +18,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     public function boot()
     {
         parent::boot();
+
+        MenuItem::resource(Product::class);
     }
 
     /**
