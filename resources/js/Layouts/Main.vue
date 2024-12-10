@@ -16,9 +16,9 @@
         >
             <div class="mx-auto max-w-2xl text-center lg:max-w-4xl">
                 <h2
-                    class="text-2xl font-bold text-slate-800 dark:text-white"
+                    class="border border-primary-300 py-4 bg-primary-200 bg-transparent  rounded shadow-xl text-2xl font-bold text-slate-800 dark:text-white"
                 >
-                    <span class="">Solde: 10 000{{ $page.props.app.currency }}</span><br />
+                    <span class="">Solde: {{ $page.props.auth.user.balance }} {{ $page.props.app.currency }}</span><br />
                     <TypingEffect
                         :items="[
                             '20% de revenus journaliers',
@@ -32,11 +32,11 @@
 
                 <a
                     :href="`https://wa.me/${$page.props.app.phone}`"
-                    :class="`btn-title mt-4 inline-block w-full px-8 text-center text-base font-bold text-slate-500 underline dark:text-slate-400 sm:text-lg`"
+                    :class="`btn-title mt-4 inline-block w-full px-8 text-center text-sm font-bold text-slate-500 underline dark:text-slate-400 sm:text-base`"
                 >
                     <span>
                         <svg
-                            class="mb-2 inline-flex h-4 w-4 text-green-500 group-hover:text-green-600"
+                            class="mb-1 inline-flex h-4 w-4 text-green-500 group-hover:text-green-600"
                             fill="currentColor"
                             viewBox="0 0 448 512"
                             xmlns="http://www.w3.org/2000/svg"

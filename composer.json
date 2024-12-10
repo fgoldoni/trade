@@ -16,6 +16,7 @@
         "fgoldoni/laravel-cart": "dev-master",
         "goldoni/core-process": "dev-main",
         "goldoni/core-repositories": "dev-main",
+        "hpwebdeveloper/laravel-pay-pocket": "^2.2",
         "inertiajs/inertia-laravel": "^1.0",
         "juststeveking/http-status-code": "^3.0",
         "laravel/framework": "^11.31",

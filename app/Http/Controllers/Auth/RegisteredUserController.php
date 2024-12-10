@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Core\Traits\ReferralTrait;
+use HPWebdeveloper\LaravelPayPocket\Facades\LaravelPayPocket;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Http\RedirectResponse;
@@ -52,6 +53,8 @@ class RegisteredUserController extends Controller
             'referred_by' => $referredBy,
             'referral_code' => $this->generate()
         ]);
+
+        LaravelPayPocket::deposit($user, 'wallet_1', 1000);
 
         event(new Registered($user));
 

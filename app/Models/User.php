@@ -6,15 +6,18 @@ namespace App\Models;
 use Cog\Contracts\Ban\Bannable as BannableContract;
 use Cog\Laravel\Ban\Traits\Bannable;
 use Core\Traits\ReferralTrait;
+use HPWebdeveloper\LaravelPayPocket\Interfaces\WalletOperations;
+use HPWebdeveloper\LaravelPayPocket\Traits\ManagesWallet;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Number;
 
-class User extends Authenticatable implements BannableContract
+class User extends Authenticatable implements BannableContract, WalletOperations
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable, ReferralTrait, Bannable;
+    use HasFactory, Notifiable, ReferralTrait, Bannable, ManagesWallet;
 
     /**
      * The attributes that are mass assignable.
@@ -44,6 +47,7 @@ class User extends Authenticatable implements BannableContract
 
     protected $appends = [
         'banned',
+        'balance',
     ];
 
     /**
@@ -76,5 +80,14 @@ class User extends Authenticatable implements BannableContract
     public function banned(): Attribute
     {
         return Attribute::get(fn (): string => $this->banned_at ? 'banned' : 'active');
+    }
+
+    public function balance(): Attribute
+    {
+        return Attribute::get(fn (): string => Number::format(
+            $this->getWalletBalanceByType('wallet_1'),
+            precision: 2,
+            locale: app()->getLocale()
+        ));
     }
 }

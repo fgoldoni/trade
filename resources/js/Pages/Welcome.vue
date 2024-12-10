@@ -42,7 +42,7 @@ function handleImageError() {
                             <p
                                 class="mt-4 text-xs font-bold text-slate-600 hover:underline dark:text-white sm:text-xl"
                             >
-                                {{ __('Recharger') }}
+                                {{ __('Dépôt') }}
                             </p>
                         </div>
                         <div
