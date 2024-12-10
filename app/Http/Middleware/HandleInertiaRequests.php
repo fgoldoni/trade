@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
 use Inertia\Middleware;
+use Modules\Products\Models\Product;
 
 class HandleInertiaRequests extends Middleware
 {
@@ -43,6 +44,7 @@ class HandleInertiaRequests extends Middleware
                 'phone' => "+4917647159315",
                 'currency' => "XAF",
             ],
+            'products' => Product::get(),
             'notchPayUrl' => config('system.notch_pay_url'),
         ];
     }

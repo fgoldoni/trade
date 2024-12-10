@@ -19,6 +19,7 @@ return new class extends Migration
             $table->double('price')->default(0);
             $table->integer('quantity')->default(10000);
             $table->integer('sold')->default(0);
+            $table->integer('days')->default(90);
             $table->boolean('online')->default(false);
             $table->integer('position')->default(0);
             $table->softDeletes();

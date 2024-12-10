@@ -60,7 +60,6 @@ class Product extends Resource
 
             Boolean::make('Online')
                 ->sortable()
-                ->onlyOnForms()
                 ->rules('nullable', 'boolean'),
 
             \Laravel\Nova\Fields\Currency::make('Price')

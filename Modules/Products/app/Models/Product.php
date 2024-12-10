@@ -7,6 +7,7 @@ use Core\Traits\LogsActivityTrait;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Number;
 use Mattiasgeniar\Percentage\Percentage;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
@@ -26,6 +27,7 @@ class Product extends Model
     protected $appends = [
         'free',
         'left',
+        'formatted_price',
         'daily_income',
         'total',
     ];
@@ -42,14 +44,33 @@ class Product extends Model
     public function dailyIncome(): Attribute
     {
         return Attribute::make(
-            get: fn () => Percentage::of(20, $this->price)
+            get: fn () => Number::format(
+                    Percentage::of(20, $this->price),
+                    precision: 2,
+                    locale: app()->getLocale()
+                )
+        );
+    }
+
+    public function formattedPrice(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => Number::format(
+                    $this->price,
+                    precision: 2,
+                    locale: app()->getLocale()
+                )
         );
     }
 
     public function total(): Attribute
     {
         return Attribute::make(
-            get: fn () => $this->price * 90
+            get: fn () => Number::format(
+                $this->price * 90,
+                precision: 2,
+                locale: app()->getLocale()
+            )
         );
     }
 

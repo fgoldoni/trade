@@ -53,9 +53,9 @@ import PackageComponent from "@/Components/PackageComponent.vue";
                         class="mx-auto grid max-w-md grid-cols-1 gap-8 lg:max-w-4xl lg:grid-cols-2"
                     >
                         <PackageComponent
-                            v-for="item in 4"
+                            v-for="(item, index) in $page.props.products"
                             :key="item"
-                            :index="item"
+                            :index="index"
                             :processing="false"
                             :item="item"
                         ></PackageComponent>

@@ -5,7 +5,7 @@ import { CheckIcon } from '@heroicons/vue/20/solid'
 
 
 interface Props {
-    item: number;
+    item: Object;
     index: number;
     processing: Boolean | null;
 }
@@ -41,7 +41,7 @@ useMotion(itemRef, {
     >
         <div>
             <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
-                <div  class="col-span-3 flex items-center justify-end">
+                <div v-if="item.online" class="col-span-3 flex items-center justify-end">
                     <button class="animate-pulse uppercase text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-full text-sm px-2.5 py-1 text-center me-2">
                         Disponible
                     </button>
@@ -51,10 +51,10 @@ useMotion(itemRef, {
                     `text-primary-600 dark:text-primary-400 col-span-2 text-base font-semibold leading-7 uppercase`,
                 ]"
                 >
-                    VIP
+                    {{ item.name }}
                 </h3>
                 <p v-if="true" class="col-span-1 text-center uppercase rounded-full  ring-1 ring-inset ring-rose-600 px-2.5 py-1 text-xs font-semibold leading-5 text-rose-600">
-                    {{ $page.props.app.days }} Jours
+                    {{ item.days }} Jours
                 </p>
             </div>
 
@@ -62,7 +62,7 @@ useMotion(itemRef, {
                 <span
                     class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white"
                 >
-                    5000  {{ $page.props.app.currency }}
+                    {{ item.formatted_price }}  {{ $page.props.app.currency }}
                 </span>
                 <span
                     v-if="false"
@@ -73,8 +73,7 @@ useMotion(itemRef, {
             </div>
             <p
                 class="mt-6 text-base leading-7 text-slate-500 dark:text-slate-400"
-                v-html="'Revenu quotidien: 2000 XAF'"
-            />
+            >{{ 'Revenu quotidien: ' + item.daily_income }}   {{ $page.props.app.currency }}</p>
         </div>
         <button
             aria-describedby="tier-hobby"
@@ -113,7 +112,7 @@ useMotion(itemRef, {
                     <dt class="font-extrabold text-black dark:text-white">
                         Total des revenus
                     </dt>
-                    <dd>50 0000</dd>
+                    <dd>{{ item.total + ' ' + $page.props.app.currency }}</dd>
                 </dl>
             </div>
         </div>
