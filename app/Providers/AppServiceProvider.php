@@ -30,7 +30,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         Gate::define('viewPulse', function (User $user) {
-            return $request->user()->id == 1;
+            return $user->id == 1;
         });
     }
 }
