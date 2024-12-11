@@ -16,7 +16,7 @@
         >
             <div class="mx-auto max-w-2xl text-center lg:max-w-4xl">
                 <h2
-                    class="rounded border border-primary-300 bg-primary-200 bg-transparent py-4 text-2xl font-bold text-blue-900 dark:text-blue-200 shadow-xl"
+                    class="rounded border border-primary-300 bg-primary-200 bg-transparent py-4 text-2xl font-bold text-blue-900 shadow-xl dark:text-blue-200"
                 >
                     <span class=""
                         >Solde: {{ $page.props.auth.user.balance }}

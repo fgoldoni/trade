@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Invitation from '@/Components/Invitation.vue';
 import PackagesComponent from '@/Components/PackagesComponent.vue';
 import GuestLayout from '@/Layouts/GuestLayout.vue';
 import Main from '@/Layouts/Main.vue';
@@ -9,7 +10,6 @@ import {
     QuestionMarkCircleIcon,
 } from '@heroicons/vue/24/outline';
 import { Head } from '@inertiajs/vue3';
-import Invitation from "@/Components/Invitation.vue";
 
 defineProps<{
     canLogin?: boolean;

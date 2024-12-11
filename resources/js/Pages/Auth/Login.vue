@@ -146,7 +146,9 @@ const submit = () => {
                                     </Link>
                                 </div>
 
-                                <div class="mt-10 flex items-center justify-end">
+                                <div
+                                    class="mt-10 flex items-center justify-end"
+                                >
                                     <Link
                                         v-if="canResetPassword"
                                         :href="route('register')"
