@@ -78,6 +78,25 @@
             <InputError :message="form.errors.number" />
         </div>
 
+        <div class="group relative z-0 mb-5 mt-8 w-full text-left">
+            <input
+                type="number"
+                name="number_confirmation"
+                v-model="form.number_confirmation"
+                id="number_confirmation"
+                :class="`peer block w-full appearance-none border-0 border-b-2 border-slate-300 bg-transparent px-0 py-2.5 text-sm text-slate-900 focus:border-primary-600 focus:outline-none focus:ring-0 dark:border-slate-600 dark:text-white dark:focus:border-primary-500`"
+                placeholder=" "
+                required
+            />
+            <label
+                for="number"
+                :class="`absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-slate-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:start-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-primary-600 dark:text-slate-400 peer-focus:dark:text-primary-500 rtl:peer-focus:translate-x-1/4`"
+            >
+                {{ __('Confirmez votre numéro de paiement') }}
+            </label>
+            <InputError :message="form.errors.number_confirmation" />
+        </div>
+
         <button
             :class="`font-heading mt-8 w-full rounded-md bg-primary-700 px-8 py-3 font-bold uppercase text-white hover:bg-primary-600 md:mt-5`"
         >
@@ -118,6 +137,7 @@ const form = useForm('post', '/recipients', {
     account: null,
     name: null,
     number: null,
+    number_confirmation: null,
 });
 
 const submit = () =>
