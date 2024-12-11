@@ -41,7 +41,7 @@ class CheckCartJob implements ShouldQueue
                     if ((int)$tranx->transaction->amount === (int)CartFacade::session($reference . '-' . $userId)->getTotal()) {
                         $user = User::find($userId);
 
-                        if (CartFacade::session($reference . '-' . $userId)->getTotal() >= 5000) {
+                        if (CartFacade::session($reference . '-' . $userId)->getTotal() >= 2000) {
                             LaravelPayPocket::deposit($user, 'wallet_1', CartFacade::session($reference . '-' . $userId)->getTotal());
                         }
 
