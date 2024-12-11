@@ -43,7 +43,7 @@
 
         <div class="group relative z-0 mb-5 mt-8 w-full text-left">
             <input
-                type="text"
+                type="number"
                 name="amount"
                 v-model="form.amount"
                 id="amount"
