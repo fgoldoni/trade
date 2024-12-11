@@ -88,7 +88,7 @@
             <span v-else>{{ __('Recharger') }}</span>
         </button>
 
-        <div class="mt-4 mb-14">
+        <div class="mt-4 mb-20">
             <ul class="mt-3 space-y-3">
                 <li v-for="highlight in highlights" :key="highlight.description" :data-disabled="highlight.disabled" class="group flex items-start gap-4 text-sm/6 text-gray-600 data-[disabled]:text-gray-400">
                       <span class="inline-flex h-6 items-center">
