@@ -96,7 +96,7 @@ const submit = () => {
                                     class="group relative z-0 mb-5 mt-8 w-full text-left"
                                 >
                                     <input
-                                        type="text"
+                                        type="number"
                                         name="phone"
                                         v-model="form.phone"
                                         id="phone"
@@ -146,7 +146,7 @@ const submit = () => {
                                     </Link>
                                 </div>
 
-                                <div class="mt-4 flex items-center justify-end">
+                                <div class="mt-10 flex items-center justify-end">
                                     <Link
                                         v-if="canResetPassword"
                                         :href="route('register')"
