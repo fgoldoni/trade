@@ -45,6 +45,7 @@ class HandleInertiaRequests extends Middleware
                 'currency' => "XAF",
             ],
             'products' => Product::get(),
+            'comptes' => ['Orange', 'Mtn'],
             'notchPayUrl' => config('system.notch_pay_url'),
         ];
     }

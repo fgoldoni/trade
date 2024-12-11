@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import GuestLayout from '@/Layouts/GuestLayout.vue';
 import { Head } from '@inertiajs/vue3';
-import Form from "@/Pages/Deposits/Form.vue";
 import Heading from "@/Pages/Deposits/Heading.vue";
 import { ExclamationTriangleIcon } from '@heroicons/vue/20/solid'
 import RecipientMissingAlert from "@/Pages/Withdrawal/RecipientMissingAlert.vue";
 import {PlusIcon} from "@heroicons/vue/16/solid";
+import Form from "@/Pages/Recipients/Form.vue";
 
 defineProps<{
     recipient?: Object;
@@ -32,8 +32,8 @@ const highlights = [
     <Head title="Welcome" />
     <GuestLayout>
         <div class="p-8">
-            <Heading  title="Retrait"></Heading>
-            <RecipientMissingAlert v-if="!recipient.number"></RecipientMissingAlert>
+            <Heading  title="Compte de retrait"></Heading>
+            <Form></Form>
 
             <div class="mb-32 mt-4">
                 <ul class="mt-3 space-y-3">
