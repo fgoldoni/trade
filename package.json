@@ -37,6 +37,7 @@
         "@vueuse/core": "^12.0.0",
         "@vueuse/motion": "^2.2.6",
         "daisyui": "^4.12.20",
+        "flowbite": "^2.5.2",
         "js-cookie": "^3.0.5",
         "laravel-precognition-vue": "^0.5.13",
         "laravel-precognition-vue-inertia": "^0.5.13",

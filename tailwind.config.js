@@ -3,6 +3,7 @@ import forms from '@tailwindcss/forms';
 import typography from '@tailwindcss/typography';
 import aspectRatio from '@tailwindcss/aspect-ratio';
 const colors = require('tailwindcss/colors');
+const flowbite = require('flowbite/plugin');
 
 /** @type {import('tailwindcss').Config} */
 
@@ -44,6 +45,7 @@ export default {
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
         './resources/js/**/*.vue',
+        "./node_modules/flowbite/**/*.js",
     ],
     safelist: [...colorSaveList],
 
@@ -60,5 +62,5 @@ export default {
         },
     },
 
-    plugins: [forms, typography, aspectRatio],
+    plugins: [forms, typography, aspectRatio, flowbite],
 };

@@ -1,5 +1,6 @@
 import '../css/app.css';
 import './bootstrap';
+import 'flowbite';
 
 import { translations } from '@/mixins/translations';
 import { createInertiaApp, Link } from '@inertiajs/vue3';
