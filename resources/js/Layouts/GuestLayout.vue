@@ -216,7 +216,7 @@
                     !route().current('register') &&
                     $page.props.auth.user
                 "
-                :class="`fixed bottom-0 left-0 z-50 h-16 w-full border-t border-slate-200 bg-slate-900 opacity-90 dark:border-slate-600 dark:bg-slate-700`"
+                :class="`fixed bottom-0 left-0 z-50 h-16 w-full border-t border-slate-200 bg-white dark:border-slate-600 dark:bg-slate-700`"
             >
                 <div
                     class="mx-auto grid h-full max-w-lg grid-cols-4 font-medium"
@@ -234,7 +234,10 @@
                             viewBox="0 0 24 24"
                             stroke-width="1.5"
                             stroke="currentColor"
-                            :class="`mb-2 h-6 w-6 text-slate-300 group-hover:text-white dark:text-slate-400`"
+                            :class="[
+                                    route().current('home') ? `text-slate-100` : 'text-slate-600',
+                                    `mb-2 h-6 w-6 group-hover:text-white dark:text-slate-200`,
+                                ]"
                         >
                             <path
                                 stroke-linecap="round"
@@ -244,7 +247,7 @@
                         </svg>
 
                         <span
-                            :class="`text-sm text-slate-300 group-hover:text-white dark:text-slate-400`"
+                            :class="`text-sm text-slate-400 group-hover:text-white dark:text-slate-400`"
                             >{{ __('Accueil') }}</span
                         >
                     </Link>
@@ -261,7 +264,10 @@
                             viewBox="0 0 24 24"
                             stroke-width="1.5"
                             stroke="currentColor"
-                            :class="`mb-2 h-6 w-6 text-slate-300 group-hover:text-white dark:text-slate-400`"
+                             :class="[
+                                    route().current('home') ? `text-slate-100` : 'text-slate-600',
+                                    `mb-2 h-6 w-6 group-hover:text-white dark:text-slate-200`,
+                                ]"
                         >
                             <path
                                 stroke-linecap="round"
@@ -271,8 +277,8 @@
                         </svg>
 
                         <span
-                            :class="`text-sm text-slate-300 group-hover:text-white dark:text-slate-400`"
-                            >{{ __('Produits') }}</span
+                            :class="`text-sm text-slate-400 group-hover:text-white dark:text-slate-400`"
+                            >{{ __('Commandes') }}</span
                         >
                     </Link>
                     <Link
@@ -288,7 +294,10 @@
                             viewBox="0 0 24 24"
                             stroke-width="1.5"
                             stroke="currentColor"
-                            :class="`mb-2 h-6 w-6 text-slate-300 group-hover:text-white dark:text-slate-400`"
+                             :class="[
+                                    route().current('home') ? `text-slate-100` : 'text-slate-600',
+                                    `mb-2 h-6 w-6 group-hover:text-white dark:text-slate-200`,
+                                ]"
                         >
                             <path
                                 stroke-linecap="round"
@@ -298,7 +307,7 @@
                         </svg>
 
                         <span
-                            :class="`text-sm text-slate-300 group-hover:text-white dark:text-slate-400`"
+                            :class="`text-sm text-slate-400 group-hover:text-white dark:text-slate-400`"
                             >{{ __('Équipe') }}</span
                         >
                     </Link>
@@ -310,7 +319,10 @@
                         ]"
                     >
                         <svg
-                            :class="`mb-2 h-6 w-6 text-slate-300 group-hover:text-white dark:text-slate-400`"
+                             :class="[
+                                    route().current('home') ? `text-slate-100` : 'text-slate-600',
+                                    `mb-2 h-6 w-6 group-hover:text-white dark:text-slate-200`,
+                                ]"
                             aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg"
                             width="24"
@@ -327,7 +339,7 @@
                             />
                         </svg>
                         <span
-                            :class="`text-sm text-slate-300 group-hover:text-white dark:text-slate-400`"
+                            :class="`text-sm text-slate-400 group-hover:text-white dark:text-slate-400`"
                             >{{ __('Compte') }}</span
                         >
                     </Link>
