@@ -33,7 +33,7 @@ class NotchPayController extends Controller
             }
         }
 
-        return Inertia::render('Notchpay/Index');
+        return Inertia::render('Notchpay/Index', ['status' => $request->status]);
     }
 
     /**
