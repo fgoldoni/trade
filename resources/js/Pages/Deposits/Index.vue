@@ -9,7 +9,7 @@ import { Head } from '@inertiajs/vue3';
     <Head title="Welcome" />
     <GuestLayout>
         <div class="p-8">
-            <Heading></Heading>
+            <Heading title="Dépôt"></Heading>
             <Form></Form>
         </div>
     </GuestLayout>

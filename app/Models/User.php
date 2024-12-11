@@ -10,9 +10,11 @@ use HPWebdeveloper\LaravelPayPocket\Interfaces\WalletOperations;
 use HPWebdeveloper\LaravelPayPocket\Traits\ManagesWallet;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Number;
+use Modules\Withdrawal\Models\Recipient;
 
 class User extends Authenticatable implements BannableContract, WalletOperations
 {
@@ -89,5 +91,11 @@ class User extends Authenticatable implements BannableContract, WalletOperations
             precision: 2,
             locale: app()->getLocale()
         ));
+    }
+
+    public function recipient(): HasOne
+    {
+        return $this->hasOne(Recipient::class)
+            ->withDefault(Recipient::empty());
     }
 }

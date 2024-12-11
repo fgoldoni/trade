@@ -34,7 +34,7 @@
                             <a
                                 href="javascript:;"
                                 class="ml-4 text-sm font-medium text-gray-400"
-                                >Dépôt</a
+                                > {{ title }}</a
                             >
                         </div>
                     </li>
@@ -218,6 +218,10 @@
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/vue/20/solid';
+
+defineProps<{
+    title?: String;
+}>();
 </script>

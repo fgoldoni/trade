@@ -56,7 +56,7 @@ class Product extends Resource
             Text::make('Name')
                 ->sortable()
                 ->showOnPreview()
-                ->rules('required', 'max:255'),
+                ->rules('required', 'unique:products,name', 'max:255'),
 
             Boolean::make('Online')
                 ->sortable()
@@ -66,7 +66,8 @@ class Product extends Resource
                 ->min(0)
                 ->default(fn () => 0)
                 ->step(0.01)
-                ->rules('required', 'numeric'),
+                ->currency('XAF')
+                ->rules('required', 'unique:products,price', 'numeric'),
 
             Number::make('Quantity')
                 ->min(0)

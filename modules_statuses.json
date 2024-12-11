@@ -2,5 +2,6 @@
     "Products": true,
     "Carts": true,
     "Deposits": true,
-    "NotchPay": true
+    "NotchPay": true,
+    "Withdrawal": true
 }

@@ -93,7 +93,7 @@ trait Migration
 
     public function addUserField(Blueprint $table): void
     {
-        $table->foreignUlid('user_id')->nullable()->index()->references('id')->on('users')->onDelete('cascade');
+        $table->foreignId('user_id')->nullable()->index()->references('id')->on('users')->onDelete('cascade');
     }
 
     public function addLocationField(Blueprint $table): void

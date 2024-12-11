@@ -47,7 +47,8 @@ function handleImageError() {
                                 {{ __('Dépôt') }}
                             </p>
                         </Link>
-                        <div
+                        <Link
+                            :href="route('withdrawal.index')"
                             class="btn-base flex cursor-pointer flex-col items-center justify-center rounded-lg border border-slate-300 bg-primary-200 py-4 shadow-lg dark:border-slate-700 dark:bg-primary-800"
                         >
                             <ArrowUpTrayIcon
@@ -59,7 +60,7 @@ function handleImageError() {
                             >
                                 {{ __('Retrait') }}
                             </p>
-                        </div>
+                        </Link>
                         <div
                             class="btn-base flex cursor-pointer flex-col items-center justify-center rounded-lg border border-slate-300 bg-primary-200 py-4 shadow-lg dark:border-slate-700 dark:bg-primary-800"
                         >
