@@ -8,6 +8,9 @@ use Darryldecode\Cart\Facades\CartFacade;
 use HPWebdeveloper\LaravelPayPocket\Facades\LaravelPayPocket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Inertia\Inertia;
+use Modules\Carts\Jobs\CartJob;
+use Modules\Carts\Jobs\CheckCartJob;
 use Modules\Carts\Models\Cart;
 use Modules\NotchPay\Http\Requests\StoreNotchPayRequest;
 use Modules\Products\Models\Product;
@@ -19,9 +22,18 @@ class NotchPayController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('notchpay::index');
+        if ($request->reference && $request->trxref && $request->status) {
+            if ($request->status === 'complete') {
+                $userId = explode("-", $request->trxref)[1];
+                if (Cart::find($request->reference . '-' . $userId . '_cart_items')) {
+                    CartJob::dispatch($request->reference, $userId);
+                }
+            }
+        }
+
+        return Inertia::render('Notchpay/Index');
     }
 
     /**
