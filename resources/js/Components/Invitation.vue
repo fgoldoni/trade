@@ -3,12 +3,13 @@ import { usePage } from '@inertiajs/vue3';
 import { useClipboard } from '@vueuse/core';
 import { ref } from 'vue';
 
-const { text, copy, copied, isSupported } = useClipboard({ source });
-const defaultMessage = ref<HTMLElement>();
-const successMessage = ref<HTMLElement>();
 const source = ref(
     route('register') + '?via=' + usePage().props.auth.user.referral_code,
 );
+const { text, copy, copied, isSupported } = useClipboard({ source });
+
+const defaultMessage = ref<HTMLElement>();
+const successMessage = ref<HTMLElement>();
 
 const showSuccess = () => {
     defaultMessage.value.classList.add('hidden');
