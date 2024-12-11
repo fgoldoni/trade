@@ -130,5 +130,6 @@ const submit = () =>
 const highlights = [
     { description: 'Le montant minimum de recharge est de 5 000 XAF. Si le montant est inférieur à 5 000 XAF, il ne sera pas crédité sur le solde de votre compte.' },
     { description: 'La recharge s’effectue automatiquement et sera disponible sur le compte une fois le paiement finalisé.' },
+    { description: 'En cas de problème de recharge, nous vous invitons à transmettre le message de confirmation de paiement au service client.' },
 ]
 </script>
