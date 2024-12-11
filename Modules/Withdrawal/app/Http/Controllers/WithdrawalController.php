@@ -5,6 +5,7 @@ namespace Modules\Withdrawal\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Modules\Withdrawal\Http\Requests\StoreWithdrawalRequest;
 
 class WithdrawalController extends Controller
 {
@@ -22,10 +23,8 @@ class WithdrawalController extends Controller
         return view('withdrawal::create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+
+    public function store(StoreWithdrawalRequest $request)
     {
         //
     }

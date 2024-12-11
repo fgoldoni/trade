@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('recipients', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
+            $table->string('account')->nullable();
             $table->string('channel')->default('cm.mobile');
             $table->string('number')->nullable();
             $table->string('phone')->nullable();

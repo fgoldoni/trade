@@ -3,17 +3,17 @@
         <fieldset aria-label="Choose a memory option">
             <div class="mt-8 flex items-center justify-between">
                 <div class="text-sm/6 font-medium text-gray-900">
-                    Quel est votre type de compte ?
+                    Quel est votre type de account ?
                 </div>
             </div>
 
             <RadioGroup
-                v-model="form.compte"
+                v-model="form.account"
                 class="mt-2 grid grid-cols-3 gap-3 sm:grid-cols-6"
             >
                 <RadioGroupOption
                     as="template"
-                    v-for="option in $page.props.comptes"
+                    v-for="option in $page.props.accounts"
                     :key="option"
                     :value="option"
                     v-slot="{ active, checked }"
@@ -56,7 +56,7 @@
             >
                 {{ __('Titulaire') }}
             </label>
-            <InputError :message="form.errors.amount" />
+            <InputError :message="form.errors.name" />
         </div>
 
         <div class="group relative z-0 mb-5 mt-8 w-full text-left">
@@ -73,9 +73,9 @@
                 for="number"
                 :class="`absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-slate-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:start-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-primary-600 dark:text-slate-400 peer-focus:dark:text-primary-500 rtl:peer-focus:translate-x-1/4`"
             >
-                {{ __('Numéro de compte de paiement') }}
+                {{ __('Numéro de account de paiement') }}
             </label>
-            <InputError :message="form.errors.amount" />
+            <InputError :message="form.errors.number" />
         </div>
 
         <button
@@ -115,7 +115,7 @@ import { usePage } from '@inertiajs/vue3';
 import { useForm } from 'laravel-precognition-vue';
 
 const form = useForm('post', '/recipients', {
-    compte: null,
+    account: null,
     name: null,
     number: null,
 });
