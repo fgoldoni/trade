@@ -45,6 +45,7 @@
             <input
                 type="number"
                 name="amount"
+                min="5000"
                 v-model="form.amount"
                 id="amount"
                 :class="`peer block w-full appearance-none border-0 border-b-2 border-slate-300 bg-transparent px-0 py-2.5 text-sm text-slate-900 focus:border-primary-600 focus:outline-none focus:ring-0 dark:border-slate-600 dark:text-white dark:focus:border-primary-500`"
@@ -110,11 +111,6 @@ import {  PlusIcon } from '@heroicons/vue/16/solid'
 
 
 const form = useForm('post', '/notchpay', {
-    ref:
-        'ref.' +
-        (Math.floor(Math.random() * (2000 - 100 + 1)) + 100) +
-        '-' +
-        usePage().props.auth.user.id,
     amount: null,
 });
 const submit = () =>
@@ -132,11 +128,7 @@ const submit = () =>
     });
 
 const highlights = [
-    { description: 'Le montant minimum de rechargement est de 5 000 XAF. Si le montant est inférieur à 5 000 XAF, il ne sera pas crédité sur le solde de votre compte.' },
+    { description: 'Le montant minimum de recharge est de 5 000 XAF. Si le montant est inférieur à 5 000 XAF, il ne sera pas crédité sur le solde de votre compte.' },
     { description: 'La recharge s’effectue automatiquement et sera disponible sur le compte une fois le paiement finalisé.' },
-    { description: 'Advanced analytics' },
-    { description: 'Quarterly workshops', disabled: true },
-    { description: 'Single sign-on (SSO)', disabled: true },
-    { description: 'Priority phone support', disabled: true },
 ]
 </script>

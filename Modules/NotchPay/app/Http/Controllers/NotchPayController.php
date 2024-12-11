@@ -9,6 +9,7 @@ use HPWebdeveloper\LaravelPayPocket\Facades\LaravelPayPocket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Modules\Carts\Models\Cart;
+use Modules\NotchPay\Http\Requests\StoreNotchPayRequest;
 use Modules\Products\Models\Product;
 use NotchPay\NotchPay;
 use NotchPay\Payment;
@@ -32,7 +33,7 @@ class NotchPayController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(StoreNotchPayRequest $request)
     {
         NotchPay::setApiKey(env('NOTCHPAY_ID'));
 
@@ -50,14 +51,26 @@ class NotchPayController extends Controller
 
             CartFacade::session($tranx->transaction->reference . '-' . $request->user()->id)->clear();
 
-            CartFacade::session($tranx->transaction->reference . '-' . $request->user()->id)->add(array(
-                'id' => $ref,
-                'name' => $product->name,
-                'price' => $product->price,
-                'quantity' => 1,
-                'attributes' => array(),
-                'associatedModel' => $product
-            ));
+            if ($product) {
+                CartFacade::session($tranx->transaction->reference . '-' . $request->user()->id)->add(array(
+                    'id' => $ref,
+                    'name' => $product->name,
+                    'price' => $product->price,
+                    'quantity' => 1,
+                    'attributes' => array(),
+                    'associatedModel' => $product
+                ));
+            } else {
+                CartFacade::session($tranx->transaction->reference . '-' . $request->user()->id)->add(array(
+                    'id' => $ref,
+                    'name' => $request->amount,
+                    'price' => $request->amount,
+                    'quantity' => 1,
+                    'attributes' => array()
+                ));
+            }
+
+
         } catch (\NotchPay\Exceptions\ApiException $e) {
             print_r($e->errors);
             die($e->getMessage());
