@@ -9,7 +9,7 @@
 
             <RadioGroup
                 v-model="form.amount"
-                class="mt-2 grid grid-cols-3 gap-3 sm:grid-cols-6"
+                class="mt-2 grid grid-cols-2 gap-3 sm:grid-cols-6"
             >
                 <RadioGroupOption
                     as="template"
@@ -35,7 +35,7 @@
                             'flex items-center justify-center rounded-md px-3 py-3 text-sm font-semibold uppercase sm:flex-1',
                         ]"
                     >
-                        {{ option.price }} {{ $page.props.app.currency }}
+                        {{ option.formatted_price }} {{ $page.props.app.currency }}
                     </div>
                 </RadioGroupOption>
             </RadioGroup>
@@ -141,7 +141,7 @@ const submit = () =>
 const highlights = [
     {
         description:
-            'Le montant minimum de recharge est de 5 000 XAF. Si le montant est inférieur à 5 000 XAF, il ne sera pas crédité sur le solde de votre compte.',
+            'Le montant minimum de recharge est de 2 000 XAF. Si le montant est inférieur à 2 000 XAF, il ne sera pas crédité sur le solde de votre compte.',
     },
     {
         description:

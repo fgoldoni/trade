@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('email')->nullable();
             $table->string('country')->default('CM');
             $table->string('reference')->unique();
+            $table->string('rcp')->nullable();
             $table->text('description')->nullable();
             $this->addUserField($table);
             $table->softDeletes();
