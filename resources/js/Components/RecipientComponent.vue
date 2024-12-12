@@ -17,14 +17,14 @@
                         </div>
                     </div>
                     <div class="inline-flex items-center py-2 text-sm font-semibold text-gray-900">
-                        <a
-                            :href="`https://wa.me/${$page.props.app.phone}`"
+                        <Link
+                            :href="route('recipients.index')"
                             :class="`font-medium text-primary-700 underline hover:text-primary-600`"
                         >
                     <span>
-                        {{ __('Veuillez cliquer ici pour contacter le service client') }}
+                        {{ __('Modifier') }}
                     </span>
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>
