@@ -33,7 +33,7 @@
                 for="number"
                 :class="`absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-slate-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:start-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-primary-600 dark:text-slate-400 peer-focus:dark:text-primary-500 rtl:peer-focus:translate-x-1/4`"
             >
-                {{ __('Numéro de account de paiement') }}
+                {{ __('Numéro de compte de retrait') }}
             </label>
             <InputError :message="form.errors.number" />
         </div>
@@ -52,7 +52,7 @@
                 for="number"
                 :class="`absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-slate-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:start-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-primary-600 dark:text-slate-400 peer-focus:dark:text-primary-500 rtl:peer-focus:translate-x-1/4`"
             >
-                {{ __('Confirmez votre numéro de paiement') }}
+                {{ __('Confirmez votre numéro de compte de retrait') }}
             </label>
             <InputError :message="form.errors.number_confirmation" />
         </div>
