@@ -98,6 +98,8 @@
             <InputError :message="form.errors.number_confirmation" />
         </div>
 
+        <AlertComponent :message="message"  v-if="message"></AlertComponent>
+
         <button
             :class="[form.processing ? 'opacity-75': '', `font-heading mt-8 w-full rounded-md bg-primary-700 px-8 py-3 font-bold uppercase text-white hover:bg-primary-600 md:mt-5`]"
             :disabled="form.processing"
@@ -134,26 +136,31 @@ import { RadioGroup, RadioGroupOption } from '@headlessui/vue';
 import { PlusIcon } from '@heroicons/vue/16/solid';
 import { usePage } from '@inertiajs/vue3';
 import { useForm } from 'laravel-precognition-vue';
+import {onMounted, ref} from "vue";
+import AlertComponent from "@/Components/AlertComponent.vue";
+
+defineProps<{
+    recipient?: Object;
+}>();
 
 const form = useForm('post', '/recipients', {
     account: 'Orange',
     name: 'Goldoni Bogning Fouotsa',
-    number: '666666666',
-    number_confirmation: '666666666',
+    number: '656019261',
+    number_confirmation: '656019261',
+});
+
+const message = ref(null)
+
+onMounted(() => {
+    message.value = null
 });
 
 const submit = () =>
     form.submit({
         preserveScroll: true,
-        onSuccess: (e) => {
-            if (
-                e.data.transaction.amount === form.amount &&
-                parseInt(e.data.transaction.trxref.split('-')[1]) ===
-                usePage().props.auth.user.id
-            ) {
-                return window.location.replace(e.data.authorization_url);
-            }
-            form.reset();
-        },
+        onSuccess: () => form.reset(),
+    }).catch(error => {
+        message.value = error.response.data.message
     });
 </script>

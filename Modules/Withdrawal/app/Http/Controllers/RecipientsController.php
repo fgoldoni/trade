@@ -5,19 +5,21 @@ namespace Modules\Withdrawal\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Core\Responsable\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Inertia\Inertia;
-use JustSteveKing\StatusCode\Http;
 use Modules\Carts\Repositories\Contracts\CartsRepository;
 use Modules\Orders\Repositories\Contracts\OrdersRepository;
 use Modules\Tickets\Repositories\Contracts\TicketsRepository;
 use Modules\Withdrawal\Http\Requests\StoreRecipientRequest;
 use Modules\Withdrawal\Repositories\Contracts\RecipientsRepository;
+use function Pest\Laravel\json;
 
 class RecipientsController extends Controller
 {
     public function __construct(
         private readonly RecipientsRepository $recipientsRepository,
-    ) {
+    )
+    {
 
     }
 
@@ -40,11 +42,35 @@ class RecipientsController extends Controller
         try {
             $recipient = $request->user()->recipient;
             $recipient->name = $request->get('name');
-            $recipient->account = $request->get('account');
             $recipient->number = $request->get('number');
-            $recipient->email = $request->get('number') . '@gmail.com';
-            $recipient->reference = uniqid();
-            $recipient->save();
+            $recipient->channel = 'cm.mobile';
+            $recipient->email = uniqid() . uniqid() . '@gmail.com';
+            $recipient->reference = uniqid() . uniqid();
+
+
+            $response = Http::acceptJson()->withHeaders(
+                [
+                    'Authorization' => env('NOTCHPAY_ID'),
+                    'X-Grant' => env('NOTCHPAY_X_GRANT'),
+                ]
+            )->post(env('NOTCHPAY_API_URL') . '/recipients', $recipient->only([
+                'name',
+                'reference',
+                'channel',
+                'number',
+                'country',
+                'email',
+            ]));
+
+            if ($response->successful()) {
+                $recipient->rcp = $response->object()->recipient->id;
+                $recipient->account = $response->object()->recipient->payment_method->issuer;
+                $recipient->channel = $response->object()->recipient->payment_method->channel;
+                $recipient->save();
+            } else if ($response->failed()) {
+                logger(self::class . ' - ' . json_encode($response->object()));
+                throw new \Exception("Ce numéro a déjà été enregistré ou une erreur s'est produite lors de la création. Veuillez, s'il vous plaît, contacter le service client.");
+            }
 
             return new JsonResponse(
                 data: [
@@ -59,7 +85,7 @@ class RecipientsController extends Controller
                 data: [
                     'message' => $e->getMessage(),
                 ],
-                status: Http::INTERNAL_SERVER_ERROR,
+                status: \JustSteveKing\StatusCode\Http::INTERNAL_SERVER_ERROR,
             );
         }
     }

@@ -14,6 +14,7 @@ class Recipient extends Model
     {
         return [
             'name' => null,
+            'rcp' => null,
             'reference' => null,
             'account' => null,
             'channel' => 'cm.mobile',
