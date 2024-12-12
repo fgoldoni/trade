@@ -56,7 +56,9 @@ class Product extends Resource
             Text::make('Name')
                 ->sortable()
                 ->showOnPreview()
-                ->rules('required', 'unique:products,name', 'max:255'),
+                ->rules('required', 'max:254')
+                ->creationRules('unique:products,name')
+                ->updateRules('unique:products,name,{{resourceId}}'),
 
             Boolean::make('Online')
                 ->sortable()
@@ -64,36 +66,37 @@ class Product extends Resource
 
             \Laravel\Nova\Fields\Currency::make('Price')
                 ->min(0)
-                ->default(fn () => 0)
+                ->default(fn() => 0)
                 ->step(0.01)
                 ->currency('XAF')
-                ->rules('required', 'unique:products,price', 'numeric'),
+                ->rules('required', 'numeric')
+                ->creationRules('unique:products,price')
+                ->updateRules('unique:products,price,{{resourceId}}'),
 
             Number::make('Quantity')
                 ->min(0)
-                ->default(fn () => 0)
+                ->default(fn() => 0)
                 ->step(1)
                 ->rules('required', 'integer'),
 
             Number::make('Sold')
-                ->default(fn () => 0)
+                ->default(fn() => 0)
                 ->hide()
                 ->showOnIndex(),
 
             Number::make('Left')->min(0)
-                ->default(fn () => 0)
+                ->default(fn() => 0)
                 ->hide()
                 ->showOnIndex(),
 
 
             Number::make('Position')
                 ->default(
-                    fn () => \Modules\Products\Models\Product::max(
+                    fn() => \Modules\Products\Models\Product::max(
                             'position'
                         ) + 1
                 )
                 ->rules('required', 'integer'),
-
 
 
             Markdown::make('description')
