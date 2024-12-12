@@ -3,12 +3,23 @@
 namespace Modules\Withdrawal\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Core\Responsable\JsonResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use JustSteveKing\StatusCode\Http;
+use Modules\Carts\Repositories\Contracts\CartsRepository;
+use Modules\Orders\Repositories\Contracts\OrdersRepository;
+use Modules\Tickets\Repositories\Contracts\TicketsRepository;
 use Modules\Withdrawal\Http\Requests\StoreRecipientRequest;
+use Modules\Withdrawal\Repositories\Contracts\RecipientsRepository;
 
 class RecipientsController extends Controller
 {
+    public function __construct(
+        private readonly RecipientsRepository $recipientsRepository,
+    ) {
+
+    }
 
     public function index(Request $request): \Inertia\Response
     {
@@ -24,9 +35,33 @@ class RecipientsController extends Controller
     }
 
 
-    public function store(StoreRecipientRequest $request)
+    public function store(StoreRecipientRequest $request): JsonResponse
     {
-        //
+        try {
+            $recipient = $request->user()->recipient;
+            $recipient->name = $request->get('name');
+            $recipient->account = $request->get('account');
+            $recipient->number = $request->get('number');
+            $recipient->email = $request->get('number') . '@gmail.com';
+            $recipient->reference = uniqid();
+            $recipient->save();
+
+            return new JsonResponse(
+                data: [
+                    'data' => $recipient,
+                    'message' => __('The item(s) has been successfully updated'),
+                ]
+            );
+        } catch (\Exception $e) {
+            logger(self::class . ' - ' . $e->getMessage());
+
+            return new JsonResponse(
+                data: [
+                    'message' => $e->getMessage(),
+                ],
+                status: Http::INTERNAL_SERVER_ERROR,
+            );
+        }
     }
 
     /**

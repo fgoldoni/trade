@@ -38,6 +38,7 @@
                     </div>
                 </RadioGroupOption>
             </RadioGroup>
+            <InputError class="mt-2" :message="form.errors.account" />
         </fieldset>
 
         <div class="group relative z-0 mb-5 mt-8 w-full text-left">
@@ -134,10 +135,10 @@ import { usePage } from '@inertiajs/vue3';
 import { useForm } from 'laravel-precognition-vue';
 
 const form = useForm('post', '/recipients', {
-    account: null,
-    name: null,
-    number: null,
-    number_confirmation: null,
+    account: 'Orange',
+    name: 'Goldoni Bogning Fouotsa',
+    number: '666666666',
+    number_confirmation: '666666666',
 });
 
 const submit = () =>
