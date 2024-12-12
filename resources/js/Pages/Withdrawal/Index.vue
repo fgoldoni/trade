@@ -6,6 +6,7 @@ import Heading from "@/Pages/Deposits/Heading.vue";
 import { ExclamationTriangleIcon } from '@heroicons/vue/20/solid'
 import RecipientMissingAlert from "@/Pages/Withdrawal/RecipientMissingAlert.vue";
 import {PlusIcon} from "@heroicons/vue/16/solid";
+import RecipientComponent from "@/Components/RecipientComponent.vue";
 
 defineProps<{
     recipient?: Object;
@@ -34,7 +35,7 @@ const highlights = [
         <div class="p-8">
             <Heading  title="Retrait"></Heading>
             <RecipientMissingAlert v-if="!recipient.number"></RecipientMissingAlert>
-
+            <RecipientComponent v-if="recipient.number" :recipient="recipient"></RecipientComponent>
             <div class="mb-32 mt-4">
                 <ul class="mt-3 space-y-3">
                     <li
