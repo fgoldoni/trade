@@ -47,6 +47,10 @@ class HandleInertiaRequests extends Middleware
             'products' => Product::get(),
             'accounts' => ['Orange', 'Mtn'],
             'notchPayUrl' => config('system.notch_pay_url'),
+            'flash' => [
+                'error' => fn () => $request->session()->get('error'),
+                'success' => fn () => $request->session()->get('success'),
+            ],
         ];
     }
 }

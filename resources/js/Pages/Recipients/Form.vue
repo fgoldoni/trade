@@ -1,46 +1,5 @@
 <template>
     <form @submit.prevent="submit">
-        <fieldset aria-label="Choose a memory option">
-            <div class="mt-8 flex items-center justify-between">
-                <div class="text-sm/6 font-medium text-gray-900">
-                    Quel est votre type de account ?
-                </div>
-            </div>
-
-            <RadioGroup
-                v-model="form.account"
-                class="mt-2 grid grid-cols-3 gap-3 sm:grid-cols-6"
-            >
-                <RadioGroupOption
-                    as="template"
-                    v-for="option in $page.props.accounts"
-                    :key="option"
-                    :value="option"
-                    v-slot="{ active, checked }"
-                >
-                    <div
-                        :class="[
-                            true
-                                ? 'cursor-pointer focus:outline-none'
-                                : 'cursor-not-allowed opacity-25',
-                            active
-                                ? 'ring-2 ring-primary-600 ring-offset-2'
-                                : '',
-                            checked
-                                ? 'bg-primary-600 text-white ring-0 hover:bg-primary-500'
-                                : 'bg-white text-gray-900 ring-1 ring-gray-300 hover:bg-gray-50',
-                            !active && !checked ? 'ring-inset' : '',
-                            active && checked ? 'ring-2' : '',
-                            'flex items-center justify-center rounded-md px-3 py-3 text-sm font-semibold uppercase sm:flex-1',
-                        ]"
-                    >
-                        {{ option }}
-                    </div>
-                </RadioGroupOption>
-            </RadioGroup>
-            <InputError class="mt-2" :message="form.errors.account" />
-        </fieldset>
-
         <div class="group relative z-0 mb-5 mt-8 w-full text-left">
             <input
                 type="text"
@@ -98,7 +57,8 @@
             <InputError :message="form.errors.number_confirmation" />
         </div>
 
-        <AlertComponent :message="message"  v-if="message"></AlertComponent>
+        <AlertComponent :message="$page.props.flash.error"  v-if="$page.props.flash.error"></AlertComponent>
+        <AlertSuccessComponent :message="$page.props.flash.success"  v-if="$page.props.flash.success"></AlertSuccessComponent>
 
         <button
             :class="[form.processing ? 'opacity-75': '', `font-heading mt-8 w-full rounded-md bg-primary-700 px-8 py-3 font-bold uppercase text-white hover:bg-primary-600 md:mt-5`]"
@@ -135,19 +95,20 @@ import InputError from '@/Components/InputError.vue';
 import { RadioGroup, RadioGroupOption } from '@headlessui/vue';
 import { PlusIcon } from '@heroicons/vue/16/solid';
 import { usePage } from '@inertiajs/vue3';
-import { useForm } from 'laravel-precognition-vue';
 import {onMounted, ref} from "vue";
 import AlertComponent from "@/Components/AlertComponent.vue";
+import { useForm } from '@inertiajs/vue3';
+import AlertSuccessComponent from "@/Components/AlertSuccessComponent.vue";
 
-defineProps<{
+const props = defineProps<{
     recipient?: Object;
 }>();
 
-const form = useForm('post', '/recipients', {
-    account: 'Orange',
-    name: 'Goldoni Bogning Fouotsa',
-    number: '656019261',
-    number_confirmation: '656019261',
+
+const form = useForm({
+    name: props.recipient.name,
+    number: props.recipient.number ? parseInt(props.recipient.number) : null,
+    number_confirmation: '',
 });
 
 const message = ref(null)
@@ -156,11 +117,12 @@ onMounted(() => {
     message.value = null
 });
 
-const submit = () =>
-    form.submit({
+
+
+const submit = () => {
+    form.post(route('recipients.index'), {
         preserveScroll: true,
         onSuccess: () => form.reset(),
-    }).catch(error => {
-        message.value = error.response.data.message
-    });
+    })
+};
 </script>

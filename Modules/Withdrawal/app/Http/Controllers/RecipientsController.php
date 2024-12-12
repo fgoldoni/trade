@@ -4,6 +4,7 @@ namespace Modules\Withdrawal\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Core\Responsable\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Inertia\Inertia;
@@ -37,7 +38,7 @@ class RecipientsController extends Controller
     }
 
 
-    public function store(StoreRecipientRequest $request): JsonResponse
+    public function store(StoreRecipientRequest $request): RedirectResponse
     {
         try {
             $recipient = $request->user()->recipient;
@@ -69,25 +70,14 @@ class RecipientsController extends Controller
                 $recipient->save();
             } else if ($response->failed()) {
                 logger(self::class . ' - ' . json_encode($response->object()));
-                throw new \Exception("Ce numéro a déjà été enregistré ou une erreur s'est produite lors de la création. Veuillez, s'il vous plaît, contacter le service client.");
+                throw new \Exception("Une erreur s'est produite lors de la création du compte de retrait. Veuillez, s'il vous plaît, contacter le service client si nécessaire.");
             }
-
-            return new JsonResponse(
-                data: [
-                    'data' => $recipient,
-                    'message' => __('The item(s) has been successfully updated'),
-                ]
-            );
         } catch (\Exception $e) {
             logger(self::class . ' - ' . $e->getMessage());
-
-            return new JsonResponse(
-                data: [
-                    'message' => $e->getMessage(),
-                ],
-                status: \JustSteveKing\StatusCode\Http::INTERNAL_SERVER_ERROR,
-            );
+            return redirect(route('recipients.index', absolute: false))->with('error', $e->getMessage());
         }
+
+        return redirect(route('recipients.index', absolute: false))->with('success', 'Félicitations ! Votre compte de retrait a été créé avec succès.');
     }
 
     /**

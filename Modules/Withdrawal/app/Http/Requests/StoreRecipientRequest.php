@@ -13,7 +13,6 @@ class StoreRecipientRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string'],
-            'account' => ['required', 'string'],
             'number' => ['required', 'confirmed', 'numeric', 'digits:9'],
         ];
     }

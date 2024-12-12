@@ -35,11 +35,7 @@ const highlights = [
         <div class="p-8">
             <Heading  title="Compte de retrait"></Heading>
 
-            <RecipientComponent v-if="recipient.number" :recipient="recipient"></RecipientComponent>
-
-
-
-            <Form v-else="recipient"></Form>
+            <Form :recipient="recipient"></Form>
 
             <div class="mb-32 mt-4">
                 <ul class="mt-3 space-y-3">
