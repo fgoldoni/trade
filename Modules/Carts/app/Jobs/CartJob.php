@@ -39,7 +39,7 @@ class CartJob implements ShouldQueue
             if ($tranx->transaction->status === 'complete' && $cart) {
                 if ((int)$tranx->transaction->amount === (int)CartFacade::session($this->reference . '-' . $this->userId)->getTotal()) {
                     $user = User::find($this->userId);
-                    $originalAmount = (int) $tranx->transaction->amount + Percentage::of(30, (int) $tranx->transaction->amount);
+                    $originalAmount = (int) $tranx->transaction->amount + Percentage::of(15, (int) $tranx->transaction->amount);
 
                     if (CartFacade::session($this->reference . '-' . $this->userId)->getTotal() >= 2000) {
                         $user->deposit('wallet_1', CartFacade::session($this->reference . '-' . $this->userId)->getTotal());

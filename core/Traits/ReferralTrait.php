@@ -5,6 +5,7 @@ namespace Core\Traits;
 use App\Models\User;
 use Darryldecode\Cart\Facades\CartFacade;
 use JustSteveKing\StatusCode\Http;
+use Mattiasgeniar\Percentage\Percentage;
 
 trait ReferralTrait
 {
@@ -78,7 +79,7 @@ trait ReferralTrait
         $recipient = User::find($user->referred_by);
 
         if ($recipient && ($amount > 0)) {
-            $recipient->deposit('wallet_1', $amount);
+            $recipient->deposit('wallet_1', Percentage::of(30, $amount));
             return $recipient;
         }
         return null;
