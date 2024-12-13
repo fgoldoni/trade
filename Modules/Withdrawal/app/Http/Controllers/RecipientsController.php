@@ -26,7 +26,7 @@ class RecipientsController extends Controller
 
     public function index(Request $request): \Inertia\Response
     {
-        return Inertia::render('Recipients/Index', ['recipient' => $request->user()->recipient]);
+        return Inertia::render('Recipients/Index', ['recipient' => $request->user()->recipient->fresh()]);
     }
 
     /**
@@ -77,7 +77,7 @@ class RecipientsController extends Controller
             return redirect(route('recipients.index', absolute: false))->with('error', $e->getMessage());
         }
 
-        return redirect(route('recipients.index', absolute: false))->with('success', 'Félicitations ! Votre compte de retrait a été créé avec succès.');
+        return redirect(route('recipients.index', absolute: false))->with('success', 'Félicitations ! Votre compte de retrait a été enregistré avec succès.');
     }
 
     /**

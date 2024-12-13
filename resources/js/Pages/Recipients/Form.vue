@@ -3,7 +3,7 @@
         <fieldset aria-label="Choose a memory option">
             <div class="mt-8 flex items-center justify-between">
                 <div class="text-sm/6 font-medium text-gray-900">
-                    Montant du dépôt
+                    Compte de retrait
                 </div>
             </div>
 
@@ -166,7 +166,6 @@ onMounted(() => {
 const submit = () => {
     form.post(route('recipients.index'), {
         preserveScroll: true,
-        onSuccess: () => form.reset(),
     });
 };
 </script>
