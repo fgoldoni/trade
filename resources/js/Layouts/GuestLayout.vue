@@ -123,7 +123,7 @@
                                         'scale-100': !scrolledFromTop,
                                         'scale-75': scrolledFromTop,
                                     }"
-                                    src="https://nova-s3-bucket-forge.s3.eu-central-1.amazonaws.com/avatars/d3wVUgeVem07hPUB2bZ0z69KirpM92oajy31ZaN8.png"
+                                    src="/images/logo.png"
                                     alt="Demo"
                                 />
                             </Link>
