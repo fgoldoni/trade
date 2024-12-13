@@ -49,7 +49,7 @@
                         Service client
                     </a>
 
-                    <a :href="`https://wa.me/${$page.props.app.phone}`" class="text-white bg-[#2557D6] hover:bg-[#2557D6]/90 focus:ring-4 focus:ring-[#2557D6]/50 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#2557D6]/50 me-2 mb-2">
+                    <a :href="`https://wa.me/${$page.props.app.phone}`" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-800 dark:bg-white dark:border-gray-700 dark:text-gray-900 dark:hover:bg-gray-200 me-2 mb-2">
                         <svg
                             class="w-8 h-4 me-2 -ms-1 mb-1 text-sky-500"
                             fill="currentColor"
