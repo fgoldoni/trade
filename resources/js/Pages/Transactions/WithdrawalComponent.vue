@@ -11,7 +11,11 @@
             <div class="flex-auto rounded-md p-3 ring-1 ring-inset ring-gray-200">
                 <div class="flex justify-between gap-x-4">
                     <div class="py-0.5 text-xs/5 text-gray-500">
-                        <span class="font-medium text-gray-900">{{ activityItem.value }} {{ $page.props.app.currency }}</span>
+                        <span :class="[activityItem.type === 'inc' ? 'text-green-900' : 'text-rose-900', 'font-bold']">
+                            <span v-if="activityItem.type === 'inc'"> + </span>
+                            <span v-else> - </span>
+                            {{ activityItem.value }} {{ $page.props.app.currency }}
+                        </span>
                     </div>
                     <time :datetime="activityItem.created_at" class="flex-none py-0.5 text-xs/5 text-gray-500">
                         {{ format(parseISO(activityItem.created_at), "dd. MMM yyyy  H:mm", { locale: fr }) }}</time>
