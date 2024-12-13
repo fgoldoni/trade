@@ -54,12 +54,19 @@ class WithdrawalController extends Controller
             $amount = (int) ($request->amount - Percentage::of(15, $request->amount));
 
 
+//            $response = Http::acceptJson()->withHeaders(
+//                [
+//                    'Authorization' => env('NOTCHPAY_ID'),
+//                    'X-Grant' => env('NOTCHPAY_X_GRANT'),
+//                ]
+//            )->get(env('NOTCHPAY_API_URL') . '/recipients');
+
             $response = Http::acceptJson()->withHeaders(
                 [
                     'Authorization' => env('NOTCHPAY_ID'),
                     'X-Grant' => env('NOTCHPAY_X_GRANT'),
                 ]
-            )->post(env('NOTCHPAY_API_URL') . '/transfers', [
+            )->post(env('NOTCHPAY_API_URL') . '/transfers/', [
                 'recipient' => $recipient,
                 'reference' => $reference,
                 'amount' => $amount,

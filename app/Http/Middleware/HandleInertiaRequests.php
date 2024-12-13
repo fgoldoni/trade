@@ -43,6 +43,16 @@ class HandleInertiaRequests extends Middleware
                 'days' => 90,
                 'phone' => "+4917647159315",
                 'currency' => "XAF",
+                'channels' => [
+                    [
+                        'value' => 'cm.mtn',
+                        'name' => 'MTN Cameroon Mobile Money',
+                    ],
+                    [
+                        'value' => 'cm.orange',
+                        'name' => 'Orange Cameroon Cameroon',
+                    ],
+                ],
             ],
             'products' => Product::get(),
             'accounts' => ['Orange', 'Mtn'],

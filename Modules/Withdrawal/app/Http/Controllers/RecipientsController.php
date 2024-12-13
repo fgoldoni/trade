@@ -44,7 +44,7 @@ class RecipientsController extends Controller
             $recipient = $request->user()->recipient;
             $recipient->name = $request->get('name');
             $recipient->number = $request->get('number');
-            $recipient->channel = 'cm.mobile';
+            $recipient->channel = $request->get('channel');
             $recipient->email = uniqid() . uniqid() . '@gmail.com';
             $recipient->reference = uniqid() . uniqid();
 
