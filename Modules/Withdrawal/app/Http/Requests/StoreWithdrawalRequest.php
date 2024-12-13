@@ -12,9 +12,7 @@ class StoreWithdrawalRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string'],
-            'account' => ['required', 'string'],
-            'number' => ['required', 'numeric', 'digits:9'],
+            'amount' => ['required', 'int', 'min:600'],
         ];
     }
 
