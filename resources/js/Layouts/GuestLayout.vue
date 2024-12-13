@@ -116,7 +116,7 @@
                 >
                     <div class="flex items-center">
                         <div class="flex-shrink-0">
-                            <Link :href="route('dashboard')">
+                            <Link :href="route('home')">
                                 <img
                                     class="h-8 w-auto origin-left transform transition duration-700"
                                     :class="{
@@ -156,18 +156,27 @@
                             :scrolled-from-top="scrolledFromTop"
                         />
 
+
+
                         <a
-                            v-if="!$page.props.auth.user"
-                            :href="route('dashboard')"
+                            v-if="$page.props.auth.user"
+                            :href="route('home')"
                             :class="[
                                 scrolledFromTop ? 'py-1' : 'py-1.5',
-                                'rounded-md bg-primary-700 px-3 text-xs font-semibold uppercase text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600',
+                                'rounded-md bg-primary-700 px-3 text-xs font-semibold text-center inline-flex items-center uppercase text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600',
                             ]"
-                            >{{ __('Login') }}</a
-                        >
+                            >
+
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-4  -ms-1">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                            </svg>
+
+
+                            {{ $page.props.auth.user.phone }}
+                        </a>
 
                         <Link
-                            v-else
+                            v-if="$page.props.auth.user"
                             :href="route('logout')"
                             method="post"
                             as="button"

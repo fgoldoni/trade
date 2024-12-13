@@ -35,54 +35,54 @@ function handleImageError() {
                     <div class="mb-8 grid grid-cols-4 gap-2 sm:gap-4">
                         <Link
                             :href="route('deposits.index')"
-                            class="btn-base flex cursor-pointer flex-col items-center justify-center rounded-lg border border-slate-300 bg-primary-200 py-4 shadow-lg dark:border-slate-700 dark:bg-primary-800"
+                            class="btn-base flex cursor-pointer flex-col items-center justify-center rounded-lg border border-slate-300 bg-primary-900 py-4 shadow-lg dark:border-slate-700 dark:bg-primary-800"
                         >
                             <CircleStackIcon
                                 :class="`mx-auto h-auto w-8 flex-shrink-0 text-primary-500 sm:w-16`"
                                 aria-hidden="true"
                             />
                             <p
-                                class="mt-4 text-xs font-bold text-slate-600 hover:underline dark:text-white sm:text-xl"
+                                class="mt-4 text-xs font-bold text-white hover:underline sm:text-xl"
                             >
                                 {{ __('Dépôt') }}
                             </p>
                         </Link>
                         <Link
                             :href="route('withdrawal.index')"
-                            class="btn-base flex cursor-pointer flex-col items-center justify-center rounded-lg border border-slate-300 bg-primary-200 py-4 shadow-lg dark:border-slate-700 dark:bg-primary-800"
+                            class="btn-base flex cursor-pointer flex-col items-center justify-center rounded-lg border border-slate-300 bg-primary-900 py-4 shadow-lg dark:border-slate-700 dark:bg-primary-800"
                         >
                             <ArrowUpTrayIcon
                                 :class="`mx-auto h-auto w-8 flex-shrink-0 text-primary-500 sm:w-16`"
                                 aria-hidden="true"
                             />
                             <p
-                                class="mt-4 text-xs font-bold text-slate-600 hover:underline dark:text-white sm:text-xl"
+                                class="mt-4 text-xs font-bold text-white hover:underline sm:text-x"
                             >
                                 {{ __('Retrait') }}
                             </p>
                         </Link>
                         <div
-                            class="btn-base flex cursor-pointer flex-col items-center justify-center rounded-lg border border-slate-300 bg-primary-200 py-4 shadow-lg dark:border-slate-700 dark:bg-primary-800"
+                            class="btn-base flex cursor-pointer flex-col items-center justify-center rounded-lg border border-slate-300 bg-primary-900 py-4 shadow-lg dark:border-slate-700 dark:bg-primary-800"
                         >
                             <ArrowPathIcon
                                 :class="`mx-auto h-auto w-8 flex-shrink-0 text-primary-500 sm:w-16`"
                                 aria-hidden="true"
                             />
                             <p
-                                class="mt-4 text-xs font-bold text-slate-600 hover:underline dark:text-white sm:text-xl"
+                                class="mt-4 text-xs font-bold text-white hover:underline sm:text-x"
                             >
                                 {{ __('Transactions') }}
                             </p>
                         </div>
                         <div
-                            class="btn-base flex cursor-pointer flex-col items-center justify-center rounded-lg border border-slate-300 bg-primary-200 py-4 shadow-lg dark:border-slate-700 dark:bg-primary-800"
+                            class="btn-base flex cursor-pointer flex-col items-center justify-center rounded-lg border border-slate-300 bg-primary-900 py-4 shadow-lg dark:border-slate-700 dark:bg-primary-800"
                         >
                             <QuestionMarkCircleIcon
                                 :class="`mx-auto h-auto w-8 flex-shrink-0 text-primary-500 sm:w-16`"
                                 aria-hidden="true"
                             />
                             <p
-                                class="mt-4 text-xs font-bold text-slate-600 hover:underline dark:text-white sm:text-xl"
+                                class="mt-4 text-xs font-bold text-white hover:underline sm:text-x"
                             >
                                 {{ __('FAQ') }}
                             </p>
