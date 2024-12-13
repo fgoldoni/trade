@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('referral_code')->index()->unique();
             $table->unsignedBigInteger('referred_by')->nullable();
             $table->integer('referral_count')->default(0);
+            $table->ipAddress('ip')->nullable();
 
             $table->timestamp('banned_at')->nullable();
 

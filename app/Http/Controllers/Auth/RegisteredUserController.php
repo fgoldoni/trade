@@ -51,7 +51,8 @@ class RegisteredUserController extends Controller
             'phone' => $request->phone,
             'password' => Hash::make($request->password),
             'referred_by' => $referredBy,
-            'referral_code' => $this->generate()
+            'referral_code' => $this->generate(),
+            'ip' => $request->ip()
         ]);
 
         LaravelPayPocket::deposit($user, 'wallet_1', 1000);

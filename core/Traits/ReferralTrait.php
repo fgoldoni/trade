@@ -3,6 +3,7 @@
 namespace Core\Traits;
 
 use App\Models\User;
+use Darryldecode\Cart\Facades\CartFacade;
 use JustSteveKing\StatusCode\Http;
 
 trait ReferralTrait
@@ -68,6 +69,17 @@ trait ReferralTrait
         if ($userId) {
             $this->incrementReferralCount($userId);
             return $userId;
+        }
+        return null;
+    }
+
+    public function getUserByReferralByAndAddBonus(User $user, int $amount = 0): User|null
+    {
+        $recipient = User::find($user->referred_by);
+
+        if ($recipient && ($amount > 0)) {
+            $recipient->deposit('wallet_1', $amount);
+            return $recipient;
         }
         return null;
     }
