@@ -43,7 +43,7 @@ class CartJob implements ShouldQueue
                     $user = User::find($this->userId);
 
                     if (CartFacade::session($this->reference . '-' . $this->userId)->getTotal() >= 2000) {
-                        $user->deposit('wallet_1', $originalAmount);
+                        $user->deposit('wallet_1', $originalAmount, 'Dépôt');
                         $this->getUserByReferralByAndAddBonus($user, $originalAmount);
                     }
 

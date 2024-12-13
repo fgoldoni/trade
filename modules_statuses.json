@@ -3,5 +3,6 @@
     "Carts": true,
     "Deposits": true,
     "NotchPay": true,
-    "Withdrawal": true
+    "Withdrawal": true,
+    "Transactions": true
 }

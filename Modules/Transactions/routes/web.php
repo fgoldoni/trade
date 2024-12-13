@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\Withdrawal\Http\Controllers\WithdrawalController;
+use Modules\Transactions\Http\Controllers\TransactionsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +15,5 @@ use Modules\Withdrawal\Http\Controllers\WithdrawalController;
 */
 
 Route::group([], function () {
-    Route::resource('withdrawal', WithdrawalController::class)->middleware(['auth', 'verified', 'password.confirm'])->names('withdrawal');
-    Route::resource('recipients', \Modules\Withdrawal\Http\Controllers\RecipientsController::class)->middleware(['auth', 'verified', 'password.confirm', \Illuminate\Foundation\Http\Middleware\HandlePrecognitiveRequests::class])->names('recipients');
+    Route::resource('transactions', TransactionsController::class)->middleware(['auth', 'verified', \Illuminate\Foundation\Http\Middleware\HandlePrecognitiveRequests::class])->names('transactions');
 });

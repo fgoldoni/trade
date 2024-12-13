@@ -19,7 +19,6 @@ use Modules\Withdrawal\Models\Recipient;
 
 class User extends Authenticatable implements BannableContract, WalletOperations
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable, ReferralTrait, Bannable, ManagesWallet, HasManyWithdrawal;
 
     /**

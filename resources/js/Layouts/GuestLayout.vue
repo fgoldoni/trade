@@ -180,7 +180,7 @@
                             :href="route('logout')"
                             method="post"
                             as="button"
-                            class="btn-title group -mx-2 flex rounded-md p-2 text-sm font-semibold uppercase leading-6 text-rose-700 hover:bg-rose-50 hover:text-rose-600 dark:hover:bg-slate-900"
+                            class="btn-title group  flex rounded-md p-1.5 text-sm font-semibold uppercase leading-6 text-rose-700 hover:bg-primary-500 hover:text-rose-600 dark:hover:bg-primary-900"
                         >
                             <svg
                                 v-if="processing"
@@ -205,7 +205,7 @@
                             </svg>
                             <ArrowRightOnRectangleIcon
                                 v-if="!processing"
-                                class="h-6 w-6 shrink-0 text-rose-400 group-hover:text-rose-600"
+                                class="h-4 w-6 shrink-0 text-rose-400 group-hover:text-rose-600"
                                 aria-hidden="true"
                             />
                         </Link>

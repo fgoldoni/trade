@@ -61,7 +61,8 @@ function handleImageError() {
                                 {{ __('Retrait') }}
                             </p>
                         </Link>
-                        <div
+                        <Link
+                            :href="route('transactions.index')"
                             class="btn-base flex cursor-pointer flex-col items-center justify-center rounded-lg border border-slate-300 bg-primary-900 py-4 shadow-lg dark:border-slate-700 dark:bg-primary-800"
                         >
                             <ArrowPathIcon
@@ -73,7 +74,7 @@ function handleImageError() {
                             >
                                 {{ __('Transactions') }}
                             </p>
-                        </div>
+                        </Link>
                         <div
                             class="btn-base flex cursor-pointer flex-col items-center justify-center rounded-lg border border-slate-300 bg-primary-900 py-4 shadow-lg dark:border-slate-700 dark:bg-primary-800"
                         >

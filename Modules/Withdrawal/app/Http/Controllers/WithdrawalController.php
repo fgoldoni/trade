@@ -84,7 +84,7 @@ class WithdrawalController extends Controller
                 $withdrawal->save();
 
                 if ($response->object()->transfer->status === 'complete') {
-                    $request->user()->pay($request->amount);
+                    $request->user()->pay($request->amount, 'Retrait');
                 }
             } else if ($response->failed()) {
                 logger(self::class . ' - ' . json_encode($response->object()));
