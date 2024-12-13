@@ -235,9 +235,11 @@
                             stroke-width="1.5"
                             stroke="currentColor"
                             :class="[
-                                    route().current('home') ? `text-slate-300` : 'text-slate-400',
-                                    `mb-2 h-6 w-6 group-hover:text-white dark:text-slate-200`,
-                                ]"
+                                route().current('home')
+                                    ? `text-slate-300`
+                                    : 'text-slate-400',
+                                `mb-2 h-6 w-6 group-hover:text-white dark:text-slate-200`,
+                            ]"
                         >
                             <path
                                 stroke-linecap="round"
@@ -264,10 +266,12 @@
                             viewBox="0 0 24 24"
                             stroke-width="1.5"
                             stroke="currentColor"
-                           :class="[
-                                    route().current('home') ? `text-slate-300` : 'text-slate-400',
-                                    `mb-2 h-6 w-6 group-hover:text-white dark:text-slate-200`,
-                                ]"
+                            :class="[
+                                route().current('home')
+                                    ? `text-slate-300`
+                                    : 'text-slate-400',
+                                `mb-2 h-6 w-6 group-hover:text-white dark:text-slate-200`,
+                            ]"
                         >
                             <path
                                 stroke-linecap="round"
@@ -294,10 +298,12 @@
                             viewBox="0 0 24 24"
                             stroke-width="1.5"
                             stroke="currentColor"
-                           :class="[
-                                    route().current('home') ? `text-slate-300` : 'text-slate-400',
-                                    `mb-2 h-6 w-6 group-hover:text-white dark:text-slate-200`,
-                                ]"
+                            :class="[
+                                route().current('home')
+                                    ? `text-slate-300`
+                                    : 'text-slate-400',
+                                `mb-2 h-6 w-6 group-hover:text-white dark:text-slate-200`,
+                            ]"
                         >
                             <path
                                 stroke-linecap="round"
@@ -319,10 +325,12 @@
                         ]"
                     >
                         <svg
-                           :class="[
-                                    route().current('home') ? `text-slate-300` : 'text-slate-400',
-                                    `mb-2 h-6 w-6 group-hover:text-white dark:text-slate-200`,
-                                ]"
+                            :class="[
+                                route().current('home')
+                                    ? `text-slate-300`
+                                    : 'text-slate-400',
+                                `mb-2 h-6 w-6 group-hover:text-white dark:text-slate-200`,
+                            ]"
                             aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg"
                             width="24"

@@ -35,7 +35,8 @@
                             'flex items-center justify-center rounded-md px-3 py-3 text-sm font-semibold uppercase sm:flex-1',
                         ]"
                     >
-                        {{ option.formatted_price }} {{ $page.props.app.currency }}
+                        {{ option.formatted_price }}
+                        {{ $page.props.app.currency }}
                     </div>
                 </RadioGroupOption>
             </RadioGroup>
@@ -62,7 +63,10 @@
         </div>
 
         <button
-            :class="[form.processing ? 'opacity-75': '', `font-heading mt-8 w-full rounded-md bg-primary-700 px-8 py-3 font-bold uppercase text-white hover:bg-primary-600 md:mt-5`]"
+            :class="[
+                form.processing ? 'opacity-75' : '',
+                `font-heading mt-8 w-full rounded-md bg-primary-700 px-8 py-3 font-bold uppercase text-white hover:bg-primary-600 md:mt-5`,
+            ]"
             :disabled="form.processing"
         >
             <svg

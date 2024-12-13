@@ -1,15 +1,9 @@
 <script setup lang="ts">
 import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
 import GuestLayout from '@/Layouts/GuestLayout.vue';
+import Heading from '@/Pages/Deposits/Heading.vue';
+import { LockClosedIcon } from '@heroicons/vue/24/outline';
 import { Head, useForm } from '@inertiajs/vue3';
-import {
-    LockClosedIcon,
-    ExclamationCircleIcon,
-} from '@heroicons/vue/24/outline';
-import Heading from "@/Pages/Deposits/Heading.vue";
 
 const form = useForm({
     password: '',
@@ -28,20 +22,24 @@ const submit = () => {
     <GuestLayout>
         <Head title="Confirm Password" />
 
-        <Heading title="Confirmation de mot de passe" class="mt-8 px-8"></Heading>
-
+        <Heading
+            title="Confirmation de mot de passe"
+            class="mt-8 px-8"
+        ></Heading>
 
         <!-- Section 1 -->
         <section class="py-8">
-
-            <div class="max-w-5xl px-10 mx-auto xl:px-5">
-
+            <div class="mx-auto max-w-5xl px-10 xl:px-5">
                 <div class="flex flex-col justify-center space-y-8">
                     <LockClosedIcon
                         :class="`mx-auto h-auto w-12 flex-shrink-0 text-green-500 sm:w-16`"
                         aria-hidden="true"
                     />
-                    <h2 class="w-full mx-auto text-xl font-extrabold leading-none text-center text-gray-600  dark:text-gray-400 sm:text-5xl md:text-4xl md:text-center">Confirmation de mot de passe</h2>
+                    <h2
+                        class="mx-auto w-full text-center text-xl font-extrabold leading-none text-gray-600 dark:text-gray-400 sm:text-5xl md:text-center md:text-4xl"
+                    >
+                        Confirmation de mot de passe
+                    </h2>
 
                     <form @submit.prevent="submit">
                         <div
@@ -62,13 +60,14 @@ const submit = () => {
                             >
                                 {{ __('Confirmez votre mot de passe.') }}
                             </label>
-                            <InputError
-                                :message="form.errors.password"
-                            />
+                            <InputError :message="form.errors.password" />
                         </div>
 
                         <button
-                            :class="[form.processing ? 'opacity-75': '', `font-heading mt-8 w-full rounded-md bg-primary-700 px-8 py-3 font-bold uppercase text-white hover:bg-primary-600 md:mt-5`]"
+                            :class="[
+                                form.processing ? 'opacity-75' : '',
+                                `font-heading mt-8 w-full rounded-md bg-primary-700 px-8 py-3 font-bold uppercase text-white hover:bg-primary-600 md:mt-5`,
+                            ]"
                             :disabled="form.processing"
                         >
                             <svg
@@ -95,11 +94,8 @@ const submit = () => {
                             <span v-else>{{ __('Confirmer') }}</span>
                         </button>
                     </form>
-
                 </div>
-
             </div>
         </section>
-
     </GuestLayout>
 </template>

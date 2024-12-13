@@ -1,12 +1,9 @@
 <script setup lang="ts">
 import GuestLayout from '@/Layouts/GuestLayout.vue';
+import Heading from '@/Pages/Deposits/Heading.vue';
+import Form from '@/Pages/Recipients/Form.vue';
+import { PlusIcon } from '@heroicons/vue/16/solid';
 import { Head } from '@inertiajs/vue3';
-import Heading from "@/Pages/Deposits/Heading.vue";
-import { ExclamationTriangleIcon } from '@heroicons/vue/20/solid'
-import RecipientMissingAlert from "@/Pages/Withdrawal/RecipientMissingAlert.vue";
-import {PlusIcon} from "@heroicons/vue/16/solid";
-import Form from "@/Pages/Recipients/Form.vue";
-import RecipientComponent from "@/Components/RecipientComponent.vue";
 
 defineProps<{
     recipient?: Object;
@@ -26,14 +23,13 @@ const highlights = [
             'En cas de problème de recharge, nous vous invitons à transmettre le message de confirmation de paiement au service client.',
     },
 ];
-
 </script>
 
 <template>
     <Head title="Welcome" />
     <GuestLayout>
         <div class="p-8">
-            <Heading  title="Compte de retrait"></Heading>
+            <Heading title="Compte de retrait"></Heading>
 
             <Form :recipient="recipient"></Form>
 
@@ -45,14 +41,14 @@ const highlights = [
                         :data-disabled="highlight.disabled"
                         class="group flex items-start gap-4 text-sm/6 text-gray-600 data-[disabled]:text-gray-400"
                     >
-                    <span class="inline-flex h-6 items-center">
-                        <PlusIcon
-                            class="size-4 fill-gray-400 group-data-[disabled]:fill-gray-300"
-                            aria-hidden="true"
-                        />
-                    </span>
+                        <span class="inline-flex h-6 items-center">
+                            <PlusIcon
+                                class="size-4 fill-gray-400 group-data-[disabled]:fill-gray-300"
+                                aria-hidden="true"
+                            />
+                        </span>
                         <span v-if="highlight.disabled" class="sr-only"
-                        >Not included:</span
+                            >Not included:</span
                         >
                         {{ highlight.description }}
                     </li>

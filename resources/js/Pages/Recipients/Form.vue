@@ -57,11 +57,20 @@
             <InputError :message="form.errors.number_confirmation" />
         </div>
 
-        <AlertComponent :message="$page.props.flash.error"  v-if="$page.props.flash.error"></AlertComponent>
-        <AlertSuccessComponent :message="$page.props.flash.success"  v-if="$page.props.flash.success"></AlertSuccessComponent>
+        <AlertComponent
+            :message="$page.props.flash.error"
+            v-if="$page.props.flash.error"
+        ></AlertComponent>
+        <AlertSuccessComponent
+            :message="$page.props.flash.success"
+            v-if="$page.props.flash.success"
+        ></AlertSuccessComponent>
 
         <button
-            :class="[form.processing ? 'opacity-75': '', `font-heading mt-8 w-full rounded-md bg-primary-700 px-8 py-3 font-bold uppercase text-white hover:bg-primary-600 md:mt-5`]"
+            :class="[
+                form.processing ? 'opacity-75' : '',
+                `font-heading mt-8 w-full rounded-md bg-primary-700 px-8 py-3 font-bold uppercase text-white hover:bg-primary-600 md:mt-5`,
+            ]"
             :disabled="form.processing"
         >
             <svg
@@ -91,19 +100,15 @@
 </template>
 
 <script setup lang="ts">
+import AlertComponent from '@/Components/AlertComponent.vue';
+import AlertSuccessComponent from '@/Components/AlertSuccessComponent.vue';
 import InputError from '@/Components/InputError.vue';
-import { RadioGroup, RadioGroupOption } from '@headlessui/vue';
-import { PlusIcon } from '@heroicons/vue/16/solid';
-import { usePage } from '@inertiajs/vue3';
-import {onMounted, ref} from "vue";
-import AlertComponent from "@/Components/AlertComponent.vue";
 import { useForm } from '@inertiajs/vue3';
-import AlertSuccessComponent from "@/Components/AlertSuccessComponent.vue";
+import { onMounted, ref } from 'vue';
 
 const props = defineProps<{
     recipient?: Object;
 }>();
-
 
 const form = useForm({
     name: props.recipient.name,
@@ -111,18 +116,16 @@ const form = useForm({
     number_confirmation: '',
 });
 
-const message = ref(null)
+const message = ref(null);
 
 onMounted(() => {
-    message.value = null
+    message.value = null;
 });
-
-
 
 const submit = () => {
     form.post(route('recipients.index'), {
         preserveScroll: true,
         onSuccess: () => form.reset(),
-    })
+    });
 };
 </script>

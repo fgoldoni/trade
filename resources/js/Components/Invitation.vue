@@ -123,7 +123,8 @@ const clipboard = async () => {
                 </div>
 
                 <p v-else>
-                    Votre navigateur ne prend pas en charge l'API du presse-papiers.
+                    Votre navigateur ne prend pas en charge l'API du
+                    presse-papiers.
                 </p>
             </div>
         </div>

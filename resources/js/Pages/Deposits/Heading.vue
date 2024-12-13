@@ -34,7 +34,8 @@
                             <a
                                 href="javascript:;"
                                 class="ml-4 text-sm font-medium text-gray-400"
-                                > {{ title }}</a
+                            >
+                                {{ title }}</a
                             >
                         </div>
                     </li>
