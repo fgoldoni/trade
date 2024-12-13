@@ -83,8 +83,11 @@ class WithdrawalController extends Controller
                 $withdrawal->user_id = $request->user()->id;
                 $withdrawal->save();
 
-                if ($response->object()->transfer->status === 'complete') {
+                if ($response->object()->transfer->status === 'complete' || $response->object()->transfer->status === 'sent' || $response->object()->transfer->status === 'pending') {
                     $request->user()->pay($request->amount, 'Retrait');
+                } else {
+                    logger(self::class . ' - ' . json_encode($response->object()));
+                    throw new \Exception("Une erreur s'est produite lors du retrait. Nous vous invitons à réessayer ou à contacter le service client pour assistance.");
                 }
             } else if ($response->failed()) {
                 logger(self::class . ' - ' . json_encode($response->object()));

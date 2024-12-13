@@ -4,7 +4,9 @@ namespace Modules\Transactions\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Inertia\Inertia;
+use Modules\Withdrawal\Models\Withdrawal;
 
 class TransactionsController extends Controller
 {
@@ -16,7 +18,7 @@ class TransactionsController extends Controller
         $wallet = $request->user()->wallets()->where('type', 'wallet_1')->first();
 
         if ($wallet) {
-            $transactions = $wallet->logs()->get();
+            $transactions = $wallet->logs()->latest()->get();
         }
 
         return Inertia::render('Transactions/Index', ['transactions' => $transactions]);

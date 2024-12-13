@@ -11,9 +11,10 @@
             <div class="flex-auto rounded-md p-3 ring-1 ring-inset ring-gray-200">
                 <div class="flex justify-between gap-x-4">
                     <div class="py-0.5 text-xs/5 text-gray-500">
-                        <span class="font-medium text-gray-900">{{ activityItem.value }}</span> commented
+                        <span class="font-medium text-gray-900">{{ activityItem.value }} {{ $page.props.app.currency }}</span>
                     </div>
-                    <time :datetime="activityItem.created_at" class="flex-none py-0.5 text-xs/5 text-gray-500">{{ activityItem.created_at }}</time>
+                    <time :datetime="activityItem.created_at" class="flex-none py-0.5 text-xs/5 text-gray-500">
+                        {{ format(parseISO(activityItem.created_at), "dd. MMM yyyy  H:mm", { locale: fr }) }}</time>
                 </div>
                 <p class="text-sm/6 text-gray-500">{{ activityItem.notes }}</p>
             </div>
@@ -35,6 +36,11 @@ import {
 } from '@heroicons/vue/20/solid'
 import { Listbox, ListboxButton, ListboxLabel, ListboxOption, ListboxOptions } from '@headlessui/vue'
 import { CheckIcon,UserIcon, GiftIcon, BanknotesIcon, CircleStackIcon } from '@heroicons/vue/20/solid'
+
+import parseISO from "date-fns/parseISO";
+import format from "date-fns/format";
+import addDays from "date-fns/addDays";
+import { fr } from "date-fns/locale";
 
 defineProps<{
     transactions?: Object;
