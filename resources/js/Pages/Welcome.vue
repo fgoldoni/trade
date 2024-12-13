@@ -56,7 +56,7 @@ function handleImageError() {
                                 aria-hidden="true"
                             />
                             <p
-                                class="mt-4 text-xs font-bold text-white hover:underline sm:text-x"
+                                class="mt-4 text-xs font-bold text-white hover:underline sm:text-xl"
                             >
                                 {{ __('Retrait') }}
                             </p>
@@ -69,7 +69,7 @@ function handleImageError() {
                                 aria-hidden="true"
                             />
                             <p
-                                class="mt-4 text-xs font-bold text-white hover:underline sm:text-x"
+                                class="mt-4 text-xs font-bold text-white hover:underline sm:text-xl"
                             >
                                 {{ __('Transactions') }}
                             </p>
@@ -82,7 +82,7 @@ function handleImageError() {
                                 aria-hidden="true"
                             />
                             <p
-                                class="mt-4 text-xs font-bold text-white hover:underline sm:text-x"
+                                class="mt-4 text-xs font-bold text-white hover:underline sm:text-xl"
                             >
                                 {{ __('FAQ') }}
                             </p>
