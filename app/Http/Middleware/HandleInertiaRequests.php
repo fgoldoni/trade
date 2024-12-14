@@ -46,11 +46,11 @@ class HandleInertiaRequests extends Middleware
                 'channels' => [
                     [
                         'value' => 'cm.mtn',
-                        'name' => 'MTN Cameroon Mobile Money',
+                        'name' => 'MTN',
                     ],
                     [
                         'value' => 'cm.orange',
-                        'name' => 'Orange Cameroon Cameroon',
+                        'name' => 'Orange',
                     ],
                 ],
             ],

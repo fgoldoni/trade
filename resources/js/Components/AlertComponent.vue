@@ -15,13 +15,13 @@
                         :href="`https://wa.me/${$page.props.app.phone}`"
                         :class="`font-medium text-primary-700 underline hover:text-primary-600`"
                     >
-                        <span>
-                            {{
-                                __(
-                                    'Veuillez cliquer ici pour contacter le service client',
-                                )
-                            }}
-                        </span>
+<!--                        <span>-->
+<!--                            {{-->
+<!--                                __(-->
+<!--                                    'Veuillez cliquer ici pour contacter le service client',-->
+<!--                                )-->
+<!--                            }}-->
+<!--                        </span>-->
                     </a>
                 </p>
             </div>

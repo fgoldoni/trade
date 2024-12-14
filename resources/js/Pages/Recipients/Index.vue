@@ -68,7 +68,7 @@ const highlights = [
 
                     <RadioGroup
                         v-model="form.channel"
-                        class="mt-2 grid grid-cols-1 gap-3 sm:grid-cols-2"
+                        class="mt-2 grid grid-cols-2 gap-3"
                     >
                         <RadioGroupOption
                             as="template"
@@ -195,28 +195,6 @@ const highlights = [
                     <span v-else>{{ __('Enregistrer') }}</span>
                 </button>
             </form>
-
-            <div class="mb-32 mt-4">
-                <ul class="mt-3 space-y-3">
-                    <li
-                        v-for="highlight in highlights"
-                        :key="highlight.description"
-                        :data-disabled="highlight.disabled"
-                        class="group flex items-start gap-4 text-sm/6 text-gray-600 data-[disabled]:text-gray-400"
-                    >
-                        <span class="inline-flex h-6 items-center">
-                            <PlusIcon
-                                class="size-4 fill-gray-400 group-data-[disabled]:fill-gray-300"
-                                aria-hidden="true"
-                            />
-                        </span>
-                        <span v-if="highlight.disabled" class="sr-only"
-                            >Not included:</span
-                        >
-                        {{ highlight.description }}
-                    </li>
-                </ul>
-            </div>
         </div>
     </GuestLayout>
 </template>

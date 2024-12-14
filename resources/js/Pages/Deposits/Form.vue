@@ -16,12 +16,12 @@
                     v-for="option in $page.props.products"
                     :key="option.id"
                     :value="option.price"
-                    :disabled="!option.online"
+                    :disabled="false"
                     v-slot="{ active, checked }"
                 >
                     <div
                         :class="[
-                            option.online
+                            true
                                 ? 'cursor-pointer focus:outline-none'
                                 : 'cursor-not-allowed opacity-25',
                             active
@@ -93,27 +93,7 @@
             <span v-else>{{ __('Recharger') }}</span>
         </button>
 
-        <div class="mb-32 mt-4">
-            <ul class="mt-3 space-y-3">
-                <li
-                    v-for="highlight in highlights"
-                    :key="highlight.description"
-                    :data-disabled="highlight.disabled"
-                    class="group flex items-start gap-4 text-sm/6 text-gray-600 data-[disabled]:text-gray-400"
-                >
-                    <span class="inline-flex h-6 items-center">
-                        <PlusIcon
-                            class="size-4 fill-gray-400 group-data-[disabled]:fill-gray-300"
-                            aria-hidden="true"
-                        />
-                    </span>
-                    <span v-if="highlight.disabled" class="sr-only"
-                        >Not included:</span
-                    >
-                    {{ highlight.description }}
-                </li>
-            </ul>
-        </div>
+        <HighlightsComponent :highlights="highlights"></HighlightsComponent>
     </form>
 </template>
 
@@ -123,6 +103,7 @@ import { RadioGroup, RadioGroupOption } from '@headlessui/vue';
 import { PlusIcon } from '@heroicons/vue/16/solid';
 import { usePage } from '@inertiajs/vue3';
 import { useForm } from 'laravel-precognition-vue';
+import HighlightsComponent from "@/Components/HighlightsComponent.vue";
 
 const form = useForm('post', '/notchpay', {
     amount: null,
@@ -143,6 +124,9 @@ const submit = () =>
     });
 
 const highlights = [
+    {
+        description: 'Le chargement de la page de paiement peut prendre un peu de temps avant de s\'afficher. Veuillez ne pas cliquer plusieurs fois sur "RECHARGER".',
+    },
     {
         description:
             'Le montant minimum de recharge est de 2 000 XAF. Si le montant est inférieur à 2 000 XAF, il ne sera pas crédité sur le solde de votre compte.',

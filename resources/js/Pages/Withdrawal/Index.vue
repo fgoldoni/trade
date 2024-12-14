@@ -3,8 +3,8 @@ import GuestLayout from '@/Layouts/GuestLayout.vue';
 import Heading from '@/Pages/Deposits/Heading.vue';
 import RecipientMissingAlert from '@/Pages/Withdrawal/RecipientMissingAlert.vue';
 import WithdrawalFormComponent from '@/Pages/Withdrawal/WithdrawalFormComponent.vue';
-import { PlusIcon } from '@heroicons/vue/16/solid';
 import { Head } from '@inertiajs/vue3';
+import HighlightsComponent from "@/Components/HighlightsComponent.vue";
 
 defineProps<{
     recipient?: Object;
@@ -13,15 +13,27 @@ defineProps<{
 const highlights = [
     {
         description:
-            'Le montant minimum de recharge est de 5 000 XAF. Si le montant est inférieur à 5 000 XAF, il ne sera pas crédité sur le solde de votre compte.',
+            'Le montant minimum de retrait est fixé à 600 XAF.',
     },
     {
         description:
-            'La recharge s’effectue automatiquement et sera disponible sur le compte une fois le paiement finalisé.',
+            'Des frais de traitement de 15 % seront appliqués pour le retrait.',
     },
     {
         description:
-            'En cas de problème de recharge, nous vous invitons à transmettre le message de confirmation de paiement au service client.',
+            'L’ordre de retrait est traité automatiquement et les comptes sont généralement crédités en moins de 5 minutes. En cas de problèmes avec Orange ou MTN, l’opération peut être traitée manuellement et prendre jusqu’à 24 heures.',
+    },
+    {
+        description:
+            'Il n\'y a aucune limite de retraits par jour. En cas d\'échec, vous pouvez soumettre une nouvelle demande ou utiliser un autre compte.',
+    },
+    {
+        description:
+            'Les retraits sont disponibles 24h/24, 7 jours sur 7, y compris pendant les jours fériés.',
+    },
+    {
+        description:
+            'Conditions de retrait : Il est nécessaire d\'acheter au moins un pack pour activer la fonctionnalité de retrait.',
     },
 ];
 </script>
@@ -38,27 +50,7 @@ const highlights = [
                 v-else
                 :recipient="recipient"
             ></WithdrawalFormComponent>
-            <div class="mb-32 mt-4">
-                <ul class="mt-3 space-y-3">
-                    <li
-                        v-for="highlight in highlights"
-                        :key="highlight.description"
-                        :data-disabled="highlight.disabled"
-                        class="group flex items-start gap-4 text-sm/6 text-gray-600 data-[disabled]:text-gray-400"
-                    >
-                        <span class="inline-flex h-6 items-center">
-                            <PlusIcon
-                                class="size-4 fill-gray-400 group-data-[disabled]:fill-gray-300"
-                                aria-hidden="true"
-                            />
-                        </span>
-                        <span v-if="highlight.disabled" class="sr-only"
-                            >Not included:</span
-                        >
-                        {{ highlight.description }}
-                    </li>
-                </ul>
-            </div>
+            <HighlightsComponent :highlights="highlights"></HighlightsComponent>
         </div>
     </GuestLayout>
 </template>
