@@ -4,5 +4,6 @@
     "Deposits": true,
     "NotchPay": true,
     "Withdrawal": true,
-    "Transactions": true
+    "Transactions": true,
+    "Faqs": true
 }

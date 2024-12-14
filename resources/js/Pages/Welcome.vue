@@ -75,7 +75,8 @@ function handleImageError() {
                                 {{ __('Transactions') }}
                             </p>
                         </Link>
-                        <div
+                        <Link
+                            :href="route('faqs.index')"
                             class="btn-base flex cursor-pointer flex-col items-center justify-center rounded-lg border border-slate-300 bg-primary-900 py-4 shadow-lg dark:border-slate-700 dark:bg-primary-800"
                         >
                             <QuestionMarkCircleIcon
@@ -87,7 +88,7 @@ function handleImageError() {
                             >
                                 {{ __('FAQ') }}
                             </p>
-                        </div>
+                        </Link>
                     </div>
                     <Invitation></Invitation>
                 </div>
