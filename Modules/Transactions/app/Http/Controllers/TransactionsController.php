@@ -13,15 +13,18 @@ class TransactionsController extends Controller
 
     public function index(Request $request): \Inertia\Response
     {
+//        dd(now()->format('d M, Y H:i'));
         $transactions = [];
 
         $wallet = $request->user()->wallets()->where('type', 'wallet_1')->first();
+        $withdrawals = Withdrawal::where('user_id', $request->user()->id)->latest()->get();
+
 
         if ($wallet) {
             $transactions = $wallet->logs()->latest()->get();
         }
 
-        return Inertia::render('Transactions/Index', ['transactions' => $transactions]);
+        return Inertia::render('Transactions/Index', compact('transactions', 'withdrawals'));
     }
 
     /**

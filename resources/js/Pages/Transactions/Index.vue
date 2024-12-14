@@ -9,6 +9,7 @@ import WithdrawalComponent from "@/Pages/Transactions/WithdrawalComponent.vue";
 
 defineProps<{
     transactions?: Object;
+    withdrawals?: Object;
 }>();
 
 </script>
@@ -16,9 +17,9 @@ defineProps<{
 <template>
     <Head title="Welcome" />
     <GuestLayout>
-        <div class="p-8">
+        <div class="p-8 mb-48">
             <Heading title="Retrait"></Heading>
-            <WithdrawalComponent :transactions="transactions"></WithdrawalComponent>
+            <WithdrawalComponent :transactions="transactions" :withdrawals="withdrawals"></WithdrawalComponent>
         </div>
     </GuestLayout>
 </template>

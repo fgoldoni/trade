@@ -70,9 +70,10 @@ class WithdrawalController extends Controller
                 'recipient' => $recipient,
                 'reference' => $reference,
                 'amount' => $amount,
-                'description' => 'Retrait du ' . now(),
+                'description' => 'Retrait du ' . now()->format('d M, Y H:i'),
                 'currency' => 'XAF',
             ]);
+
 
             if ($response->successful()) {
                 $withdrawal = new Withdrawal();

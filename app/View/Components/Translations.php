@@ -14,6 +14,8 @@ class Translations extends Component
     {
         $locale = app()->getLocale();
 
+        Cache::flush();
+
         $translations = Cache::rememberForever("translations_$locale", function () use ($locale) {
             $phpTranslations = [];
             $jsonTranslations = [];
@@ -26,7 +28,6 @@ class Translations extends Component
             if (File::exists(lang_path("$locale.json"))) {
                 $jsonTranslations = json_decode(File::get(lang_path("$locale.json")), true, 512, JSON_THROW_ON_ERROR);
             }
-
 
 
             return array_merge($phpTranslations, $jsonTranslations);

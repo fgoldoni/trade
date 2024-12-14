@@ -55,7 +55,7 @@ const highlights = [
 <template>
     <Head title="Welcome" />
     <GuestLayout>
-        <div class="px-8 mb-48">
+        <div class="p-8 mb-48">
             <Heading title="Compte de retrait"></Heading>
 
             <form @submit.prevent="submit">
