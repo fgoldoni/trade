@@ -1,28 +1,34 @@
 <template>
-    <ul role="list" class="py-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        <li v-for="person in products" :key="person.email" class="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow">
+    <ul role="list" class="mt-4 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <li v-for="person in products" :key="person.email" class="col-span-1 divide-y divide-gray-300 rounded-lg bg-slate-200 shadow-xl">
             <div class="flex w-full items-center justify-between space-x-6 p-6">
                 <div class="flex-1 truncate">
                     <div class="flex items-center space-x-3">
-                        <h3 class="truncate text-sm font-medium text-gray-900">{{ person.name }}</h3>
-                        <span class="inline-flex shrink-0 items-center rounded-full bg-green-50 px-1.5 py-0.5 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">{{ person.name }}</span>
+                        <h3 class="truncate text-sm font-medium text-gray-900">Revenu quotidien</h3>
+                        <span class="uppercase inline-flex shrink-0 items-center rounded-full bg-green-50 px-1.5 py-0.5 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
+                            {{ person.formatted_price }} {{ $page.props.app.currency }} - {{ person.name }}
+                        </span>
                     </div>
-                    <p class="mt-1 truncate text-sm text-gray-500">{{ person.name }}</p>
+                    <p class="mt-1 truncate text-sm text-gray-500"> Acheté le {{
+                            format(
+                                parseISO(person.pivot.created_at),
+                                'dd. MMM yyyy',
+                                { locale: fr },
+                            )
+                        }}</p>
                 </div>
-                <img class="size-10 shrink-0 rounded-full bg-gray-300" :src="person.imageUrl" alt="" />
+                <img class="size-10 shrink-0 rounded-full bg-gray-300" src="/images/awards/award-6.svg" alt="" />
             </div>
             <div>
                 <div class="-mt-px flex divide-x divide-gray-200">
                     <div class="flex w-0 flex-1">
-                        <a :href="`mailto:${person.email}`" class="relative -mr-px inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-bl-lg border border-transparent py-4 text-sm font-semibold text-gray-900">
-                            <EnvelopeIcon class="size-5 text-gray-400" aria-hidden="true" />
+                        <a href="javascript:;" class="relative -mr-px inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-bl-lg border border-transparent py-4 text-sm font-semibold text-gray-900">
                             {{ person.pivot.quantity }} / {{ person.days }}
                         </a>
                     </div>
                     <div class="-ml-px flex w-0 flex-1">
-                        <a :href="`tel:${person.telephone}`" class="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-br-lg border border-transparent py-4 text-sm font-semibold text-gray-900">
-                            <PhoneIcon class="size-5 text-gray-400" aria-hidden="true" />
-                            {{ person.pivot.revenue }}
+                        <a href="javascript:;" class="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-br-lg border border-transparent py-4 text-sm font-semibold text-gray-900">
+                            Total: {{ person.pivot.quantity * person.price }} {{ $page.props.app.currency }}
                         </a>
                     </div>
                 </div>
@@ -33,6 +39,11 @@
 
 <script setup lang="ts">
 import { EnvelopeIcon, PhoneIcon } from '@heroicons/vue/20/solid'
+import format from 'date-fns/format';
+import { fr } from 'date-fns/locale';
+import parseISO from 'date-fns/parseISO';
+import formatDistanceToNow from 'date-fns/formatDistanceToNow';
+import { ref } from 'vue';
 
 const props = defineProps({
     products: Object,
