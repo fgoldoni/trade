@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import InputError from '@/Components/InputError.vue';
 import { useMotion } from '@vueuse/motion';
-import { useForm } from 'laravel-precognition-vue';
+import { useForm } from '@inertiajs/vue3';
 import { ref } from 'vue';
+import AlertComponent from "@/Components/AlertComponent.vue";
 
 interface Props {
     item: Object;
@@ -31,19 +32,16 @@ useMotion(itemRef, {
     },
 });
 
-const form = useForm('post', '/products', {
+const form = useForm({
     id: props.item.id,
 });
 
-const submit = () =>
-    form
-        .submit()
-        .then((response) => {
-            form.reset();
-
-        })
-        .catch((error) => {
-        });
+const submit = () => {
+    form.post(route('products.store'), {
+        preserveScroll: true,
+        onSuccess: () => form.reset(),
+    });
+};
 </script>
 
 <template>
@@ -102,6 +100,10 @@ const submit = () =>
             </p>
         </div>
         <form @submit.prevent="submit">
+            <AlertComponent
+                :message="$page.props.flash.error"
+                v-if="$page.props.flash.error"
+            ></AlertComponent>
             <InputError :message="form.errors.id" />
             <button
                 :disabled="!item.online"

@@ -23,7 +23,6 @@ class ProductsController extends Controller
     public function index()
     {
         return Inertia::render('Products/Index', ['products' => auth()->user()->products()->get()->all()]);
-        return view('products::index');
     }
 
     /**
@@ -35,12 +34,14 @@ class ProductsController extends Controller
     }
 
 
-    public function store(StoreProductRequest $request): \Illuminate\Http\JsonResponse
+    public function store(StoreProductRequest $request)
     {
-        $product = null;
-
         try {
             $product = $this->productsRepository->find($request->id);
+
+            if (auth()->user()->products()->find($product->id)) {
+                throw new \Exception('Vous avez déjà acheté ce produit. Veuillez choisir un autre pack.');
+            }
 
             $this->usersRepository->sync($request->id, 'products', [
                 $product->id => [
@@ -52,9 +53,10 @@ class ProductsController extends Controller
             $request->user()->pay($product->price, 'Achat du ' . $product->name);
         } catch (\Exception $e) {
             logger($e->getMessage());
+            return redirect(route('home', absolute: false))->with('error', $e->getMessage());
         }
 
-        return response()->json($product);
+        return redirect(route('products.index', absolute: false))->with('success', 'Félicitations ! Votre pack a été acheté avec succès.');
     }
 
     /**
