@@ -72,6 +72,10 @@
                         Groupe Telegram
                     </a>
                 </div>
+                <AlertComponent
+                    :message="$page.props.flash.error"
+                    v-if="$page.props.flash.error"
+                ></AlertComponent>
             </div>
 
             <slot></slot>
@@ -82,6 +86,7 @@
 <script setup lang="ts">
 import TypingEffect from '@/Components/TypingEffect.vue';
 import { onMounted } from 'vue';
+import AlertComponent from "@/Components/AlertComponent.vue";
 
 onMounted(async () => {});
 </script>

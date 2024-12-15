@@ -38,7 +38,6 @@ const form = useForm({
 
 const submit = () => {
     form.post(route('products.store'), {
-        preserveScroll: true,
         onSuccess: () => form.reset(),
     });
 };
@@ -100,10 +99,6 @@ const submit = () => {
             </p>
         </div>
         <form @submit.prevent="submit">
-            <AlertComponent
-                :message="$page.props.flash.error"
-                v-if="$page.props.flash.error"
-            ></AlertComponent>
             <InputError :message="form.errors.id" />
             <button
                 :disabled="!item.online"

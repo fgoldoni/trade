@@ -10,6 +10,7 @@ import {
     QuestionMarkCircleIcon,
 } from '@heroicons/vue/24/outline';
 import { Head } from '@inertiajs/vue3';
+import AlertComponent from "@/Components/AlertComponent.vue";
 
 defineProps<{
     canLogin?: boolean;
