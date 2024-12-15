@@ -142,9 +142,9 @@
 import AlertComponent from '@/Components/AlertComponent.vue';
 import AlertSuccessComponent from '@/Components/AlertSuccessComponent.vue';
 import InputError from '@/Components/InputError.vue';
+import { RadioGroup, RadioGroupOption } from '@headlessui/vue';
 import { useForm } from '@inertiajs/vue3';
 import { onMounted, ref } from 'vue';
-import {RadioGroup, RadioGroupOption} from "@headlessui/vue";
 
 const props = defineProps<{
     recipient?: Object;

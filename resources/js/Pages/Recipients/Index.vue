@@ -1,17 +1,14 @@
 <script setup lang="ts">
 import GuestLayout from '@/Layouts/GuestLayout.vue';
 import Heading from '@/Pages/Deposits/Heading.vue';
-import Form from '@/Pages/Recipients/Form.vue';
-import { PlusIcon } from '@heroicons/vue/16/solid';
 import { Head } from '@inertiajs/vue3';
 
 import AlertComponent from '@/Components/AlertComponent.vue';
 import AlertSuccessComponent from '@/Components/AlertSuccessComponent.vue';
 import InputError from '@/Components/InputError.vue';
+import { RadioGroup, RadioGroupOption } from '@headlessui/vue';
 import { useForm } from '@inertiajs/vue3';
 import { onMounted, ref } from 'vue';
-import {RadioGroup, RadioGroupOption} from "@headlessui/vue";
-
 
 const props = defineProps<{
     recipient?: Object;
@@ -55,7 +52,7 @@ const highlights = [
 <template>
     <Head title="Welcome" />
     <GuestLayout>
-        <div class="p-8 mb-48">
+        <div class="mb-48 p-8">
             <Heading title="Compte de retrait"></Heading>
 
             <form @submit.prevent="submit">
@@ -79,19 +76,19 @@ const highlights = [
                         >
                             <div
                                 :class="[
-                            true
-                                ? 'cursor-pointer focus:outline-none'
-                                : 'cursor-not-allowed opacity-25',
-                            active
-                                ? 'ring-2 ring-primary-600 ring-offset-2'
-                                : '',
-                            checked
-                                ? 'bg-primary-600 text-white ring-0 hover:bg-primary-500'
-                                : 'bg-white text-gray-900 ring-1 ring-gray-300 hover:bg-gray-50',
-                            !active && !checked ? 'ring-inset' : '',
-                            active && checked ? 'ring-2' : '',
-                            'flex items-center justify-center rounded-md px-3 py-3 text-sm font-semibold uppercase sm:flex-1',
-                        ]"
+                                    true
+                                        ? 'cursor-pointer focus:outline-none'
+                                        : 'cursor-not-allowed opacity-25',
+                                    active
+                                        ? 'ring-2 ring-primary-600 ring-offset-2'
+                                        : '',
+                                    checked
+                                        ? 'bg-primary-600 text-white ring-0 hover:bg-primary-500'
+                                        : 'bg-white text-gray-900 ring-1 ring-gray-300 hover:bg-gray-50',
+                                    !active && !checked ? 'ring-inset' : '',
+                                    active && checked ? 'ring-2' : '',
+                                    'flex items-center justify-center rounded-md px-3 py-3 text-sm font-semibold uppercase sm:flex-1',
+                                ]"
                             >
                                 {{ option.name }}
                             </div>
@@ -166,9 +163,9 @@ const highlights = [
 
                 <button
                     :class="[
-                form.processing ? 'opacity-75' : '',
-                `font-heading mt-8 w-full rounded-md bg-primary-700 px-8 py-3 font-bold uppercase text-white hover:bg-primary-600 md:mt-5`,
-            ]"
+                        form.processing ? 'opacity-75' : '',
+                        `font-heading mt-8 w-full rounded-md bg-primary-700 px-8 py-3 font-bold uppercase text-white hover:bg-primary-600 md:mt-5`,
+                    ]"
                     :disabled="form.processing"
                 >
                     <svg

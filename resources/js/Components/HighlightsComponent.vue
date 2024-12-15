@@ -1,11 +1,9 @@
 <script setup lang="ts">
-
-import {PlusIcon} from "@heroicons/vue/16/solid";
+import { PlusIcon } from '@heroicons/vue/16/solid';
 
 const props = defineProps<{
     highlights?: Object;
 }>();
-
 </script>
 
 <template>
@@ -17,14 +15,14 @@ const props = defineProps<{
                 :data-disabled="highlight.disabled"
                 class="group flex items-start gap-4 text-sm/6 text-gray-600 data-[disabled]:text-gray-400"
             >
-                    <span class="inline-flex h-6 items-center">
-                        <PlusIcon
-                            class="size-4 fill-gray-400 group-data-[disabled]:fill-gray-300"
-                            aria-hidden="true"
-                        />
-                    </span>
+                <span class="inline-flex h-6 items-center">
+                    <PlusIcon
+                        class="size-4 fill-gray-400 group-data-[disabled]:fill-gray-300"
+                        aria-hidden="true"
+                    />
+                </span>
                 <span v-if="highlight.disabled" class="sr-only"
-                >Not included:</span
+                    >Not included:</span
                 >
                 {{ highlight.description }}
             </li>
@@ -32,6 +30,4 @@ const props = defineProps<{
     </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

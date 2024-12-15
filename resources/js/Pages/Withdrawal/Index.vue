@@ -1,10 +1,10 @@
 <script setup lang="ts">
+import HighlightsComponent from '@/Components/HighlightsComponent.vue';
 import GuestLayout from '@/Layouts/GuestLayout.vue';
 import Heading from '@/Pages/Deposits/Heading.vue';
 import RecipientMissingAlert from '@/Pages/Withdrawal/RecipientMissingAlert.vue';
 import WithdrawalFormComponent from '@/Pages/Withdrawal/WithdrawalFormComponent.vue';
 import { Head } from '@inertiajs/vue3';
-import HighlightsComponent from "@/Components/HighlightsComponent.vue";
 
 defineProps<{
     recipient?: Object;
@@ -12,8 +12,7 @@ defineProps<{
 
 const highlights = [
     {
-        description:
-            'Le montant minimum de retrait est fixé à 600 XAF.',
+        description: 'Le montant minimum de retrait est fixé à 600 XAF.',
     },
     {
         description:
@@ -25,7 +24,7 @@ const highlights = [
     },
     {
         description:
-            'Il n\'y a aucune limite de retraits par jour. En cas d\'échec, vous pouvez soumettre une nouvelle demande ou utiliser un autre compte.',
+            "Il n'y a aucune limite de retraits par jour. En cas d'échec, vous pouvez soumettre une nouvelle demande ou utiliser un autre compte.",
     },
     {
         description:
@@ -33,7 +32,7 @@ const highlights = [
     },
     {
         description:
-            'Conditions de retrait : Il est nécessaire d\'acheter au moins un pack pour activer la fonctionnalité de retrait.',
+            "Conditions de retrait : Il est nécessaire d'acheter au moins un pack pour activer la fonctionnalité de retrait.",
     },
 ];
 </script>

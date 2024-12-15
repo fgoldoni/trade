@@ -156,21 +156,28 @@
                             :scrolled-from-top="scrolledFromTop"
                         />
 
-
-
                         <a
                             v-if="$page.props.auth.user"
                             :href="route('home')"
                             :class="[
                                 scrolledFromTop ? 'py-1' : 'py-1.5',
-                                'rounded-md bg-primary-700 px-3 text-xs font-semibold text-center inline-flex items-center uppercase text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600',
+                                'inline-flex items-center rounded-md bg-primary-700 px-3 text-center text-xs font-semibold uppercase text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600',
                             ]"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke-width="1.5"
+                                stroke="currentColor"
+                                class="-ms-1 h-4 w-6"
                             >
-
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-4  -ms-1">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                                />
                             </svg>
-
 
                             {{ $page.props.auth.user.phone }}
                         </a>
@@ -180,7 +187,7 @@
                             :href="route('logout')"
                             method="post"
                             as="button"
-                            class="btn-title group  flex rounded-md p-1.5 text-sm font-semibold uppercase leading-6 text-rose-700 hover:bg-primary-500 hover:text-rose-600 dark:hover:bg-primary-900"
+                            class="btn-title group flex rounded-md p-1.5 text-sm font-semibold uppercase leading-6 text-rose-700 hover:bg-primary-500 hover:text-rose-600 dark:hover:bg-primary-900"
                         >
                             <svg
                                 v-if="processing"
@@ -263,9 +270,9 @@
                         >
                     </Link>
                     <Link
-                        :href="route('home')"
+                        :href="route('products.index')"
                         :class="[
-                            route().current('home') ? `bg-primary-900` : '',
+                            route().current('products.index') ? `bg-primary-900` : '',
                             `btn-title group inline-flex flex-col items-center justify-center px-5 hover:bg-primary-900 dark:hover:bg-primary-800`,
                         ]"
                     >
@@ -276,7 +283,7 @@
                             stroke-width="1.5"
                             stroke="currentColor"
                             :class="[
-                                route().current('home')
+                                route().current('products.index')
                                     ? `text-slate-300`
                                     : 'text-slate-400',
                                 `mb-2 h-6 w-6 group-hover:text-white dark:text-slate-200`,

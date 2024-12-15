@@ -28,10 +28,9 @@ return new class extends Migration
 
         Schema::create('product_user', function (Blueprint $table) {
             $table->id();
-            $table->foreignid('user_id')->index()->references('id')->on('users')->onDelete('cascade');
-            $table->foreignid('product_id')->index()->references('id')->on('products')->onDelete('cascade');
+            $table->foreignId('user_id')->index()->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('product_id')->index()->references('id')->on('products')->onDelete('cascade');
             $table->smallInteger('quantity')->default(0);
-            $table->smallInteger('max')->default(90);
             $table->smallInteger('revenue')->nullable();
             $table->timestamps();
         });
@@ -44,6 +43,7 @@ return new class extends Migration
     {
         $this->disableForeignKeys();
         Schema::dropIfExists('products');
+        Schema::dropIfExists('product_user');
         $this->enableForeignKeys();
     }
 };

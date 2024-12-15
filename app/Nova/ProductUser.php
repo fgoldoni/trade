@@ -17,12 +17,6 @@ class ProductUser
                 ->step(1)
                 ->rules('required', 'integer'),
 
-            Number::make('Max')
-                ->min(1)
-                ->default(fn () => 90)
-                ->step(1)
-                ->rules('required', 'integer'),
-
             Number::make('Revenue')
                 ->min(0)
                 ->default(fn () => 0)

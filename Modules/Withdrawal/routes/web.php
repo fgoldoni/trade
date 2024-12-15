@@ -15,6 +15,6 @@ use Modules\Withdrawal\Http\Controllers\WithdrawalController;
 */
 
 Route::group([], function () {
-    Route::resource('withdrawal', WithdrawalController::class)->middleware(['auth', 'verified', 'password.confirm'])->names('withdrawal');
+    Route::resource('withdrawal', WithdrawalController::class)->middleware(['auth', 'verified', 'password.confirm', \Illuminate\Foundation\Http\Middleware\HandlePrecognitiveRequests::class])->names('withdrawal');
     Route::resource('recipients', \Modules\Withdrawal\Http\Controllers\RecipientsController::class)->middleware(['auth', 'verified', 'password.confirm', \Illuminate\Foundation\Http\Middleware\HandlePrecognitiveRequests::class])->names('recipients');
 });

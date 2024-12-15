@@ -15,5 +15,5 @@ use Modules\Products\Http\Controllers\ProductsController;
 */
 
 Route::group([], function () {
-    Route::resource('products', ProductsController::class)->names('products');
+    Route::resource('products', ProductsController::class)->middleware(['auth', 'verified', \Illuminate\Foundation\Http\Middleware\HandlePrecognitiveRequests::class])->names('products');
 });

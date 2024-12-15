@@ -98,12 +98,11 @@
 </template>
 
 <script setup lang="ts">
+import HighlightsComponent from '@/Components/HighlightsComponent.vue';
 import InputError from '@/Components/InputError.vue';
 import { RadioGroup, RadioGroupOption } from '@headlessui/vue';
-import { PlusIcon } from '@heroicons/vue/16/solid';
 import { usePage } from '@inertiajs/vue3';
 import { useForm } from 'laravel-precognition-vue';
-import HighlightsComponent from "@/Components/HighlightsComponent.vue";
 
 const form = useForm('post', '/notchpay', {
     amount: null,
@@ -125,7 +124,8 @@ const submit = () =>
 
 const highlights = [
     {
-        description: 'Le chargement de la page de paiement peut prendre un peu de temps avant de s\'afficher. Veuillez ne pas cliquer plusieurs fois sur "RECHARGER".',
+        description:
+            'Le chargement de la page de paiement peut prendre un peu de temps avant de s\'afficher. Veuillez ne pas cliquer plusieurs fois sur "RECHARGER".',
     },
     {
         description:
