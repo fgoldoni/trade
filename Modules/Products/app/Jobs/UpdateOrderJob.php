@@ -7,6 +7,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
+use Mattiasgeniar\Percentage\Percentage;
 use Modules\Products\Models\ProductUser;
 
 class UpdateOrderJob implements ShouldQueue
@@ -26,8 +27,9 @@ class UpdateOrderJob implements ShouldQueue
      */
     public function handle(): void
     {
-        ProductUser::whereDate('updated_at', now()->yesterday())->get()->each(function (ProductUser $productUser) {
+        ProductUser::with(['user', 'product'])->whereDate('updated_at', now()->today())->get()->each(function (ProductUser $productUser) {
             $productUser->increment('quantity');
+            $productUser->user()->first()->deposit('wallet_1', Percentage::of(20, $productUser->product->price), "Revenue (". $productUser->product->name .") du " . now()->format('d M, Y H:i'));
         });
     }
 }

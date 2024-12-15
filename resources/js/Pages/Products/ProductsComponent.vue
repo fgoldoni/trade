@@ -6,10 +6,10 @@
                     <div class="flex items-center space-x-3">
                         <h3 class="truncate text-sm font-medium text-gray-900">Revenu quotidien</h3>
                         <span class="uppercase inline-flex shrink-0 items-center rounded-full bg-green-50 px-1.5 py-0.5 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
-                            {{ person.formatted_price }} {{ $page.props.app.currency }} - {{ person.name }}
+                            {{ person.formatted_price }} {{ $page.props.app.currency }}
                         </span>
                     </div>
-                    <p class="mt-1 truncate text-sm text-gray-500"> Acheté le {{
+                    <p class="mt-1 truncate text-sm text-gray-500">{{ person.name }} acheté le {{
                             format(
                                 parseISO(person.pivot.created_at),
                                 'dd. MMM yyyy',

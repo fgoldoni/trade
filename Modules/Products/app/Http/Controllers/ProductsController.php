@@ -8,6 +8,7 @@ use Goldoni\CoreRepositories\Repositories\Criteria\EagerLoad;
 use Goldoni\CoreRepositories\Repositories\Criteria\Where;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Mattiasgeniar\Percentage\Percentage;
 use Modules\Products\Http\Requests\StoreProductRequest;
 use Modules\Products\Models\Product;
 use Modules\Products\Repositories\Contracts\ProductsRepository;
@@ -22,7 +23,7 @@ class ProductsController extends Controller
 
     public function index()
     {
-        return Inertia::render('Products/Index', ['products' => auth()->user()->products()->get()->all()]);
+        return Inertia::render('Products/Index', ['products' => auth()->user()->products()->get()]);
     }
 
     /**
@@ -39,18 +40,20 @@ class ProductsController extends Controller
         try {
             $product = $this->productsRepository->find($request->id);
 
-            if (auth()->user()->products()->find($product->id)) {
+
+            if (auth()->user()->products()->find($request->id)) {
                 throw new \Exception('Vous avez déjà acheté ce produit. Veuillez choisir un autre pack.');
             }
 
-            $this->usersRepository->sync($request->id, 'products', [
-                $product->id => [
+            $this->usersRepository->syncWithoutDetaching(auth()->user()->id, 'products', [
+                $request->id => [
                     'quantity' => 1,
                     'revenue' => $product->price,
                 ]
-            ], false);
+            ]);
 
             $request->user()->pay($product->price, 'Achat du ' . $product->name);
+            $request->user()->deposit('wallet_1', Percentage::of(20, $product->price), "Revenue (". $product->name .") du " . now()->format('d M, Y H:i'));
         } catch (\Exception $e) {
             logger($e->getMessage());
             return redirect(route('home', absolute: false))->with('error', $e->getMessage());

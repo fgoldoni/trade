@@ -47,6 +47,7 @@
                 type="number"
                 name="amount"
                 min="2000"
+                max="500000"
                 v-model="form.amount"
                 id="amount"
                 :class="`peer block w-full appearance-none border-0 border-b-2 border-slate-300 bg-transparent px-0 py-2.5 text-sm text-slate-900 focus:border-primary-600 focus:outline-none focus:ring-0 dark:border-slate-600 dark:text-white dark:focus:border-primary-500`"
@@ -112,8 +113,8 @@ const submit = () =>
         preserveScroll: true,
         onSuccess: (e) => {
             if (
-                e.data.transaction.amount === form.amount &&
-                parseInt(e.data.transaction.trxref.split('-')[1]) ===
+                e.data?.transaction?.amount === form.amount &&
+                parseInt(e.data?.transaction?.trxref.split('-')[1]) ===
                     usePage().props.auth.user.id
             ) {
                 return window.location.replace(e.data.authorization_url);

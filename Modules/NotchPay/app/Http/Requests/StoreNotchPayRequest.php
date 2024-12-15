@@ -15,7 +15,7 @@ class StoreNotchPayRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'amount' => ['required', 'int', 'min:2000', 'digits_between:4,8'],
+            'amount' => ['required', 'int', 'min:2000', 'max:500000', 'digits_between:4,8'],
         ];
     }
 
