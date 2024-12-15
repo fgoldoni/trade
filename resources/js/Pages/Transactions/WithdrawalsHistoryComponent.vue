@@ -44,9 +44,6 @@
 
 <script setup lang="ts">
 import { CheckCircleIcon } from '@heroicons/vue/24/solid'
-import parseISO from "date-fns/parseISO";
-import format from "date-fns/format";
-import { fr } from "date-fns/locale";
 
 defineProps<{
     withdrawals?: Object;

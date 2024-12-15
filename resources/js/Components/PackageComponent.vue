@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useMotion } from '@vueuse/motion';
 import { ref } from 'vue';
+import {useForm} from "@inertiajs/vue3";
 
 interface Props {
     item: Object;
@@ -28,6 +29,16 @@ useMotion(itemRef, {
         },
     },
 });
+const form = useForm({
+    id: props.item.id,
+});
+const submit = () => {
+    form.post(route('products.index'), {
+        preserveScroll: true,
+        onSuccess: () => form.reset(),
+    });
+};
+
 </script>
 
 <template>
@@ -85,16 +96,18 @@ useMotion(itemRef, {
                 {{ $page.props.app.currency }}
             </p>
         </div>
-        <button
-            :disabled="item.online"
+        <form @submit.prevent="submit">
+            <button
+            :disabled="!item.online"
             aria-describedby="tier-hobby"
             :class="[
                 item.online ? 'btn-base  bg-primary-600 hover:bg-primary-500' : 'bg-slate-600',
-                `mt-8 block rounded-md  px-3.5 py-2 text-center text-sm font-semibold uppercase leading-6 text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600`,
+                form.processing ? 'opacity-75' : '',
+                `w-full mt-8 block rounded-md  px-3.5 py-2 text-center text-sm font-semibold uppercase leading-6 text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600`,
             ]"
         >
             <svg
-                v-if="false"
+                v-if="form.processing"
                 class="inline-flex h-5 w-5 animate-spin text-white"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -114,8 +127,9 @@ useMotion(itemRef, {
                     d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                 ></path>
             </svg>
-            <span v-text="item.online ? 'ACHETER' : 'Fermer'"></span>
+            <span v-else v-text="item.online ? 'ACHETER' : 'Fermer'"></span>
         </button>
+        </form>
         <div
             :class="`btn-title mt-2 flex items-center justify-center rounded-md border border-primary-300 p-2 text-center text-xs dark:border-slate-600 dark:bg-slate-900`"
         >
