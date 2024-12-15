@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Cog\Contracts\Ban\Bannable as BannableContract;
 use Cog\Laravel\Ban\Traits\Bannable;
+use Core\Traits\BelongsToManyProduct;
 use Core\Traits\HasManyWithdrawal;
 use Core\Traits\ReferralTrait;
 use HPWebdeveloper\LaravelPayPocket\Interfaces\WalletOperations;
@@ -19,7 +20,7 @@ use Modules\Withdrawal\Models\Recipient;
 
 class User extends Authenticatable implements BannableContract, WalletOperations
 {
-    use HasFactory, Notifiable, ReferralTrait, Bannable, ManagesWallet, HasManyWithdrawal;
+    use HasFactory, Notifiable, ReferralTrait, Bannable, ManagesWallet, HasManyWithdrawal, BelongsToManyProduct;
 
     /**
      * The attributes that are mass assignable.

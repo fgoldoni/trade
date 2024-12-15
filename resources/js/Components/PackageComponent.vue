@@ -34,19 +34,20 @@ useMotion(itemRef, {
     <div
         ref="itemRef"
         :class="[
-            `btn-title flex cursor-pointer flex-col justify-between rounded-3xl bg-white p-8 shadow-xl ring-1 ring-primary-500 dark:bg-slate-800 sm:p-10`,
+            item.online ? 'ring-green-500' : 'ring-rose-500',
+            `btn-title flex cursor-pointer flex-col justify-between rounded-3xl bg-white p-8 shadow-xl ring-1  dark:bg-slate-800 sm:p-10`,
         ]"
     >
         <div>
             <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
                 <div
-                    v-if="item.online"
                     class="col-span-3 flex items-center justify-end"
                 >
                     <button
-                        class="me-2 animate-pulse rounded-full bg-gradient-to-r from-green-400 via-green-500 to-green-600 px-2.5 py-1 text-center text-sm font-medium uppercase text-white hover:bg-gradient-to-br focus:outline-none focus:ring-4 focus:ring-green-300 dark:focus:ring-green-800"
+                        :class="[item.online ? 'animate-pulse from-green-400 via-green-500 to-green-600 focus:ring-green-300 dark:focus:ring-green-800' : 'from-slate-400 via-slate-500 to-slate-600 focus:ring-slate-300 dark:focus:ring-slate-800', 'me-2 rounded-full bg-gradient-to-r  px-2.5 py-1 text-center text-sm font-medium uppercase text-white hover:bg-gradient-to-br focus:outline-none focus:ring-4 ']"
+                        v-text="item.online ? 'Ouvert' : 'Fermer'"
                     >
-                        Disponible
+
                     </button>
                 </div>
                 <h3
@@ -58,7 +59,7 @@ useMotion(itemRef, {
                 </h3>
                 <p
                     v-if="true"
-                    class="col-span-1 rounded-full px-2.5 py-1 text-center text-xs font-semibold uppercase leading-5 text-rose-600 ring-1 ring-inset ring-rose-600"
+                    class="col-span-1 rounded-full px-2.5 py-1 text-center text-xs font-semibold uppercase leading-5 text-slate-600 ring-1 ring-inset ring-slate-600"
                 >
                     {{ item.days }} Jours
                 </p>
@@ -85,9 +86,11 @@ useMotion(itemRef, {
             </p>
         </div>
         <button
+            :disabled="item.online"
             aria-describedby="tier-hobby"
             :class="[
-                `btn-base mt-8 block rounded-md bg-primary-600 px-3.5 py-2 text-center text-sm font-semibold uppercase leading-6 text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600`,
+                item.online ? 'btn-base  bg-primary-600 hover:bg-primary-500' : 'bg-slate-600',
+                `mt-8 block rounded-md  px-3.5 py-2 text-center text-sm font-semibold uppercase leading-6 text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600`,
             ]"
         >
             <svg
@@ -111,9 +114,7 @@ useMotion(itemRef, {
                     d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                 ></path>
             </svg>
-            <span>
-                {{ __('ACHETER') }}
-            </span>
+            <span v-text="item.online ? 'ACHETER' : 'Fermer'"></span>
         </button>
         <div
             :class="`btn-title mt-2 flex items-center justify-center rounded-md border border-primary-300 p-2 text-center text-xs dark:border-slate-600 dark:bg-slate-900`"

@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Products\Providers;
+namespace Modules\Users\Providers;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
@@ -8,13 +8,13 @@ use Nwidart\Modules\Traits\PathNamespace;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 
-class ProductsServiceProvider extends ServiceProvider
+class UsersServiceProvider extends ServiceProvider
 {
     use PathNamespace;
 
-    protected string $name = 'Products';
+    protected string $name = 'Users';
 
-    protected string $nameLower = 'products';
+    protected string $nameLower = 'users';
 
     /**
      * Boot the application events.

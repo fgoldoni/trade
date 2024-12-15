@@ -2,9 +2,11 @@
 
 namespace App\Nova;
 
+use Core\Traits\BelongsToManyProduct;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
 use Laravel\Nova\Fields\Badge;
+use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Password;
@@ -68,6 +70,8 @@ class User extends Resource
                 'banned' => 'danger',
                 'active' => 'success',
             ])->withIcons(),
+
+            BelongsToMany::make('Products')->fields(new ProductUser),
         ];
     }
 

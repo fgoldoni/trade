@@ -25,6 +25,16 @@ return new class extends Migration
             $table->softDeletes();
             $table->timestamps();
         });
+
+        Schema::create('product_user', function (Blueprint $table) {
+            $table->id();
+            $table->foreignid('user_id')->index()->references('id')->on('users')->onDelete('cascade');
+            $table->foreignid('product_id')->index()->references('id')->on('products')->onDelete('cascade');
+            $table->smallInteger('quantity')->default(0);
+            $table->smallInteger('max')->default(90);
+            $table->smallInteger('revenue')->nullable();
+            $table->timestamps();
+        });
     }
 
     /**
