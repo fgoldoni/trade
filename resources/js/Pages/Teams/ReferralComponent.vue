@@ -1,5 +1,5 @@
 <template>
-    <div class="overflow-auto h-72 mb-48">
+    <div class="overflow-auto h-72">
         <ul role="list" class="py-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             <li v-for="person in referrals" :key="person.id" class="col-span-1 divide-y divide-gray-100 rounded-lg bg-slate-300 shadow">
                 <div class="flex w-full items-center justify-between space-x-6 p-6">

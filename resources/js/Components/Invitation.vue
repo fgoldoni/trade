@@ -31,7 +31,7 @@ const clipboard = async () => {
 
 <template>
     <!-- Section 1 -->
-    <section class="rounded border border-primary-200 shadow-lg">
+    <section class="rounded border border-primary-100 shadow-lg">
         <div
             class="mx-auto flex max-w-7xl flex-col items-center justify-center px-5 py-8 md:px-0"
         >
