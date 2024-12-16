@@ -42,7 +42,7 @@ const clipboard = async () => {
                         background-image: url('https://cdn.devdojo.com/images/february2021/bg-colorful.jpg');
                     "
                 >
-                    Lien d'invitation
+                    Lien d'invitation (30% de Bonus)
                 </h2>
             </div>
             <p class="mt-3 text-sm text-gray-500 lg:text-xl">

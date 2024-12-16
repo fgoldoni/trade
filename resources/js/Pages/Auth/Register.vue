@@ -8,9 +8,9 @@ import { onMounted } from 'vue';
 
 const form = useForm({
     name: '',
-    phone: '666666666',
-    password: '00000000',
-    password_confirmation: '00000000',
+    phone: '',
+    password: '',
+    password_confirmation: '',
     referral_code:
         new URL(location.href).searchParams.get('via') ||
         Cookies.get('trade.referral') ||
