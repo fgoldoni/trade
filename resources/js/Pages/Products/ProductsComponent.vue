@@ -1,6 +1,6 @@
 <template>
     <ul role="list" class="mt-4 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        <li v-for="person in products" :key="person.email" class="col-span-1 divide-y divide-gray-300 rounded-lg bg-slate-300 shadow-xl">
+        <li v-for="person in products" :key="person.email" class="col-span-1 divide-y divide-gray-100 rounded-lg bg-slate-300 shadow-xl">
             <div class="flex w-full items-center justify-between space-x-6 p-6">
                 <div class="flex-1 truncate">
                     <div class="flex items-center space-x-3">
