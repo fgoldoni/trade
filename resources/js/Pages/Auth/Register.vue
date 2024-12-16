@@ -89,7 +89,7 @@ const submit = () => {
                                     <span
                                         class="block bg-gradient-to-r from-pink-600 via-blue-400 to-blue-700 bg-clip-text pb-2 font-black text-transparent"
                                     >
-                                        Acceptez l'invitation et recevez 1000
+                                        Acceptez l'invitation et recevez 600
                                         FCFA de bonus !
                                     </span>
                                 </h1>

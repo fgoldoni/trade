@@ -28,7 +28,7 @@ class RegisteredUserController extends Controller
     public function create(): Response
     {
         SEOTools::setTitle('Inscription sur Trade Republic - Commencez à investir facilement', false);
-        SEOTools::setDescription("Créez votre compte Trade Republic et accédez à une plateforme de courtage simple et abordable. Achetez et vendez des actions, des ETF, des crypto-monnaies et bien plus, avec des frais réduits. Inscrivez-vous maintenant et commencez à investir dès aujourd'hui, en toute sécurité.");
+        SEOTools::setDescription("Acceptez l'invitation et recevez 600 FCFA de bonus !");
         SEOTools::opengraph()->setUrl(route('home'));
         SEOMeta::addKeyword(['Investissement', 'TradeRepublic']);
         SEOTools::setCanonical(route('home'));
