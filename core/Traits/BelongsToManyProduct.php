@@ -12,7 +12,7 @@ trait BelongsToManyProduct
     {
         return $this->belongsToMany(Product::class)
             ->using(ProductUser::class)
-            ->withPivot('id', 'quantity', 'revenue')
+            ->withPivot('id', 'quantity')
             ->withTimestamps();
     }
 }

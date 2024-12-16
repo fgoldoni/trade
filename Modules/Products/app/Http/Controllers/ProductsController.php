@@ -45,10 +45,13 @@ class ProductsController extends Controller
                 throw new \Exception('Vous avez déjà acheté ce produit. Veuillez choisir un autre pack.');
             }
 
+            if ($product->price > $request->user()->getWalletBalanceByType('wallet_1')) {
+                throw new \Exception("Votre solde est actuellement insuffisant pour couvrir cette commande. Nous vous invitons à recharger votre compte.");
+            }
+
             $this->usersRepository->syncWithoutDetaching(auth()->user()->id, 'products', [
                 $request->id => [
-                    'quantity' => 1,
-                    'revenue' => $product->price,
+                    'quantity' => 1
                 ]
             ]);
 

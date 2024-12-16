@@ -30,8 +30,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->index()->references('id')->on('users')->onDelete('cascade');
             $table->foreignId('product_id')->index()->references('id')->on('products')->onDelete('cascade');
-            $table->smallInteger('quantity')->default(0);
-            $table->smallInteger('revenue')->nullable();
+            $table->integer('quantity')->default(0);
             $table->timestamps();
         });
     }
