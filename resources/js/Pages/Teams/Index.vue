@@ -19,7 +19,7 @@ defineProps<{
 <template>
     <Head title="Welcome" />
     <GuestLayout>
-        <div class="p-8">
+        <div class="p-8 mb-48">
             <HeadingReferralComponent title="Équipe" :total="revenue"></HeadingReferralComponent>
             <div class="border-b border-gray-200 bg-white px-4 py-5 sm:px-6">
                 <div class="-ml-4 -mt-4 flex flex-wrap items-center justify-between sm:flex-nowrap">

@@ -13,7 +13,7 @@ defineProps<{
 <template>
     <Head title="Welcome" />
     <GuestLayout>
-        <div class="p-8">
+        <div class="p-8 mb-48">
             <Heading title="Commandes"></Heading>
             <AlertSuccessComponent
                 :message="$page.props.flash.success"
