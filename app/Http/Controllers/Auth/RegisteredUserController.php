@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Artesaos\SEOTools\Facades\SEOMeta;
+use Artesaos\SEOTools\Facades\SEOTools;
 use Core\Traits\ReferralTrait;
 use HPWebdeveloper\LaravelPayPocket\Facades\LaravelPayPocket;
 use Illuminate\Auth\Events\Registered;
@@ -25,6 +27,16 @@ class RegisteredUserController extends Controller
      */
     public function create(): Response
     {
+        SEOTools::setTitle('Inscription sur Trade Republic - Commencez à investir facilement', false);
+        SEOTools::setDescription("Créez votre compte Trade Republic et accédez à une plateforme de courtage simple et abordable. Achetez et vendez des actions, des ETF, des crypto-monnaies et bien plus, avec des frais réduits. Inscrivez-vous maintenant et commencez à investir dès aujourd'hui, en toute sécurité.");
+        SEOTools::opengraph()->setUrl(route('home'));
+        SEOMeta::addKeyword(['Investissement', 'TradeRepublic']);
+        SEOTools::setCanonical(route('home'));
+        SEOTools::opengraph()->addProperty('type', 'website');
+        SEOTools::opengraph()->addProperty('locale', app()->getLocale());
+        SEOTools::opengraph()->addImage(asset('images/main.jpg'), ['height' => 300, 'width' => 300]);
+        SEOTools::jsonLd()->addImage(asset('images/main.jpg'));
+
         return Inertia::render('Auth/Register');
     }
 
