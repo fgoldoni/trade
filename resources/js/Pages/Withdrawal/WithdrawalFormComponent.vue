@@ -15,7 +15,7 @@
                 for="amount"
                 :class="`absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-slate-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:start-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-primary-600 dark:text-slate-400 peer-focus:dark:text-primary-500 rtl:peer-focus:translate-x-1/4`"
             >
-                {{ __('Montant du retrait (-15%)') }}
+                {{ __('Montant du retrait (-20%)') }}
             </label>
             <InputError :message="form.errors.amount" />
         </div>
@@ -95,7 +95,7 @@
                     class="text-rose-300"
                     v-if="form.amount && form.amount > 0"
                 >
-                    ({{ form.amount - (15 * form.amount) / 100 }}
+                    ({{ form.amount - (20 * form.amount) / 100 }}
                     {{ $page.props.app.currency }})</span
                 ></span
             >

@@ -12,23 +12,22 @@ defineProps<{
 
 const highlights = [
     {
+        description: 'Les retraits sont disponibles 24h/24, 7 jours sur 7, y compris pendant les jours fériés.',
+    },
+    {
+        description:
+            'Des frais de traitement de 20 % seront appliqués pour le retrait.',
+    },
+    {
         description: 'Le montant minimum de retrait est fixé à 600 XAF.',
     },
     {
         description:
-            'Des frais de traitement de 15 % seront appliqués pour le retrait.',
-    },
-    {
-        description:
-            'L’ordre de retrait est traité automatiquement et les comptes sont généralement crédités en moins de 5 minutes. En cas de problèmes avec Orange ou MTN, l’opération peut être traitée manuellement et prendre jusqu’à 24 heures.',
+            'Les comptes sont crédités en moins de 5 minutes, sauf en cas de problème chez Orange ou MTN, où cela peut prendre jusqu\'à 24 heures.',
     },
     {
         description:
             "Il n'y a aucune limite de retraits par jour. En cas d'échec, vous pouvez soumettre une nouvelle demande ou utiliser un autre compte.",
-    },
-    {
-        description:
-            'Les retraits sont disponibles 24h/24, 7 jours sur 7, y compris pendant les jours fériés.',
     },
     {
         description:

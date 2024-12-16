@@ -51,7 +51,7 @@ class WithdrawalController extends Controller
 
             $recipient = $request->user()->recipient?->rcp;
             $reference = uniqid() . uniqid();
-            $amount = (int) ($request->amount - Percentage::of(15, $request->amount));
+            $amount = (int) ($request->amount - Percentage::of(env('APP_FEE', 20), $request->amount));
 
 
 //            $response = Http::acceptJson()->withHeaders(

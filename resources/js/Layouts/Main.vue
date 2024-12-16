@@ -24,6 +24,7 @@
                     ><br />
                     <TypingEffect
                         :items="[
+                            'Retraits 24h/24, 7 jours sur 7',
                             '20% de revenus journaliers',
                             '30% de bonus de parrainage',
                             'Retraits quotidiens illimités',
