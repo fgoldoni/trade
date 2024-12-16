@@ -10,7 +10,7 @@ import {
     QuestionMarkCircleIcon,
 } from '@heroicons/vue/24/outline';
 import { Head } from '@inertiajs/vue3';
-import AlertComponent from "@/Components/AlertComponent.vue";
+import WelcomeModal from "@/Components/WelcomeModal.vue";
 
 defineProps<{
     canLogin?: boolean;
@@ -19,16 +19,11 @@ defineProps<{
     phpVersion: string;
 }>();
 
-function handleImageError() {
-    document.getElementById('screenshot-container')?.classList.add('!hidden');
-    document.getElementById('docs-card')?.classList.add('!row-span-1');
-    document.getElementById('docs-card-content')?.classList.add('!flex-row');
-    document.getElementById('background')?.classList.add('!hidden');
-}
 </script>
 
 <template>
     <Head title="Welcome" />
+    <WelcomeModal></WelcomeModal>
     <GuestLayout>
         <Main>
             <section class="py-6 sm:py-12">

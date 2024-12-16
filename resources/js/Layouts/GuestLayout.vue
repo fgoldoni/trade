@@ -130,10 +130,6 @@
                         </div>
                     </div>
                     <div class="ml-6 flex items-center space-x-4">
-                        <ThemeSwitcherTheme
-                            :scrolled-from-top="scrolledFromTop"
-                        />
-
                         <a
                             v-if="$page.props.auth.user"
                             :href="route('home')"
@@ -271,7 +267,7 @@
                                 `text-sm  dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500`,
                             ]">Équipe</span>
                     </Link>
-                        <Link :href="route('accounts.index')" class="inline-flex flex-col items-center justify-center px-5 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 group border-x dark:border-gray-600">
+                        <Link :href="route('recipients.index')" class="inline-flex flex-col items-center justify-center px-5 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 group border-x dark:border-gray-600">
                             <svg  :class="[
                                 route().current('accounts.index')
                                     ? `text-blue-600`
@@ -304,13 +300,7 @@ import { ArrowRightOnRectangleIcon } from '@heroicons/vue/24/outline';
 import { onMounted, onUnmounted, ref } from 'vue';
 
 const scrolledFromTop = ref(false);
-const openMenuSidebar = ref(false);
 
-const navigation = [
-    { name: 'Tickets', href: 'home', current: true },
-    { name: 'FAQ', href: 'faqs.index', current: false },
-    { name: 'Kontakt', href: 'contacts.index', current: false },
-];
 
 const processing = ref(false);
 

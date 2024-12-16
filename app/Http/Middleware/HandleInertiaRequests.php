@@ -40,6 +40,7 @@ class HandleInertiaRequests extends Middleware
                 'description' => "Investissez aujourd'hui et recevez votre premier paiement en moins d'une heure",
                 'content' => "Trade Republic est une plateforme financière européenne qui permet aux utilisateurs d'investir facilement et à moindre coût dans des actions, des ETF, des cryptomonnaies et d'autres produits financiers. C’est ce qu’on appelle un néo-courtier, connu pour ses faibles frais et son application conviviale.",
                 'image' => asset('images/main.jpg'),
+                'logo' => asset('images/logo.png'),
                 'days' => 90,
                 'phone' => "+4917647159315",
                 'currency' => "XAF",
