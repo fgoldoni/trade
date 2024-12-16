@@ -39,6 +39,8 @@ class WithdrawalController extends Controller
                 throw new \Exception("Nous vous prions de bien vouloir vérifier que le montant du retrait soit un multiple de 100.");
             }
 
+
+
             if ($request->user()->recipient) {
                 if (!$request->user()->recipient?->rcp) {
                     throw new \Exception("Nous vous informons que le compte de retrait indiqué n'existe pas.");
@@ -47,6 +49,10 @@ class WithdrawalController extends Controller
                 if (!$request->user()->recipient?->number) {
                     throw new \Exception("Nous vous informons que le compte de retrait indiqué ne comporte pas de numéro.");
                 }
+            }
+
+            if ($request->user()->products()->count() === 0) {
+                throw new \Exception("Il est nécessaire d'acheter au moins un pack afin de pouvoir effectuer le retrait.");
             }
 
             $recipient = $request->user()->recipient?->rcp;
