@@ -252,9 +252,9 @@
                                 `text-sm  dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500`,
                             ]">Commandes</span>
                     </Link>
-                    <Link :href="route('home')" class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group">
+                    <Link :href="route('teams.index')" class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group">
                         <svg  :class="[
-                                route().current('home')
+                                route().current('teams.index')
                                     ? `text-blue-600`
                                     : 'text-gray-500',
                                 `w-5 h-5 mb-2 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500`,
@@ -265,15 +265,15 @@
 
                         <span
                             :class="[
-                                route().current('home')
+                                route().current('teams.index')
                                     ? `text-blue-500`
                                     : 'text-gray-500',
                                 `text-sm  dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500`,
                             ]">Équipe</span>
                     </Link>
-                        <Link :href="route('home')" class="inline-flex flex-col items-center justify-center px-5 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 group border-x dark:border-gray-600">
+                        <Link :href="route('accounts.index')" class="inline-flex flex-col items-center justify-center px-5 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 group border-x dark:border-gray-600">
                             <svg  :class="[
-                                route().current('home')
+                                route().current('accounts.index')
                                     ? `text-blue-600`
                                     : 'text-gray-500',
                                 `w-5 h-5 mb-2 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500`,
@@ -283,7 +283,7 @@
 
                             <span
                                 :class="[
-                                route().current('home')
+                                route().current('accounts.index')
                                     ? `text-blue-500`
                                     : 'text-gray-500',
                                 `text-sm  dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500`,

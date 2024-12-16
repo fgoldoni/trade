@@ -27,7 +27,7 @@ class UpdateOrderJob implements ShouldQueue
      */
     public function handle(): void
     {
-        ProductUser::with(['user', 'product'])->whereDate('updated_at', now()->today())->get()->each(function (ProductUser $productUser) {
+        ProductUser::with(['user', 'product'])->whereDate('updated_at', now()->yesterday())->get()->each(function (ProductUser $productUser) {
             $productUser->increment('quantity');
             $productUser->user()->first()->deposit('wallet_1', Percentage::of(20, $productUser->product->price), "Revenue (". $productUser->product->name .") du " . now()->format('d M, Y H:i'));
         });

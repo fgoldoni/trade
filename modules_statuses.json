@@ -6,5 +6,7 @@
     "Withdrawal": true,
     "Transactions": true,
     "Faqs": true,
-    "Users": true
+    "Users": true,
+    "Teams": true,
+    "Accounts": true
 }
