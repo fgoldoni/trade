@@ -43,6 +43,8 @@ class HandleInertiaRequests extends Middleware
                 'days' => 90,
                 'phone' => "+4917647159315",
                 'currency' => "XAF",
+                'service' => "http://t.me/traderepublicadmin",
+                'group' => "http://t.me/traderepublicadmin",
                 'channels' => [
                     [
                         'value' => 'cm.mtn',

@@ -55,7 +55,7 @@ class RegisteredUserController extends Controller
             'ip' => $request->ip()
         ]);
 
-        LaravelPayPocket::deposit($user, 'wallet_1', 1000, "Bonus de bienvenue à l'inscription");
+        LaravelPayPocket::deposit($user, 'wallet_1', 600, "Bonus de bienvenue à l'inscription");
 
         event(new Registered($user));
 
