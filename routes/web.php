@@ -12,11 +12,9 @@ Route::get('/', function () {
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
-})->middleware(['auth', 'verified'])->name('home');
+})->middleware(['auth', 'verified', 'logs-out-banned-user'])->name('home');
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified', 'logs-out-banned-user'])->name('dashboard');
+Route::redirect('/dashboard', '/')->middleware(['auth', 'verified', 'logs-out-banned-user'])->name('dashboard');
 
 
 Route::middleware('auth')->group(function () {
