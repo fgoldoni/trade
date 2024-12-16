@@ -128,28 +128,6 @@
                                 />
                             </Link>
                         </div>
-                        <div class="hidden md:block">
-                            <div class="ml-10 flex items-baseline space-x-4">
-                                <Link
-                                    v-for="item in navigation"
-                                    :key="item.name"
-                                    :href="item.href"
-                                    :class="[
-                                        scrolledFromTop ? 'py-1' : 'py-1.5',
-                                        route().current(item.href)
-                                            ? 'bg-primary-700 uppercase text-white'
-                                            : 'text-white hover:bg-primary-500 hover:bg-opacity-75',
-                                        'rounded-md px-3 text-xs font-medium uppercase',
-                                    ]"
-                                    :aria-current="
-                                        route().current(item.href)
-                                            ? 'page'
-                                            : undefined
-                                    "
-                                    >{{ item.name }}
-                                </Link>
-                            </div>
-                        </div>
                     </div>
                     <div class="ml-6 flex items-center space-x-4">
                         <ThemeSwitcherTheme
@@ -226,146 +204,90 @@
                 <slot></slot>
             </main>
 
+
+
             <div
                 v-if="
                     !route().current('login') &&
                     !route().current('register') &&
                     $page.props.auth.user
                 "
-                :class="`fixed bottom-0 left-0 z-50 h-16 w-full border-t border-slate-200 bg-white dark:border-slate-600 dark:bg-slate-700`"
-            >
-                <div
-                    class="mx-auto grid h-full max-w-lg grid-cols-4 font-medium"
-                >
-                    <Link
-                        :href="route('home')"
-                        :class="[
-                            route().current('home') ? `bg-primary-900` : '',
-                            `btn-title group inline-flex flex-col items-center justify-center px-5 hover:bg-primary-900 dark:hover:bg-primary-800`,
-                        ]"
-                    >
+                class="fixed bottom-0 left-0 z-50 w-full h-16 bg-white border-t border-gray-200 dark:bg-gray-700 dark:border-gray-600">
+                <div class="grid h-full max-w-lg grid-cols-4 mx-auto font-medium">
+                    <Link :href="route('home')"  class="inline-flex flex-col items-center justify-center px-5 border-gray-200 border-x hover:bg-gray-50 dark:hover:bg-gray-800 group dark:border-gray-600">
                         <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke-width="1.5"
-                            stroke="currentColor"
                             :class="[
                                 route().current('home')
-                                    ? `text-slate-300`
-                                    : 'text-slate-400',
-                                `mb-2 h-6 w-6 group-hover:text-white dark:text-slate-200`,
+                                    ? `text-blue-600`
+                                    : 'text-gray-500',
+                                `w-5 h-5 mb-2 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500`,
                             ]"
-                        >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
-                            />
+                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z"/>
+                        </svg>
+                        <span
+                            :class="[
+                                route().current('home')
+                                    ? `text-blue-500`
+                                    : 'text-gray-500',
+                                `text-sm  dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500`,
+                            ]">Home</span>
+                    </Link>
+                    <Link :href="route('products.index')" class="inline-flex flex-col items-center justify-center px-5 border-e border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 group dark:border-gray-600">
+                        <svg   :class="[
+                                route().current('products.index')
+                                    ? `text-blue-600`
+                                    : 'text-gray-500',
+                                `w-5 h-5 mb-2 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500`,
+                            ]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0 1 15.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 0 1 3 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 0 0-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 0 1-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 0 0 3 15h-.75M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm3 0h.008v.008H18V10.5Zm-12 0h.008v.008H6V10.5Z" />
                         </svg>
 
+
                         <span
-                            :class="`text-sm text-slate-400 group-hover:text-white dark:text-slate-400`"
-                            >{{ __('Accueil') }}</span
-                        >
-                    </Link>
-                    <Link
-                        :href="route('products.index')"
-                        :class="[
-                            route().current('products.index') ? `bg-primary-900` : '',
-                            `btn-title group inline-flex flex-col items-center justify-center px-5 hover:bg-primary-900 dark:hover:bg-primary-800`,
-                        ]"
-                    >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke-width="1.5"
-                            stroke="currentColor"
                             :class="[
                                 route().current('products.index')
-                                    ? `text-slate-300`
-                                    : 'text-slate-400',
-                                `mb-2 h-6 w-6 group-hover:text-white dark:text-slate-200`,
-                            ]"
-                        >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="M2.25 18.75a60.07 60.07 0 0 1 15.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 0 1 3 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 0 0-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 0 1-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 0 0 3 15h-.75M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm3 0h.008v.008H18V10.5Zm-12 0h.008v.008H6V10.5Z"
-                            />
+                                    ? `text-blue-500`
+                                    : 'text-gray-500',
+                                `text-sm  dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500`,
+                            ]">Commandes</span>
+                    </Link>
+                    <Link :href="route('home')" class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group">
+                        <svg  :class="[
+                                route().current('home')
+                                    ? `text-blue-600`
+                                    : 'text-gray-500',
+                                `w-5 h-5 mb-2 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500`,
+                            ]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
                         </svg>
 
-                        <span
-                            :class="`text-sm text-slate-400 group-hover:text-white dark:text-slate-400`"
-                            >{{ __('Commandes') }}</span
-                        >
-                    </Link>
-                    <Link
-                        :href="route('home')"
-                        :class="[
-                            route().current('home') ? `bg-primary-900` : '',
-                            `btn-title group inline-flex flex-col items-center justify-center px-5 hover:bg-primary-900 dark:hover:bg-primary-800`,
-                        ]"
-                    >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke-width="1.5"
-                            stroke="currentColor"
-                            :class="[
-                                route().current('home')
-                                    ? `text-slate-300`
-                                    : 'text-slate-400',
-                                `mb-2 h-6 w-6 group-hover:text-white dark:text-slate-200`,
-                            ]"
-                        >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z"
-                            />
-                        </svg>
 
                         <span
-                            :class="`text-sm text-slate-400 group-hover:text-white dark:text-slate-400`"
-                            >{{ __('Équipe') }}</span
-                        >
-                    </Link>
-                    <Link
-                        :href="route('home')"
-                        :class="[
-                            route().current('home') ? `bg-primary-900` : '',
-                            `btn-title group inline-flex flex-col items-center justify-center px-5 hover:bg-primary-900 dark:hover:bg-primary-800`,
-                        ]"
-                    >
-                        <svg
                             :class="[
                                 route().current('home')
-                                    ? `text-slate-300`
-                                    : 'text-slate-400',
-                                `mb-2 h-6 w-6 group-hover:text-white dark:text-slate-200`,
-                            ]"
-                            aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="24"
-                            height="24"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                        >
-                            <path
-                                stroke="currentColor"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M4 12.25V1m0 11.25a2.25 2.25 0 0 0 0 4.5m0-4.5a2.25 2.25 0 0 1 0 4.5M4 19v-2.25m6-13.5V1m0 2.25a2.25 2.25 0 0 0 0 4.5m0-4.5a2.25 2.25 0 0 1 0 4.5M10 19V7.75m6 4.5V1m0 11.25a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5ZM16 19v-2"
-                            />
-                        </svg>
-                        <span
-                            :class="`text-sm text-slate-400 group-hover:text-white dark:text-slate-400`"
-                            >{{ __('Compte') }}</span
-                        >
+                                    ? `text-blue-500`
+                                    : 'text-gray-500',
+                                `text-sm  dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500`,
+                            ]">Équipe</span>
+                    </Link>
+                        <Link :href="route('home')" class="inline-flex flex-col items-center justify-center px-5 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 group border-x dark:border-gray-600">
+                            <svg  :class="[
+                                route().current('home')
+                                    ? `text-blue-600`
+                                    : 'text-gray-500',
+                                `w-5 h-5 mb-2 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500`,
+                            ]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17 17.25 21A2.652 2.652 0 0 0 21 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 1 1-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 0 0 4.486-6.336l-3.276 3.277a3.004 3.004 0 0 1-2.25-2.25l3.276-3.276a4.5 4.5 0 0 0-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437 1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008Z" />
+                            </svg>
+
+                            <span
+                                :class="[
+                                route().current('home')
+                                    ? `text-blue-500`
+                                    : 'text-gray-500',
+                                `text-sm  dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500`,
+                            ]">Compte</span>
                     </Link>
                 </div>
             </div>
