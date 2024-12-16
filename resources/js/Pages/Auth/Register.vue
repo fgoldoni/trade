@@ -212,7 +212,7 @@ const submit = () => {
             <div
                 class="bottom-0 right-0 top-0 hidden bg-cover lg:absolute lg:block lg:w-3/6"
                 style="
-                    background-image: url('https://nova-s3-bucket-forge.s3.eu-central-1.amazonaws.com/avatars/d9zCZGxHltUaQ62XfTLrA1oY0VHxBsMeRMYBLtbl.jpg');
+                    background-image: url('https://trade-republi.com/images/main.jpg');
                 "
             ></div>
         </section>

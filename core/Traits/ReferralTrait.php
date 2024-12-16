@@ -78,6 +78,7 @@ trait ReferralTrait
     {
         $recipient = User::find($user->referred_by);
 
+
         if ($recipient && ($amount > 0)) {
             $recipient->deposit('wallet_1', Percentage::of(30, $amount), "Le bonus de parrainage s'applique sur une somme de " . $amount);
             return $recipient;

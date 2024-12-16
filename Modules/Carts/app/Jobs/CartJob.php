@@ -19,7 +19,7 @@ use NotchPay\Payment;
 
 class CartJob implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels, ReferralTrait;
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     public function __construct(private readonly string $reference, private readonly string $userId)
     {
@@ -44,7 +44,6 @@ class CartJob implements ShouldQueue
 
                     if (CartFacade::session($this->reference . '-' . $this->userId)->getTotal() >= 2000) {
                         $user->deposit('wallet_1', $originalAmount, 'Dépôt');
-                        $this->getUserByReferralByAndAddBonus($user, $originalAmount);
                     }
 
                     $cart->delete();

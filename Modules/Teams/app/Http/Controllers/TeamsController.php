@@ -3,7 +3,11 @@
 namespace Modules\Teams\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
+use Mattiasgeniar\Percentage\Percentage;
+use Modules\Products\Models\Product;
 
 class TeamsController extends Controller
 {
@@ -12,7 +16,15 @@ class TeamsController extends Controller
      */
     public function index()
     {
-        return view('teams::index');
+        $referrals = User::with(['products'])->where('referred_by', auth()->id())
+            ->get();
+        $total = $referrals->map(fn (User $user) => $user->products()->get())
+            ->flatten()
+            ->map(fn (Product $product) => $product->price)
+            ->sum();
+        $revenue= Percentage::of(30, $total);
+
+        return Inertia::render('Teams/Index', ['total' => $total, 'revenue' => $revenue, 'referrals' => $referrals]);
     }
 
     /**

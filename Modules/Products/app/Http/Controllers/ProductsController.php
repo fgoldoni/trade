@@ -3,6 +3,7 @@
 namespace Modules\Products\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Core\Traits\ReferralTrait;
 use Darryldecode\Cart\Facades\CartFacade;
 use Goldoni\CoreRepositories\Repositories\Criteria\EagerLoad;
 use Goldoni\CoreRepositories\Repositories\Criteria\Where;
@@ -17,6 +18,7 @@ use NotchPay\Payment;
 
 class ProductsController extends Controller
 {
+     use ReferralTrait;
     public function __construct(private readonly UsersRepository $usersRepository, private readonly ProductsRepository $productsRepository)
     {
     }
@@ -40,7 +42,6 @@ class ProductsController extends Controller
         try {
             $product = $this->productsRepository->find($request->id);
 
-
             if (auth()->user()->products()->find($request->id)) {
                 throw new \Exception('Vous avez déjà acheté ce produit. Veuillez choisir un autre pack.');
             }
@@ -57,6 +58,7 @@ class ProductsController extends Controller
 
             $request->user()->pay($product->price, 'Achat du ' . $product->name);
             $request->user()->deposit('wallet_1', Percentage::of(20, $product->price), "Revenue (". $product->name .") du " . now()->format('d M, Y H:i'));
+            $this->getUserByReferralByAndAddBonus($request->user(), $product->price);
         } catch (\Exception $e) {
             logger($e->getMessage());
             return redirect(route('home', absolute: false))->with('error', $e->getMessage());
