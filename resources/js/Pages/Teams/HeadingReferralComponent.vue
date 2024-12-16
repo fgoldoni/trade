@@ -209,7 +209,7 @@
                 </div>
 
                 <h3
-                    class="relative z-20 -mt-1 text-center text-2xl font-bold text-blue-900 dark:text-blue-200 sm:text-3xl"
+                    class="relative z-20 -mt-1 text-center text-xl font-bold text-blue-900 dark:text-blue-200 sm:text-3xl"
                 >
                     Montant global généré par le parrainage:
                     <span class="text-green-500">{{ total }}

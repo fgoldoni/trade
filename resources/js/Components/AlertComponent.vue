@@ -12,7 +12,7 @@
                     {{ message }}
                     {{ ' ' }}
                     <a
-                        :href="`https://wa.me/${$page.props.app.phone}`"
+                        :href="`${$page.props.app.service}`"
                         :class="`font-medium text-primary-700 underline hover:text-primary-600`"
                     >
                         <!--                        <span>-->

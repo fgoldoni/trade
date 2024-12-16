@@ -22,7 +22,7 @@ defineProps<{
                         <p class="mt-4 text-pretty text-base/7 text-gray-600">
                             Vous ne trouvez pas la réponse que vous cherchez ?
                             <a
-                                :href="`https://wa.me/${$page.props.app.phone}`"
+                                :href="`${$page.props.app.service}`"
                                 class="font-semibold text-indigo-600 hover:text-indigo-500"
                                 >Contactez notre équipe de support client</a
                             >.

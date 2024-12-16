@@ -31,13 +31,13 @@ const clipboard = async () => {
 
 <template>
     <!-- Section 1 -->
-    <section class="rounded border border-primary-100 shadow-lg">
+    <section class="mt-4 rounded border border-primary-100 shadow-lg">
         <div
             class="mx-auto flex max-w-7xl flex-col items-center justify-center px-5 py-8 md:px-0"
         >
             <div class="relative">
                 <h2
-                    class="relative bg-gradient-to-br from-indigo-400 via-indigo-600 to-indigo-500 bg-cover bg-clip-text bg-center text-xl font-black text-transparent lg:text-2xl"
+                    class="relative bg-gradient-to-br from-indigo-400 via-indigo-600 to-indigo-500 bg-cover bg-clip-text bg-center text-sm font-black text-transparent lg:text-2xl"
                     style="
                         background-image: url('https://cdn.devdojo.com/images/february2021/bg-colorful.jpg');
                     "
