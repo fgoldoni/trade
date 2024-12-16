@@ -6,6 +6,7 @@ namespace App\Nova;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
@@ -55,11 +56,12 @@ class Faq extends Resource
                 ->creationRules('unique:faqs,id')
                 ->updateRules('exists:faqs,id,{{resourceId}}'),
 
-            Textarea::make('question')
+            Markdown::make('question')
                 ->sortable()
                 ->showOnPreview()
                 ->rules('required'),
-            Textarea::make('answer')
+
+            Markdown::make('answer')
                 ->sortable()
                 ->showOnPreview()
                 ->rules('required'),
