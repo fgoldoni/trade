@@ -8,7 +8,12 @@
                         <span class="inline-flex shrink-0 items-center rounded-full bg-green-50 px-1.5 py-0.5 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">{{ product.formatted_price }} {{ $page.props.app.currency }}</span>
                     </div>
                 </div>
-                <img class="size-10 shrink-0 rounded-full bg-gray-300" src="/images/awards/award-1.svg" alt="" />
+                <svg class="size-10 shrink-0 text-gray-900" fill="currentColor"  viewBox="0 0 640 512" xmlns="http://www.w3.org/2000/svg">
+
+                    <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                    <path d="M96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3zM504 312V248H440c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V136c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H552v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z"></path>
+
+                </svg>
             </div>
             <div>
                 <div class="-mt-px flex divide-x divide-gray-200">
