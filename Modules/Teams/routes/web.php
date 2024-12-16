@@ -15,5 +15,5 @@ use Modules\Teams\Http\Controllers\TeamsController;
 */
 
 Route::group([], function () {
-    Route::resource('teams', TeamsController::class)->names('teams');
+    Route::resource('teams', TeamsController::class)->middleware(['auth', 'verified', \Illuminate\Foundation\Http\Middleware\HandlePrecognitiveRequests::class])->names('teams');
 });

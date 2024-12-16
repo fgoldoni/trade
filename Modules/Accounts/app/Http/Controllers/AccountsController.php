@@ -4,15 +4,14 @@ namespace Modules\Accounts\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class AccountsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
-        return view('accounts::index');
+        return Inertia::render('Accounts/Index', []);
     }
 
     /**

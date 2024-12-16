@@ -7,6 +7,7 @@ import Heading from "@/Pages/Deposits/Heading.vue";
 import HeadingReferralComponent from "@/Pages/Teams/HeadingReferralComponent.vue";
 import ReferralComponent from "@/Pages/Teams/ReferralComponent.vue";
 import { EnvelopeIcon, PhoneIcon } from '@heroicons/vue/20/solid'
+import Invitation from "@/Components/Invitation.vue";
 
 
 defineProps<{
@@ -21,6 +22,7 @@ defineProps<{
     <GuestLayout>
         <div class="p-8 mb-48">
             <HeadingReferralComponent title="Équipe" :total="revenue"></HeadingReferralComponent>
+            <Invitation></Invitation>
             <div class="border-b border-gray-200 bg-white px-4 py-5 sm:px-6">
                 <div class="-ml-4 -mt-4 flex flex-wrap items-center justify-between sm:flex-nowrap">
                     <div class="ml-4 mt-4">

@@ -15,9 +15,9 @@ const props = defineProps<{
 }>();
 
 const form = useForm({
-    channel: props.recipient.channel,
-    name: props.recipient.name,
-    number: props.recipient.number ? parseInt(props.recipient.number) : null,
+    channel: props.recipient?.channel,
+    name: props.recipient?.name,
+    number: props.recipient?.number ? parseInt(props.recipient?.number) : null,
     number_confirmation: '',
 });
 

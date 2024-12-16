@@ -15,5 +15,5 @@ use Modules\Accounts\Http\Controllers\AccountsController;
 */
 
 Route::group([], function () {
-    Route::resource('accounts', AccountsController::class)->names('accounts');
+    Route::resource('accounts', AccountsController::class)->middleware(['auth', 'verified', \Illuminate\Foundation\Http\Middleware\HandlePrecognitiveRequests::class])->names('accounts');
 });
