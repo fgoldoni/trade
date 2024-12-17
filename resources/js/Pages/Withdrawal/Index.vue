@@ -42,13 +42,13 @@ const highlights = [
     <GuestLayout>
         <div class="p-8">
             <Heading title="Retrait"></Heading>
-            <RecipientMissingAlert
-                v-if="!recipient.number"
-            ></RecipientMissingAlert>
             <AlertSuccessComponent
                 :message="$page.props.flash.success"
                 v-if="$page.props.flash.success"
             ></AlertSuccessComponent>
+            <RecipientMissingAlert
+                v-if="!recipient.number"
+            ></RecipientMissingAlert>
             <WithdrawalFormComponent
                 v-else
                 :recipient="recipient"
