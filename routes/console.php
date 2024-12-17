@@ -9,7 +9,7 @@ Artisan::command('inspire', function () {
 
 Schedule::command('app:check-cart')->everyFiveMinutes();
 Schedule::command('app:withdrawal-command')->everyFiveMinutes();
-Schedule::command('app:update-order-command')->dailyAt('00:10');
+Schedule::command('app:update-order-command')->dailyAt('00:00');
 
 Schedule::command('telescope:prune --hours=48')->daily();
 
