@@ -28,7 +28,7 @@
                     </div>
                     <div class="-ml-px flex w-0 flex-1">
                         <a href="javascript:;" class="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-br-lg border border-transparent py-4 text-sm font-semibold text-gray-900">
-                            Total: {{ person.pivot.quantity * ((person.price/100) * 10) }} {{ $page.props.app.currency }}
+                            Total: {{ person.pivot.quantity * ((person.price/100) * 20) }} {{ $page.props.app.currency }}
                         </a>
                     </div>
                 </div>
