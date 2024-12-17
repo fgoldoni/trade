@@ -9,7 +9,7 @@
                             {{ person.daily_income }} {{ $page.props.app.currency }}
                         </span>
                     </div>
-                    <p class="mt-1 truncate text-sm text-gray-500">{{ person.name }} acheté le {{
+                    <p class="mt-1 truncate text-sm text-gray-500">{{ person.name }} ({{ person.price }}) acheté le {{
                             format(
                                 parseISO(person.pivot.created_at),
                                 'dd. MMM yyyy',
@@ -28,7 +28,7 @@
                     </div>
                     <div class="-ml-px flex w-0 flex-1">
                         <a href="javascript:;" class="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-br-lg border border-transparent py-4 text-sm font-semibold text-gray-900">
-                            Total: {{ person.pivot.quantity * person.price }} {{ $page.props.app.currency }}
+                            Total: {{ person.pivot.quantity * ((person.price/100) * 10) }} {{ $page.props.app.currency }}
                         </a>
                     </div>
                 </div>
