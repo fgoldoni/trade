@@ -56,10 +56,7 @@
             :message="$page.props.flash.error"
             v-if="$page.props.flash.error"
         ></AlertComponent>
-        <AlertSuccessComponent
-            :message="$page.props.flash.success"
-            v-if="$page.props.flash.success"
-        ></AlertSuccessComponent>
+
 
         <button
             :class="[

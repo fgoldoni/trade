@@ -5,6 +5,7 @@ import Heading from '@/Pages/Deposits/Heading.vue';
 import RecipientMissingAlert from '@/Pages/Withdrawal/RecipientMissingAlert.vue';
 import WithdrawalFormComponent from '@/Pages/Withdrawal/WithdrawalFormComponent.vue';
 import { Head } from '@inertiajs/vue3';
+import AlertSuccessComponent from "@/Components/AlertSuccessComponent.vue";
 
 defineProps<{
     recipient?: Object;
@@ -44,6 +45,10 @@ const highlights = [
             <RecipientMissingAlert
                 v-if="!recipient.number"
             ></RecipientMissingAlert>
+            <AlertSuccessComponent
+                :message="$page.props.flash.success"
+                v-if="$page.props.flash.success"
+            ></AlertSuccessComponent>
             <WithdrawalFormComponent
                 v-else
                 :recipient="recipient"

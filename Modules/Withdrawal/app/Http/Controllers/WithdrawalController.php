@@ -112,7 +112,7 @@ class WithdrawalController extends Controller
             return redirect(route('withdrawal.index', absolute: false))->with('error', $e->getMessage());
         }
 
-        return redirect(route('withdrawal.index', absolute: false))->with('success', 'Félicitations ! Votre compte de retrait a été créé avec succès.');
+        return redirect(route('transactions.index', absolute: false))->with('success', 'Félicitations ! Votre retrait a été effectué avec succès.');
     }
 
     /**

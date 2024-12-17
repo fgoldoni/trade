@@ -77,7 +77,7 @@ class RecipientsController extends Controller
             return redirect(route('recipients.index', absolute: false))->with('error', $e->getMessage());
         }
 
-        return redirect(route('recipients.index', absolute: false))->with('success', 'Félicitations ! Votre compte de retrait a été enregistré avec succès.');
+        return redirect(route('withdrawal.index', absolute: false))->with('success', 'Félicitations ! Votre compte de retrait a été enregistré avec succès.');
     }
 
     /**
