@@ -74,7 +74,7 @@ class RecipientsController extends Controller
             }
         } catch (\Exception $e) {
             logger(self::class . ' - ' . $e->getMessage());
-            return redirect(route('recipients.index', absolute: false))->with('error', $e->getMessage());
+            return redirect(route('recipients.index', absolute: false))->with('error', "Une erreur s'est produite lors de la création du compte de retrait. Veuillez, s'il vous plaît, contacter le service client si nécessaire.");
         }
 
         return redirect(route('withdrawal.index', absolute: false))->with('success', 'Félicitations ! Votre compte de retrait a été enregistré avec succès.');

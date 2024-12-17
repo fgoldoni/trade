@@ -109,7 +109,7 @@ class WithdrawalController extends Controller
             }
         } catch (\Exception $e) {
             logger(self::class . ' - ' . $e->getMessage());
-            return redirect(route('withdrawal.index', absolute: false))->with('error', $e->getMessage());
+            return redirect(route('withdrawal.index', absolute: false))->with('error', "Une erreur s'est produite lors du retrait. Veuillez, s'il vous plaît, contacter le service client si nécessaire.");
         }
 
         return redirect(route('transactions.index', absolute: false))->with('success', 'Félicitations ! Votre retrait a été effectué avec succès.');
