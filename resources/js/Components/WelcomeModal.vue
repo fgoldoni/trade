@@ -18,28 +18,52 @@
                                     <div class="mt-2">
                                         <p class="text-sm text-gray-500"><strong>Trade Republic</strong> est une plateforme de courtage en ligne allemande permettant d'acheter et de vendre des actions, ETF, crypto-monnaies, etc. Elle se distingue par des frais réduits et une interface simple, principalement destinée aux investisseurs particuliers.</p>
                                     </div>
-                                    <ul role="list" class="mt-4 space-y-1 text-sm/6 text-gray-600">
-                                        <li  class="flex gap-x-3">
-                                            <CheckIcon class="h-6 w-5 flex-none text-indigo-600" aria-hidden="true" />
-                                            Prime d'inscription 600 XAF
-                                        </li>
-                                        <li  class="flex gap-x-3">
-                                            <CheckIcon class="h-6 w-5 flex-none text-indigo-600" aria-hidden="true" />
-                                            Retrait 24h/24, 7j/7
-                                        </li>
-                                        <li  class="flex gap-x-3">
-                                            <CheckIcon class="h-6 w-5 flex-none text-indigo-600" aria-hidden="true" />
-                                            Cashback de niveau 1 de l'équipe 30%
-                                        </li>
-                                        <li  class="flex gap-x-3">
-                                            <CheckIcon class="h-6 w-5 flex-none text-indigo-600" aria-hidden="true" />
-                                            Le compte est crédité en 5 minutes.
-                                        </li>
-                                        <li  class="flex gap-x-3">
-                                            <CheckIcon class="h-6 w-5 flex-none text-indigo-600" aria-hidden="true" />
-                                            20% de revenu journalier par pack.
-                                        </li>
-                                    </ul>
+                                    <div class="overflow-auto h-60 relative mx-auto flex flex-col">
+                                        <ul role="list" class="mt-4 space-y-1 text-sm/6 text-gray-600">
+                                            <li  class="flex gap-x-3">
+                                                <CheckIcon class="h-6 w-5 flex-none text-indigo-600" aria-hidden="true" />
+                                                Prime d'inscription 600 XAF
+                                            </li>
+                                            <li  class="flex gap-x-3">
+                                                <CheckIcon class="h-6 w-5 flex-none text-indigo-600" aria-hidden="true" />
+                                                Retrait 24h/24, 7j/7
+                                            </li>
+                                            <li  class="flex gap-x-3">
+                                                <CheckIcon class="h-6 w-5 flex-none text-indigo-600" aria-hidden="true" />
+                                                Cashback de niveau 1 de l'équipe 30%
+                                            </li>
+                                            <li  class="flex gap-x-3">
+                                                <CheckIcon class="h-6 w-5 flex-none text-indigo-600" aria-hidden="true" />
+                                                Le compte est crédité en 5 minutes.
+                                            </li>
+                                            <li  class="flex gap-x-3">
+                                                <CheckIcon class="h-6 w-5 flex-none text-indigo-600" aria-hidden="true" />
+                                                20% de revenu journalier par pack.
+                                            </li>
+                                        </ul>
+                                        <ul role="list" class="mt-4 space-y-1 text-sm/6 text-gray-600">
+                                            <li  class="flex gap-x-3">
+                                                <CheckIcon class="h-6 w-5 flex-none text-indigo-600" aria-hidden="true" />
+                                                Prime d'inscription 600 XAF
+                                            </li>
+                                            <li  class="flex gap-x-3">
+                                                <CheckIcon class="h-6 w-5 flex-none text-indigo-600" aria-hidden="true" />
+                                                Retrait 24h/24, 7j/7
+                                            </li>
+                                            <li  class="flex gap-x-3">
+                                                <CheckIcon class="h-6 w-5 flex-none text-indigo-600" aria-hidden="true" />
+                                                Cashback de niveau 1 de l'équipe 30%
+                                            </li>
+                                            <li  class="flex gap-x-3">
+                                                <CheckIcon class="h-6 w-5 flex-none text-indigo-600" aria-hidden="true" />
+                                                Le compte est crédité en 5 minutes.
+                                            </li>
+                                            <li  class="flex gap-x-3">
+                                                <CheckIcon class="h-6 w-5 flex-none text-indigo-600" aria-hidden="true" />
+                                                20% de revenu journalier par pack.
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                             <div class="mt-5 sm:mt-6">

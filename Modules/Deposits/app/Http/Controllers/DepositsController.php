@@ -3,6 +3,8 @@
 namespace Modules\Deposits\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Artesaos\SEOTools\Facades\SEOMeta;
+use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -11,6 +13,16 @@ class DepositsController extends Controller
 
     public function index()
     {
+        SEOTools::setTitle('Dépôt sur votre compte', false);
+        SEOTools::setDescription("Ajoutez des fonds pour investir facilement et rapidement.");
+        SEOTools::opengraph()->setUrl(route('home'));
+        SEOMeta::addKeyword(['Investissement', 'TradeRepublic']);
+        SEOTools::setCanonical(route('home'));
+        SEOTools::opengraph()->addProperty('type', 'website');
+        SEOTools::opengraph()->addProperty('locale', app()->getLocale());
+        SEOTools::opengraph()->addImage(asset('images/main.jpg'), ['height' => 300, 'width' => 300]);
+        SEOTools::jsonLd()->addImage(asset('images/main.jpg'));
+
         return Inertia::render('Deposits/Index');
     }
 

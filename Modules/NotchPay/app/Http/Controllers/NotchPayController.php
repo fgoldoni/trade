@@ -4,6 +4,8 @@ namespace Modules\NotchPay\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Artesaos\SEOTools\Facades\SEOMeta;
+use Artesaos\SEOTools\Facades\SEOTools;
 use Darryldecode\Cart\Facades\CartFacade;
 use HPWebdeveloper\LaravelPayPocket\Facades\LaravelPayPocket;
 use Illuminate\Http\Request;
@@ -24,9 +26,23 @@ class NotchPayController extends Controller
      */
     public function index(Request $request)
     {
+        SEOTools::setTitle('Confirmation de votre paiement', false);
+        SEOTools::setDescription("Votre transaction a été traitée avec succès.");
+        SEOTools::opengraph()->setUrl(route('home'));
+        SEOMeta::addKeyword(['Investissement', 'TradeRepublic']);
+        SEOTools::setCanonical(route('home'));
+        SEOTools::opengraph()->addProperty('type', 'website');
+        SEOTools::opengraph()->addProperty('locale', app()->getLocale());
+        SEOTools::opengraph()->addImage(asset('images/main.jpg'), ['height' => 300, 'width' => 300]);
+        SEOTools::jsonLd()->addImage(asset('images/main.jpg'));
+
         if ($request->reference && $request->trxref && $request->status) {
             if ($request->status === 'complete') {
                 $userId = explode("-", $request->trxref)[1];
+
+                SEOTools::setTitle('Merci pour votre paiement', false);
+                SEOTools::setDescription("Merci pour votre paiement ! Votre transaction a été traitée avec succès.");
+
                 if (Cart::find($request->reference . '-' . $userId . '_cart_items')) {
                     CartJob::dispatch($request->reference, $userId);
                 }

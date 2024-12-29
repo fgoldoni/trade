@@ -3,6 +3,8 @@
 namespace Modules\Withdrawal\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Artesaos\SEOTools\Facades\SEOMeta;
+use Artesaos\SEOTools\Facades\SEOTools;
 use HPWebdeveloper\LaravelPayPocket\Facades\LaravelPayPocket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
@@ -16,6 +18,16 @@ class WithdrawalController extends Controller
 
     public function index(Request $request): \Inertia\Response
     {
+        SEOTools::setTitle('Retrait de fonds', false);
+        SEOTools::setDescription("Retirez vos fonds en toute sécurité et simplicité.");
+        SEOTools::opengraph()->setUrl(route('home'));
+        SEOMeta::addKeyword(['Investissement', 'TradeRepublic']);
+        SEOTools::setCanonical(route('home'));
+        SEOTools::opengraph()->addProperty('type', 'website');
+        SEOTools::opengraph()->addProperty('locale', app()->getLocale());
+        SEOTools::opengraph()->addImage(asset('images/main.jpg'), ['height' => 300, 'width' => 300]);
+        SEOTools::jsonLd()->addImage(asset('images/main.jpg'));
+
         return Inertia::render('Withdrawal/Index', ['recipient' => $request->user()->recipient]);
     }
 
